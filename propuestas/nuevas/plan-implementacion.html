@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Implementación y Migración de Propuestas | Envíos DosRuedas</title>
+    <meta name="description" content="Plan de implementación interactivo y auditable para el rediseño integral de las 12 páginas HTML de Envíos DosRuedas.">
+    <style>
+        /* ============================================================
+           TOKENS DE DISEÑO Y ESTILOS (html-plan + design-artifact)
+           Tono: Sobrio, estructurado, workmanlike, legible.
+           ============================================================ */
+        :root {
+            --plan-blue: #0950F6;
+            --plan-yellow: #FFEC01;
+            --plan-ink: #071536;
+            --plan-bg: #f5f7fc;
+            --plan-surface: #ffffff;
+            --plan-border: #d4e0f0;
+            --plan-border-focus: #0950F6;
+            --plan-text: #0e1e3e;
+            --plan-text-muted: #556987;
+            --plan-status-done-bg: #dcfce7;
+            --plan-status-done-text: #166534;
+            --plan-status-prog-bg: #fef9c3;
+            --plan-status-prog-text: #854d0e;
+            --plan-status-wait-bg: #f1f5f9;
+            --plan-status-wait-text: #475569;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --max-w: 1180px;
+        }
+
+        :root[data-theme="dark"] {
+            --plan-bg: #070e1c;
+            --plan-surface: #0c1830;
+            --plan-border: #1a2e52;
+            --plan-text: #f0f4fc;
+            --plan-text-muted: #95a9c9;
+            --plan-status-done-bg: #06371c;
+            --plan-status-done-text: #4ade80;
+            --plan-status-prog-bg: #382c07;
+            --plan-status-prog-text: #fde047;
+            --plan-status-wait-bg: #141f36;
+            --plan-status-wait-text: #94a3b8;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--plan-bg);
+            color: var(--plan-text);
+            line-height: 1.5;
+            padding-bottom: 80px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header-bar {
+            background-color: var(--plan-blue);
+            color: #ffffff;
+            padding: 24px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .header-title-block h1 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .header-title-block p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .theme-toggle-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* METRICAS Y PROGRESO */
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 28px 0;
+        }
+
+        @media (max-width: 768px) {
+            .progress-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .metric-card {
+            background-color: var(--plan-surface);
+            border: 1px solid var(--plan-border);
+            border-radius: var(--radius-md);
+            padding: 18px;
+        }
+
+        .metric-val {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--plan-blue);
+            font-variant-numeric: tabular-nums;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--plan-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* TABLA DE PLAN DE IMPLEMENTACIÓN */
+        .plan-card {
+            background-color: var(--plan-surface);
+            border: 1px solid var(--plan-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 12px rgba(9, 80, 246, 0.04);
+        }
+
+        .plan-card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--plan-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(9, 80, 246, 0.03);
+        }
+
+        .phase-badge {
+            background-color: var(--plan-blue);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: rgba(9, 80, 246, 0.05);
+            padding: 12px 18px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--plan-text-muted);
+            border-bottom: 1px solid var(--plan-border);
+        }
+
+        td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--plan-border);
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-pill {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .status-done { background: var(--plan-status-done-bg); color: var(--plan-status-done-text); }
+        .status-prog { background: var(--plan-status-prog-bg); color: var(--plan-status-prog-text); }
+        .status-wait { background: var(--plan-status-wait-bg); color: var(--plan-status-wait-text); }
+
+        .btn-inspect {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 10px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 700;
+            background: var(--plan-blue);
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .btn-inspect:hover {
+            opacity: 0.9;
+        }
+
+        /* CHECKLIST DE CRITERIOS DE ACEPTACIÓN */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .check-item {
+            display: flex;
+            gap: 12px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .check-icon {
+            color: #16a34a;
+            font-weight: 900;
+        }
+
+        /* RIESGOS Y DECISIONES */
+        .callout-box {
+            background-color: rgba(255, 236, 1, 0.12);
+            border: 1px solid rgba(255, 236, 1, 0.5);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            margin-bottom: 24px;
+            font-size: 13px;
+        }
+
+        .callout-box strong {
+            display: block;
+            font-size: 14px;
+            color: #8c7300;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-bar" role="banner">
+        <div class="container header-inner">
+            <div class="header-title-block">
+                <span style="background-color: var(--plan-yellow); color: var(--plan-ink); font-size: 10px; font-weight: 900; padding: 2px 6px; border-radius: 3px; text-transform: uppercase;">
+                    HTML-Plan Canónico
+                </span>
+                <h1 style="margin-top: 4px;">Plan de Migración & Propuestas Nuevas | Envíos DosRuedas</h1>
+                <p>Hoja de ruta para el rediseño y estandarización de las 12 páginas HTML en el directorio <code>propuestas/nuevas/</code>.</p>
+            </div>
+            <button class="theme-toggle-btn" onclick="toggleTheme()">
+                <span id="theme-icon">🌙</span> Alternar Modo
+            </button>
+        </div>
+    </header>
+
+    <main class="container" id="main-content">
+
+        <!-- RESUMEN DE PROGRESO AUDITABLE -->
+        <section class="progress-grid" aria-label="Métricas del plan">
+            <div class="metric-card">
+                <div class="metric-val">12</div>
+                <div class="metric-label">Páginas Totales</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-val" style="color: #16a34a;">2</div>
+                <div class="metric-label">Propuestas Listas (Fase 1)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-val" style="color: #ca8a04;">10</div>
+                <div class="metric-label">Próximas en Cola</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-val">100%</div>
+                <div class="metric-label">Tokens Canónicos</div>
+            </div>
+        </section>
+
+        <!-- AVISO DE TRAZABILIDAD Y REGLAS DE DISENO -->
+        <div class="callout-box" role="region" aria-label="Directriz de diseño">
+            <strong>Contrato de Diseño Establecido</strong>
+            Todas las propuestas en <code>propuestas/nuevas/</code> se construyen conforme a <code>SISTEMA_DISENO_Y_DEFINICION_SITIO.md</code>:
+            paleta azul <code>#0950F6</code> + amarillo <code>#FFEC01</code> + texto <code>#071536</code>, cero dependencias CDN frágiles,
+            archivos 100% autocontenidos y accesibilidad WCAG 2.2 AA comprobada.
+        </div>
+
+        <!-- FASE 1: NÚCLEO TRANSACCIONAL (INICIO & CONTACTO) -->
+        <section class="plan-card" aria-labelledby="phase-1-title">
+            <div class="plan-card-header">
+                <div>
+                    <span class="phase-badge">Fase 1 · En Ejecución Inmediata</span>
+                    <h2 id="phase-1-title" style="font-size: 16px; font-weight: 800; margin-top: 4px;">Núcleo Transaccional y Captación de Leads</h2>
+                </div>
+                <span class="status-pill status-done">Prioridad Crítica</span>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Archivo Origen</th>
+                            <th>Propuesta Nueva</th>
+                            <th>Propósito Principal</th>
+                            <th>Mejora Clave Introducida</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>actuales/inicio.html</code></td>
+                            <td><strong><code>propuestas/nuevas/inicio.html</code></strong></td>
+                            <td>Home y centro de conversión del sitio</td>
+                            <td>Cotizador interactivo en el Hero, reducción de 3.342 líneas a código limpio, tracking simulado.</td>
+                            <td><span class="status-pill status-done">Completado</span></td>
+                            <td><a href="./inicio.html" class="btn-inspect" target="_blank">Abrir HTML →</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>actuales/contacto.html</code></td>
+                            <td><strong><code>propuestas/nuevas/contacto.html</code></strong></td>
+                            <td>Vía directa de atención y cotizaciones</td>
+                            <td>Formulario con derivación WhatsApp en 1 clic, datos de Base Friuli 1972, FAQ rápida.</td>
+                            <td><span class="status-pill status-done">Completado</span></td>
+                            <td><a href="./contacto.html" class="btn-inspect" target="_blank">Abrir HTML →</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FASE 2: SERVICIOS CORE E-COMMERCE & URGENCIAS -->
+        <section class="plan-card" aria-labelledby="phase-2-title">
+            <div class="plan-card-header">
+                <div>
+                    <span class="phase-badge" style="background-color: #475569;">Fase 2 · En Cola</span>
+                    <h2 id="phase-2-title" style="font-size: 16px; font-weight: 800; margin-top: 4px;">Servicios Core E-commerce & Urgencias</h2>
+                </div>
+                <span class="status-pill status-wait">Próximo Sprint</span>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Archivo Origen</th>
+                            <th>Propuesta Futura</th>
+                            <th>Propósito</th>
+                            <th>Estrategia de Rediseño</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>actuales/servicios-envios-express.html</code></td>
+                            <td><code>propuestas/nuevas/servicios-envios-express.html</code></td>
+                            <td>Entregas urgentes punto a punto (< 2hs)</td>
+                            <td>Calculadora rápida de minutos por radio urbano y botón de despacho inmediato.</td>
+                            <td><span class="status-pill status-wait">Planificado</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>actuales/servicios-enviosflex.html</code></td>
+                            <td><code>propuestas/nuevas/servicios-enviosflex.html</code></td>
+                            <td>Mercado Envíos Flex para e-commerce</td>
+                            <td>Esquema visual del horario de corte (14hs) y panel de reputación verde garantizada.</td>
+                            <td><span class="status-pill status-wait">Planificado</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>actuales/servicios-envios-contrareembolso.html</code></td>
+                            <td><code>propuestas/nuevas/servicios-envios-contrareembolso.html</code></td>
+                            <td>Cobro en destino y rendición en 24hs</td>
+                            <td>Diagrama del circuito de dinero seguro y calculadora de comisión transparente.</td>
+                            <td><span class="status-pill status-wait">Planificado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FASE 3: SOLUCIONES CORPORATIVAS Y PYMES -->
+        <section class="plan-card" aria-labelledby="phase-3-title">
+            <div class="plan-card-header">
+                <div>
+                    <span class="phase-badge" style="background-color: #475569;">Fase 3 · En Cola</span>
+                    <h2 id="phase-3-title" style="font-size: 16px; font-weight: 800; margin-top: 4px;">Planes de Negocio & Logística Avanzada</h2>
+                </div>
+                <span class="status-pill status-wait">Planificado</span>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Archivo Origen</th>
+                            <th>Propuesta Futura</th>
+                            <th>Propósito</th>
+                            <th>Estrategia de Rediseño</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>actuales/servicios-plan-emprendedores.html</code></td>
+                            <td><code>propuestas/nuevas/servicios-plan-emprendedores.html</code></td>
+                            <td>Suscripción y tarifas planas por volumen</td>
+                            <td>Tabla comparativa interactiva con selector de volumen mensual (10, 50, 100+ envíos).</td>
+                            <td><span class="status-pill status-wait">Planificado</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>actuales/servicios-deposito-fulfillment.html</code></td>
+                            <td><code>propuestas/nuevas/servicios-deposito-fulfillment.html</code></td>
+                            <td>Almacenamiento de stock en Friuli 1972</td>
+                            <td>Recorrido fotográfico e infografía de cómo funciona el picking & packing.</td>
+                            <td><span class="status-pill status-wait">Planificado</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>actuales/servicios-empresas-cuenta-corriente.html</code></td>
+                            <td><code>propuestas/nuevas/servicios-empresas-cuenta-corriente.html</code></td>
+                            <td>Factura A y cadetería corporativa fija</td>
+                            <td>Formulario B2B para alta de empresa con solicitud de CUIT y cotización a medida.</td>
+                            <td><span class="status-pill status-wait">Planificado</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>actuales/servicios-envios-lowcost.html</code></td>
+                            <td><code>propuestas/nuevas/servicios-envios-lowcost.html</code></td>
+                            <td>Cadetería económica no urgente</td>
+                            <td>Diferenciación clara de horarios para no canibalizar el servicio Express.</td>
+                            <td><span class="status-pill status-wait">Planificado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FASE 4: INSTITUCIONAL Y SOPORTE -->
+        <section class="plan-card" aria-labelledby="phase-4-title">
+            <div class="plan-card-header">
+                <div>
+                    <span class="phase-badge" style="background-color: #475569;">Fase 4 · En Cola</span>
+                    <h2 id="phase-4-title" style="font-size: 16px; font-weight: 800; margin-top: 4px;">Institucional, Confianza y Preguntas Frecuentes</h2>
+                </div>
+                <span class="status-pill status-wait">Planificado</span>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Archivo Origen</th>
+                            <th>Propuesta Futura</th>
+                            <th>Propósito</th>
+                            <th>Estrategia de Rediseño</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>actuales/nosotros-sobre-nosotros.html</code></td>
+                            <td><code>propuestas/nuevas/nosotros-sobre-nosotros.html</code></td>
+                            <td>Historia, flota propia y Base Friuli 1972</td>
+                            <td>Storytelling visual del equipo marplatense, fotos reales y mapa de la sede central.</td>
+                            <td><span class="status-pill status-wait">Planificado</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>actuales/nosotros-preguntas-frecuentes.html</code></td>
+                            <td><code>propuestas/nuevas/nosotros-preguntas-frecuentes.html</code></td>
+                            <td>Resolución de dudas frecuentes</td>
+                            <td>Buscador de preguntas en vivo, acordeones accesibles por teclado sin librerías externas.</td>
+                            <td><span class="status-pill status-wait">Planificado</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>actuales/nosotros-nuestras-redes.html</code></td>
+                            <td><code>propuestas/nuevas/nosotros-nuestras-redes.html</code></td>
+                            <td>Comunidad y canales sociales</td>
+                            <td>Muro interactivo con feeds verificados de Instagram, WhatsApp y TikTok.</td>
+                            <td><span class="status-pill status-wait">Planificado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- CRITERIOS DE ACEPTACIÓN OBLIGATORIOS -->
+        <section class="plan-card">
+            <div class="plan-card-header">
+                <h3 style="font-size: 15px; font-weight: 800;">Criterios de Aceptación y Control de Calidad</h3>
+            </div>
+            <div class="checklist-grid">
+                <div class="check-item">
+                    <span class="check-icon">✓</span>
+                    <div>
+                        <strong>100% Autocontenido:</strong>
+                        <p style="color: var(--plan-text-muted);">Sin enlaces a CDN externos obligatorios. Si se abre sin conexión a internet, el layout no se rompe.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <span class="check-icon">✓</span>
+                    <div>
+                        <strong>Contraste y Accesibilidad (WCAG 2.2 AA):</strong>
+                        <p style="color: var(--plan-text-muted);">Texto sobre amarillo es siempre azul oscuro (<code>#071536</code>). Todo elemento interactivo tiene foco visible.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <span class="check-icon">✓</span>
+                    <div>
+                        <strong>Tokens de Doble Tema:</strong>
+                        <p style="color: var(--plan-text-muted);">Modo oscuro y claro implementados nativamente mediante variables CSS gobernadas en <code>:root</code>.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <span class="check-icon">✓</span>
+                    <div>
+                        <strong>Fidelidad al Contenido:</strong>
+                        <p style="color: var(--plan-text-muted);">Preservación de datos reales de Envíos DosRuedas (Friuli 1972, teléfonos 223, zonas de Mar del Plata).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme') || 'light';
+            const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', nextTheme);
+            document.getElementById('theme-icon').innerText = nextTheme === 'dark' ? '☀️' : '🌙';
+        }
+    </script>
+</body>
+</html>

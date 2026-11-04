@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto y Pedidos | Envíos DosRuedas Mar del Plata</title>
+    <meta name="description" content="Contacto directo con la base central de Envíos DosRuedas en Friuli 1972, Mar del Plata. WhatsApp directo 223 660-2699, teléfono de base y cotizaciones inmediatas.">
+    <meta name="theme-color" content="#0950F6">
+
+    <style>
+        /* ============================================================
+           SISTEMA DE TOKENS CANÓNICO (SISTEMA_DISENO_Y_DEFINICION_SITIO.md)
+           ============================================================ */
+        :root {
+            --edr-blue-primary: #0950F6;
+            --edr-blue-dark: #0740C7;
+            --edr-blue-surface: #EBF2FE;
+            --edr-yellow-accent: #FFEC01;
+            --edr-yellow-hover: #E6D400;
+            --edr-ink: #071536;
+            --edr-text-secondary: #4A5C82;
+            --edr-white: #FFFFFF;
+            --edr-border: #D6E2FB;
+            
+            --bg-page: #F8FAFF;
+            --bg-surface: #FFFFFF;
+            --bg-surface-elevated: #FFFFFF;
+            --bg-subtle: #EDF3FC;
+            --text-main: #071536;
+            --text-muted: #4A5C82;
+            --border-subtle: #D6E2FB;
+            --border-strong: #A8C4F8;
+            
+            --shadow-sm: 0 2px 8px rgba(9, 80, 246, 0.06);
+            --shadow-md: 0 8px 24px rgba(9, 80, 246, 0.10);
+            --shadow-lg: 0 16px 40px rgba(9, 80, 246, 0.14);
+            --shadow-yellow: 0 4px 16px rgba(255, 236, 1, 0.35);
+
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-full: 9999px;
+            --max-w: 1240px;
+
+            --font-display: "Anton", system-ui, -apple-system, sans-serif;
+            --font-subheading: "Bebas Neue", system-ui, -apple-system, sans-serif;
+            --font-sans: "Outfit", system-ui, -apple-system, sans-serif;
+            --font-mono: "Geist Mono", monospace;
+        }
+
+        :root[data-theme="dark"],
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg-page: #050C1E;
+                --bg-surface: #0A1738;
+                --bg-surface-elevated: #10224F;
+                --bg-subtle: #0E1F47;
+                --text-main: #F2F6FF;
+                --text-muted: #9BB1D6;
+                --border-subtle: #1C336B;
+                --border-strong: #2D4C8C;
+                --edr-blue-primary: #256BFE;
+                --edr-blue-surface: #0E1F47;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            text-wrap: balance;
+        }
+
+        p {
+            text-wrap: pretty;
+            max-width: 65ch;
+        }
+
+        .font-display {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+        }
+
+        .font-sub {
+            font-family: var(--font-subheading);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .font-mono {
+            font-family: var(--font-mono);
+            font-variant-numeric: tabular-nums;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--edr-yellow-accent);
+            outline-offset: 3px;
+        }
+
+        /* HEADER CANÓNICO */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(9, 80, 246, 0.96);
+            backdrop-filter: blur(12px);
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 0;
+            box-shadow: 0 4px 20px rgba(0, 20, 80, 0.15);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .logo-icon {
+            background-color: var(--edr-yellow-accent);
+            color: #071536;
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text span.sub {
+            font-size: 10px;
+            color: var(--edr-yellow-accent);
+            letter-spacing: 0.15em;
+            margin-top: 3px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.15s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--edr-yellow-accent);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 8px 12px;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-cta-pill {
+            background-color: var(--edr-yellow-accent);
+            color: #071536;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-yellow);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s ease;
+        }
+
+        .btn-cta-pill:hover {
+            background-color: var(--edr-yellow-hover);
+            transform: translateY(-2px);
+        }
+
+        /* HERO CONTACTO */
+        .contact-hero {
+            background: linear-gradient(135deg, #0738b5 0%, #0950F6 60%, #1765ff 100%);
+            color: #ffffff;
+            padding: 50px 0 60px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: rgba(255, 236, 1, 0.15);
+            border: 1px solid rgba(255, 236, 1, 0.4);
+            color: var(--edr-yellow-accent);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+        }
+
+        .contact-h1 {
+            font-size: clamp(32px, 4vw, 50px);
+            margin-bottom: 16px;
+        }
+
+        .contact-hero-p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin-bottom: 28px;
+        }
+
+        /* BOTONES DE CONTACTO DIRECTO EN HERO */
+        .direct-channels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .direct-channels-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .channel-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .channel-card:hover {
+            background-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+            border-color: var(--edr-yellow-accent);
+        }
+
+        .channel-icon {
+            font-size: 28px;
+            background: rgba(255, 236, 1, 0.2);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .channel-info strong {
+            display: block;
+            font-size: 15px;
+            color: #ffffff;
+        }
+
+        .channel-info span {
+            font-size: 13px;
+            color: var(--edr-yellow-accent);
+            font-weight: 700;
+        }
+
+        /* CONTENIDO PRINCIPAL: FORMULARIO + MAPA */
+        .contact-body-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 36px;
+            padding: 60px 0;
+        }
+
+        @media (max-width: 900px) {
+            .contact-body-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-card h2 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .form-card p.subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            margin-bottom: 18px;
+        }
+
+        .form-row label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .input-text, .select-box, .textarea-box {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border-strong);
+            background-color: var(--bg-surface);
+            color: var(--text-main);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .textarea-box {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .btn-submit-wa {
+            background-color: var(--edr-yellow-accent);
+            color: #071536;
+            border: none;
+            padding: 14px 24px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            box-shadow: var(--shadow-yellow);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: all 0.15s ease;
+        }
+
+        .btn-submit-wa:hover {
+            background-color: var(--edr-yellow-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit-web {
+            background-color: var(--bg-subtle);
+            border: 1px solid var(--border-strong);
+            color: var(--text-main);
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* COLUMNA LATERAL: DATOS DE SEDE Y HORARIOS */
+        .info-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 24px;
+        }
+
+        .info-card h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            font-size: 20px;
+            color: var(--edr-blue-primary);
+            flex-shrink: 0;
+        }
+
+        .info-desc strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 15px;
+        }
+
+        .info-desc span {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* MAPA ESQUEMÁTICO */
+        .map-mock-box {
+            background: linear-gradient(135deg, #e2ecfc 0%, #cbdcf8 100%);
+            border: 2px dashed var(--border-strong);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            margin-top: 14px;
+        }
+
+        /* ACORDEÓN PREGUNTAS FRECUENTES DE CONTACTO */
+        .faq-block {
+            margin-top: 20px;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .faq-item {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .faq-question {
+            font-size: 15px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* FOOTER CANÓNICO */
+        .site-footer {
+            background-color: #071536;
+            color: #ffffff;
+            padding: 50px 0 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-cols {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 36px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-cols {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-cols h4 {
+            color: var(--edr-yellow-accent);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 14px;
+        }
+
+        .footer-cols ul {
+            list-style: none;
+        }
+
+        .footer-cols li {
+            margin-bottom: 8px;
+        }
+
+        .footer-cols a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .footer-bottom-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.45);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA PRINCIPAL -->
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a href="./inicio.html" class="logo-box">
+                <div class="logo-icon">🛵</div>
+                <div class="logo-text">
+                    <span>Envíos DosRuedas</span>
+                    <span class="sub">Mar del Plata</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" aria-label="Navegación principal">
+                <a href="./inicio.html#cotizador" class="nav-link">Cotizador</a>
+                <a href="./inicio.html#servicios" class="nav-link">Servicios</a>
+                <a href="./servicios-plan-emprendedores.html" class="nav-link">Emprendedores</a>
+                <a href="./servicios-empresas-cuenta-corriente.html" class="nav-link">Empresas</a>
+                <a href="./inicio.html#tracking" class="nav-link">Rastrear</a>
+                <a href="./contacto.html" class="nav-link active">Contacto</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Cambiar tema">
+                    <span id="theme-icon">🌙</span>
+                </button>
+                <a href="https://wa.me/5492236602699?text=Hola!%20Vengo%20desde%20la%20página%20de%20Contacto." class="btn-cta-pill" target="_blank" rel="noopener">
+                    WhatsApp 💬
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        
+        <!-- HERO DE CONTACTO INMEDIATO -->
+        <section class="contact-hero" aria-labelledby="contact-heading">
+            <div class="container">
+                <div class="hero-tag">
+                    <span>Base Friuli 1972 · Mar del Plata</span>
+                </div>
+                <h1 id="contact-heading" class="contact-h1 font-display">
+                    Estamos en Mar del Plata. <br>Hablá directo con nuestra base.
+                </h1>
+                <p class="contact-hero-p">
+                    Despachos inmediatos, coordinación de retiros en el acto, cuentas comerciales para emprendedores y empresas. Escribinos o llamanos directamente.
+                </p>
+
+                <!-- CANALES DIRECTOS -->
+                <div class="direct-channels-grid">
+                    <a href="https://wa.me/5492236602699?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20envío." class="channel-card" target="_blank" rel="noopener">
+                        <div class="channel-icon">💬</div>
+                        <div class="channel-info">
+                            <strong>WhatsApp de Pedidos</strong>
+                            <span class="font-mono">223 660-2699</span>
+                        </div>
+                    </a>
+
+                    <a href="tel:+5492235246756" class="channel-card">
+                        <div class="channel-icon">📞</div>
+                        <div class="channel-info">
+                            <strong>Teléfono Fijo / Base</strong>
+                            <span class="font-mono">223 524-6756</span>
+                        </div>
+                    </a>
+
+                    <div class="channel-card" style="cursor: default;">
+                        <div class="channel-icon">📍</div>
+                        <div class="channel-info">
+                            <strong>Base Central</strong>
+                            <span>Friuli 1972, MDQ</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE FORMULARIO Y DATOS OPERATIVOS -->
+        <div class="container">
+            <div class="contact-body-grid">
+                
+                <!-- FORMULARIO DE COTIZACIÓN Y CONSULTA -->
+                <section class="form-card" aria-labelledby="form-heading">
+                    <h2 id="form-heading" class="font-display">Envianos tu consulta</h2>
+                    <p class="subtitle">Completá los datos y te responderemos por WhatsApp o email en menos de 15 minutos hábiles.</p>
+
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)">
+                        <div class="form-row">
+                            <label for="form-name">Nombre y Apellido / Empresa *</label>
+                            <input type="text" id="form-name" class="input-text" placeholder="Ej. Camila Gómez / Indumentaria Mar del Plata" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="form-phone">Teléfono de WhatsApp *</label>
+                            <input type="tel" id="form-phone" class="input-text font-mono" placeholder="Ej. 223 555-1234" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="form-type">Tipo de Servicio de Interés *</label>
+                            <select id="form-type" class="select-box">
+                                <option value="cadeteria">Cadetería Express puntual (menos de 2hs)</option>
+                                <option value="flex">Mercado Envíos Flex / Tienda Online</option>
+                                <option value="contrareembolso">Cobro Contrareembolso</option>
+                                <option value="cuenta-corriente">Cuenta Corriente B2B (Factura A)</option>
+                                <option value="fulfillment">Depósito y Almacenaje en Friuli</option>
+                                <option value="cadete-trabajo">Quiero trabajar con mi moto propia</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="form-zone">Barrio / Zona de Retiro en Mar del Plata</label>
+                            <input type="text" id="form-zone" class="input-text" placeholder="Ej. Güemes, Centro, Constitución, etc.">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="form-msg">Detalles de tu consulta o volumen de paquetes</label>
+                            <textarea id="form-msg" class="textarea-box" placeholder="Contanos qué necesitás enviar, horarios o volumen mensual estimado..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-submit-wa font-sub" onclick="sendViaWhatsApp()">
+                                <span>Enviar directo a WhatsApp</span>
+                                <span>💬</span>
+                            </button>
+                            <button type="submit" class="btn-submit-web font-sub">
+                                Enviar por Formulario Web
+                            </button>
+                        </div>
+
+                        <div id="form-success-alert" style="display:none; margin-top:16px; padding:12px; background-color:#dcfce7; color:#166534; border-radius:6px; font-size:13px; font-weight:700;">
+                            ✓ ¡Mensaje recibido! Nos comunicaremos a la brevedad contigo.
+                        </div>
+                    </form>
+                </section>
+
+                <!-- COLUMNA LATERAL: INFORMACIÓN OPERATIVA DE SEDE -->
+                <aside aria-label="Información operativa de sede">
+                    
+                    <div class="info-card">
+                        <h3 class="font-display">Sede Central Friuli 1972</h3>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">📍</div>
+                            <div class="info-desc">
+                                <strong>Dirección de Depósito y Oficinas</strong>
+                                <span>Friuli 1972, Mar del Plata, Provincia de Buenos Aires.</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">🕒</div>
+                            <div class="info-desc">
+                                <strong>Horario de Operaciones</strong>
+                                <span>Lunes a Viernes: 08:00 a 20:00 hs<br>Sábados: 09:00 a 14:00 hs</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">✉️</div>
+                            <div class="info-desc">
+                                <strong>Correo Institucional</strong>
+                                <span>matiascejas@enviosdosruedas.com</span>
+                            </div>
+                        </div>
+
+                        <div class="map-mock-box">
+                            <strong style="color: var(--edr-blue-primary); font-size: 14px;">Ubicación Estratégica en Mar del Plata</strong>
+                            <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+                                Base central con acceso rápido hacia avenidas Juan B. Justo, Independencia y la Costa para distribución sin demoras.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-card" style="background-color: var(--edr-blue-surface); border-color: var(--border-strong);">
+                        <h3 class="font-display" style="color: var(--edr-blue-primary);">¿Tenés un envío en curso?</h3>
+                        <p style="font-size: 13px; color: var(--text-main); margin-bottom: 12px;">
+                            Para reclamos de urgencia o cambio de domicilio de un cadete que ya está en viaje, comunicate al canal prioritario de guardia:
+                        </p>
+                        <a href="https://wa.me/5492236602699?text=URGENTE:%20Tengo%20un%20envío%20en%20curso" class="btn-cta-pill" style="font-size: 12px;" target="_blank" rel="noopener">
+                            Guardia de Envíos en Tránsito ⚡
+                        </a>
+                    </div>
+
+                </aside>
+
+            </div>
+
+            <!-- PREGUNTAS FRECUENTES DE CONTACTO -->
+            <section class="faq-block" aria-labelledby="faq-heading">
+                <h2 id="faq-heading" class="font-display" style="font-size: 24px; margin-bottom: 18px;">Preguntas Frecuentes al Contactar</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Hacen entregas en días de lluvia en Mar del Plata?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sí, contamos con indumentaria impermeable y mochilas estancas especiales. En caso de alertas meteorológicas severas, las cargas se trasladan a utilitarios para preservar los paquetes.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cómo es el corte para Mercado Envíos Flex?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        El horario de retiro habitual es a las 14:00 o 15:00 hs según la zona de tu comercio, y las entregas se realizan en el día antes de las 21:00 hs.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Puedo llevar un paquete personalmente a Friuli 1972?</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Sí, podés dejar tus envíos directamente en nuestro centro de despacho en Friuli 1972 dentro del horario de atención comercial.
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER CANÓNICO -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <div style="font-size: 18px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px;">
+                        🛵 Envíos DosRuedas
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.6; margin-bottom: 12px;">
+                        Mensajería y distribución urbana con flota propia en Mar del Plata. Base operativa en Friuli 1972.
+                    </p>
+                    <div style="color: var(--edr-yellow-accent); font-size: 12px; font-weight: 700;">
+                        Lunes a Viernes 8 a 20 hs · Sábados 9 a 14 hs
+                    </div>
+                </div>
+
+                <div class="footer-cols">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="./inicio.html">Inicio & Cotizador</a></li>
+                        <li><a href="./servicios-envios-express.html">Envíos Express</a></li>
+                        <li><a href="./servicios-plan-emprendedores.html">Plan Emprendedores</a></li>
+                        <li><a href="./servicios-empresas-cuenta-corriente.html">Cuenta Corriente</a></li>
+                        <li><a href="./nosotros-preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-cols">
+                    <h4>Canales</h4>
+                    <ul>
+                        <li><a href="https://wa.me/5492236602699" target="_blank" rel="noopener">WhatsApp: 223 660-2699</a></li>
+                        <li><a href="tel:+5492235246756">Teléfono: 223 524-6756</a></li>
+                        <li><a href="mailto:matiascejas@enviosdosruedas.com">matiascejas@enviosdosruedas.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom-row">
+                <span>© 2026 Envíos DosRuedas · Mar del Plata · Todos los derechos reservados.</span>
+                <span>Propuesta nueva optimizada conforme a <code>SISTEMA_DISENO_Y_DEFINICION_SITIO.md</code></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LÓGICA DE FORMULARIO Y TEMA -->
+    <script>
+        function sendViaWhatsApp() {
+            const name = document.getElementById('form-name').value.trim() || 'No especificado';
+            const phone = document.getElementById('form-phone').value.trim() || 'No especificado';
+            const type = document.getElementById('form-type').options[document.getElementById('form-type').selectedIndex].text;
+            const zone = document.getElementById('form-zone').value.trim() || 'Mar del Plata';
+            const msg = document.getElementById('form-msg').value.trim() || 'Sin observaciones';
+
+            const waText = encodeURIComponent(`Hola Envíos DosRuedas! Envío mi consulta desde la web:\n• Nombre: ${name}\n• Teléfono: ${phone}\n• Servicio: ${type}\n• Zona: ${zone}\n• Mensaje: ${msg}`);
+            window.open(`https://wa.me/5492236602699?text=${waText}`, '_blank');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('form-success-alert').style.display = 'block';
+            document.getElementById('contact-form').reset();
+            setTimeout(() => {
+                document.getElementById('form-success-alert').style.display = 'none';
+            }, 6000);
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme') || 'light';
+            const next = current === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            document.getElementById('theme-icon').innerText = next === 'dark' ? '☀️' : '🌙';
+        }
+    </script>
+</body>
+</html>

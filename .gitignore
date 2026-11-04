@@ -1,0 +1,79 @@
+# ==============================================================================
+# .gitignore — Envíos DosRuedas (Frontend, Herramientas y Agentes IA)
+# ==============================================================================
+
+# --- Sistema Operativo (Windows / macOS / Linux) ---
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# --- Editores e IDEs ---
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# --- Dependencias y Paquetes ---
+node_modules/
+.pnpm-store/
+vendor/
+.yarn/
+*.tsbuildinfo
+
+# --- Salidas de Compilación y Bundles ---
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.output/
+.vite/
+
+# --- Logs y Diagnósticos ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- Variables de Entorno y Secretos ---
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.cert
+*.crt
+
+# --- Temporales y Scratch ---
+tmp/
+temp/
+*.tmp
+scratch/
+.system_generated/
+*.bak
+
+# --- Entornos IA y Caches de Agentes ---
+# Se conserva la fuente única de skills en .agents/skills/
+# pero se ignoran logs, caches y enlaces simbólicos de otros clientes si son locales
+.claude/
+.cortex/
+.qwen/
+.agents/**/.cache/
+.agents/**/scratch/
+/.agents

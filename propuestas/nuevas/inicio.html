@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envíos DosRuedas | Mensajería Urbana y Logística en Mar del Plata</title>
+    <meta name="description" content="Mensajería en moto y logística e-commerce en Mar del Plata. Envíos en el día, flota propia sin tercerizar, base operativa en Friuli 1972. Cotizá en vivo.">
+    <meta name="theme-color" content="#0950F6">
+    
+    <style>
+        /* ============================================================
+           SISTEMA DE TOKENS CANÓNICO (SISTEMA_DISENO_Y_DEFINICION_SITIO.md)
+           ============================================================ */
+        :root {
+            --edr-blue-primary: #0950F6;
+            --edr-blue-dark: #0740C7;
+            --edr-blue-surface: #EBF2FE;
+            --edr-yellow-accent: #FFEC01;
+            --edr-yellow-hover: #E6D400;
+            --edr-ink: #071536;
+            --edr-text-secondary: #4A5C82;
+            --edr-white: #FFFFFF;
+            --edr-border: #D6E2FB;
+            
+            --bg-page: #F8FAFF;
+            --bg-surface: #FFFFFF;
+            --bg-surface-elevated: #FFFFFF;
+            --bg-subtle: #EDF3FC;
+            --text-main: #071536;
+            --text-muted: #4A5C82;
+            --text-faint: #798CA8;
+            --border-subtle: #D6E2FB;
+            --border-strong: #A8C4F8;
+            
+            --shadow-sm: 0 2px 8px rgba(9, 80, 246, 0.06);
+            --shadow-md: 0 8px 24px rgba(9, 80, 246, 0.10);
+            --shadow-lg: 0 16px 40px rgba(9, 80, 246, 0.14);
+            --shadow-yellow: 0 4px 16px rgba(255, 236, 1, 0.35);
+
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-full: 9999px;
+            --max-w: 1240px;
+
+            --font-display: "Anton", system-ui, -apple-system, sans-serif;
+            --font-subheading: "Bebas Neue", system-ui, -apple-system, sans-serif;
+            --font-sans: "Outfit", system-ui, -apple-system, sans-serif;
+            --font-mono: "Geist Mono", monospace;
+        }
+
+        /* MODO OSCURO NATIVO */
+        :root[data-theme="dark"],
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg-page: #050C1E;
+                --bg-surface: #0A1738;
+                --bg-surface-elevated: #10224F;
+                --bg-subtle: #0E1F47;
+                --text-main: #F2F6FF;
+                --text-muted: #9BB1D6;
+                --text-faint: #5E77A1;
+                --border-subtle: #1C336B;
+                --border-strong: #2D4C8C;
+                --edr-blue-primary: #256BFE;
+                --edr-blue-surface: #0E1F47;
+                --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+                --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+                --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            text-wrap: balance;
+        }
+
+        p {
+            text-wrap: pretty;
+            max-width: 65ch;
+        }
+
+        .font-display {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+
+        .font-sub {
+            font-family: var(--font-subheading);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .font-mono {
+            font-family: var(--font-mono);
+            font-variant-numeric: tabular-nums;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--edr-yellow-accent);
+            outline-offset: 3px;
+        }
+
+        /* ============================================================
+           HEADER CANÓNICO
+           ============================================================ */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(9, 80, 246, 0.96);
+            backdrop-filter: blur(12px);
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 0;
+            box-shadow: 0 4px 20px rgba(0, 20, 80, 0.15);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .logo-icon {
+            background-color: var(--edr-yellow-accent);
+            color: #071536;
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text span.sub {
+            font-size: 10px;
+            color: var(--edr-yellow-accent);
+            letter-spacing: 0.15em;
+            margin-top: 3px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--edr-yellow-accent);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 8px 12px;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-cta-pill {
+            background-color: var(--edr-yellow-accent);
+            color: #071536;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-yellow);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s ease;
+        }
+
+        .btn-cta-pill:hover {
+            background-color: var(--edr-yellow-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           HERO CON COTIZADOR EN VIVO
+           ============================================================ */
+        .hero-section {
+            background: linear-gradient(135deg, #0738b5 0%, #0950F6 60%, #1765ff 100%);
+            color: #ffffff;
+            padding: 60px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(255, 236, 1, 0.15);
+            border: 1px solid rgba(255, 236, 1, 0.4);
+            color: var(--edr-yellow-accent);
+            padding: 5px 14px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(34px, 4.4vw, 56px);
+            line-height: 0.98;
+            margin-bottom: 18px;
+        }
+
+        .hero-title span.accent {
+            color: var(--edr-yellow-accent);
+            display: inline-block;
+        }
+
+        .hero-desc {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.92);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .hero-bullets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .bullet-tag {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* CARD COTIZADOR EN VIVO */
+        .hero-calc-card {
+            background-color: var(--bg-surface);
+            color: var(--text-main);
+            border-radius: var(--radius-lg);
+            padding: 26px;
+            box-shadow: 0 20px 50px rgba(0, 16, 70, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .calc-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .calc-title {
+            font-size: 17px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .calc-live-pill {
+            background-color: var(--edr-yellow-accent);
+            color: #071536;
+            font-size: 11px;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+        }
+
+        .field-group {
+            margin-bottom: 14px;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .field-select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-strong);
+            background-color: var(--bg-surface);
+            color: var(--text-main);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .speed-switch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .speed-switch-btn {
+            background-color: var(--bg-subtle);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            padding: 8px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.15s ease;
+        }
+
+        .speed-switch-btn.active {
+            background-color: var(--edr-blue-primary);
+            color: #ffffff;
+            border-color: var(--edr-blue-primary);
+        }
+
+        .quote-total-box {
+            background-color: var(--bg-subtle);
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            margin: 18px 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .quote-total-val {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--edr-blue-primary);
+        }
+
+        .btn-order-wa {
+            width: 100%;
+            background-color: var(--edr-yellow-accent);
+            color: #071536;
+            border: none;
+            padding: 14px;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: var(--shadow-yellow);
+            text-decoration: none;
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+
+        .btn-order-wa:hover {
+            background-color: var(--edr-yellow-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           TICKER DIFERENCIALES
+           ============================================================ */
+        .ticker-bar {
+            background-color: #071536;
+            color: #ffffff;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 12px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ticker-track {
+            display: inline-flex;
+            gap: 32px;
+            animation: ticker 25s linear infinite;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .ticker-diamond {
+            color: var(--edr-yellow-accent);
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-track { animation: none; overflow-x: auto; }
+        }
+
+        /* ============================================================
+           SECCIÓN DE SEGMENTOS (DOUBLE BEZEL CARDS)
+           ============================================================ */
+        .segmentos-section {
+            padding: 70px 0;
+        }
+
+        .section-center-head {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 44px;
+        }
+
+        .eyebrow-tag {
+            color: var(--edr-blue-primary);
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 8px;
+        }
+
+        .section-h2 {
+            font-size: clamp(28px, 3.2vw, 42px);
+            margin-bottom: 12px;
+        }
+
+        .segmentos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .double-bezel-card {
+            border: 1px solid var(--border-subtle);
+            background-color: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .double-bezel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-strong);
+        }
+
+        .watermark-num {
+            position: absolute;
+            top: 14px;
+            right: 20px;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--border-subtle);
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .seg-badge {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: var(--radius-sm);
+            background-color: var(--edr-blue-surface);
+            color: var(--edr-blue-primary);
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+
+        .card-h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card-p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .card-link-btn {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--edr-blue-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ============================================================
+           MÓDULO ESPECIAL MARDELIVERY (GASTRONOMÍA)
+           ============================================================ */
+        .mardelivery-block {
+            background-color: #051e15;
+            color: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin: 60px 0;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            align-items: center;
+            border: 1px solid rgba(46, 204, 133, 0.2);
+        }
+
+        .mardelivery-badge {
+            background-color: rgba(46, 204, 133, 0.2);
+            color: #2ecc71;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .mardelivery-block h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .mardelivery-block p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* ============================================================
+           SECCIÓN DE RASTREO (TRACKING SIMULADO)
+           ============================================================ */
+        .tracking-box-wrap {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 70px;
+            text-align: center;
+        }
+
+        .tracking-input-row {
+            max-width: 540px;
+            margin: 20px auto 0;
+            display: flex;
+            gap: 8px;
+        }
+
+        .tracking-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--border-strong);
+            background-color: var(--bg-surface);
+            color: var(--text-main);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .btn-track-action {
+            background-color: var(--edr-blue-primary);
+            color: #ffffff;
+            border: none;
+            padding: 0 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        /* FOOTER OFICIAL INSTITUCIONAL */
+        .site-footer {
+            background-color: #071536;
+            color: #ffffff;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-cols {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 36px;
+            margin-bottom: 40px;
+        }
+
+        .footer-cols h4 {
+            color: var(--edr-yellow-accent);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        .footer-cols ul {
+            list-style: none;
+        }
+
+        .footer-cols li {
+            margin-bottom: 10px;
+        }
+
+        .footer-cols a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.15s ease;
+        }
+
+        .footer-cols a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid, .segmentos-grid, .mardelivery-block, .footer-cols {
+                grid-template-columns: 1fr;
+            }
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER CANÓNICO -->
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a href="./inicio.html" class="logo-box">
+                <div class="logo-icon">🛵</div>
+                <div class="logo-text">
+                    <span>Envíos DosRuedas</span>
+                    <span class="sub">Mar del Plata</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" aria-label="Navegación principal">
+                <a href="#cotizador" class="nav-link">Cotizador</a>
+                <a href="#servicios" class="nav-link">Servicios</a>
+                <a href="./servicios-plan-emprendedores.html" class="nav-link">Emprendedores</a>
+                <a href="./servicios-empresas-cuenta-corriente.html" class="nav-link">Empresas</a>
+                <a href="#tracking" class="nav-link">Rastrear</a>
+                <a href="./contacto.html" class="nav-link">Contacto</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="theme-btn" onclick="toggleTheme()" aria-label="Cambiar tema">
+                    <span id="theme-icon">🌙</span>
+                </button>
+                <a href="https://wa.me/5492236602699?text=Hola!%20Quiero%20coordinar%20un%20envío%20en%20Mar%20del%20Plata." class="btn-cta-pill" target="_blank" rel="noopener">
+                    WhatsApp 💬
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        
+        <!-- HERO CON COTIZADOR EN VIVO -->
+        <section class="hero-section" id="cotizador" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-grid">
+                    
+                    <!-- Columna de Texto -->
+                    <div>
+                        <div class="hero-badge">
+                            <span>⚡ Flota 100% propia · Cero tercerización</span>
+                        </div>
+                        <h1 id="hero-title" class="hero-title font-display">
+                            El motor de tu <span class="accent">última milla</span> en Mar del Plata.
+                        </h1>
+                        <p class="hero-desc">
+                            Mensajería en moto y distribución de e-commerce en el día con base operativa en Friuli 1972. Choferes propios, seguimiento en tiempo real y cobro contrareembolso.
+                        </p>
+                        <div class="hero-bullets">
+                            <span class="bullet-tag">✓ Entregas en 2hs</span>
+                            <span class="bullet-tag">✓ Mercado Envíos Flex</span>
+                            <span class="bullet-tag">✓ Rendición en 24hs</span>
+                            <span class="bullet-tag">✓ Base Friuli 1972</span>
+                        </div>
+                    </div>
+
+                    <!-- Columna Cotizador -->
+                    <div class="hero-calc-card" role="region" aria-label="Cotizador de tarifas de envíos">
+                        <div class="calc-header-row">
+                            <div>
+                                <div class="calc-title font-sub">Cotizá tu envío al instante</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">Tarifario oficial para Mar del Plata</div>
+                            </div>
+                            <span class="calc-live-pill font-mono">En vivo</span>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="calc-origin" class="field-label">Zona de Retiro</label>
+                            <select id="calc-origin" class="field-select" onchange="updateCalc()">
+                                <option value="centro">Centro / Macrocentro / La Perla</option>
+                                <option value="guemes">Güemes / Playa Grande / Varese</option>
+                                <option value="puerto">Puerto / Punta Mogotes</option>
+                                <option value="norte">Constitución / Aeroparque</option>
+                                <option value="oeste">Monolito / Los Andes / Libertad</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="calc-destination" class="field-label">Zona de Entrega</label>
+                            <select id="calc-destination" class="field-select" onchange="updateCalc()">
+                                <option value="guemes">Güemes / Playa Grande / Varese</option>
+                                <option value="centro">Centro / Macrocentro / La Perla</option>
+                                <option value="puerto">Puerto / Punta Mogotes</option>
+                                <option value="norte">Constitución / Aeroparque</option>
+                                <option value="oeste">Monolito / Los Andes / Libertad</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="calc-size" class="field-label">Tipo de Paquete</label>
+                            <select id="calc-size" class="field-select" onchange="updateCalc()">
+                                <option value="sobre">Sobre / Documento (hasta 500g)</option>
+                                <option value="estandar" selected>Bolsa ecommerce / Caja chica (hasta 3kg)</option>
+                                <option value="mediano">Bulto mediano en mochila (hasta 8kg)</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="field-label">Velocidad Requerida</label>
+                            <div class="speed-switch-grid" role="radiogroup">
+                                <button type="button" class="speed-switch-btn active" id="spd-flex" onclick="selectSpeed('flex')" aria-checked="true">
+                                    En el día (Flex)
+                                </button>
+                                <button type="button" class="speed-switch-btn" id="spd-express" onclick="selectSpeed('express')" aria-checked="false">
+                                    Express (En 2hs) ⚡
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="quote-total-box">
+                            <div>
+                                <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--text-muted);">Estimado:</span>
+                                <div class="quote-total-val font-mono" id="quote-price">$2.800</div>
+                            </div>
+                            <div style="font-size: 12px; font-weight: 700; color: #16a34a;" id="quote-eta">
+                                ⏱ Entrega hoy antes de 18:00
+                            </div>
+                        </div>
+
+                        <a id="btn-pedir-wa" class="btn-order-wa font-sub" href="#" target="_blank" rel="noopener">
+                            <span>Pedir Moto por WhatsApp</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TICKER DE DIFERENCIALES CONTINUO -->
+        <div class="ticker-bar" aria-hidden="true">
+            <div class="ticker-track">
+                <span>Envíos en el día</span> <span class="ticker-diamond">◆</span>
+                <span>Flota propia sin tercerizar</span> <span class="ticker-diamond">◆</span>
+                <span>Base Friuli 1972</span> <span class="ticker-diamond">◆</span>
+                <span>Todo Mar del Plata</span> <span class="ticker-diamond">◆</span>
+                <span>Cobro contrareembolso</span> <span class="ticker-diamond">◆</span>
+                <span>Retiro en tu local</span> <span class="ticker-diamond">◆</span>
+                <span>Envíos en el día</span> <span class="ticker-diamond">◆</span>
+                <span>Flota propia sin tercerizar</span> <span class="ticker-diamond">◆</span>
+                <span>Base Friuli 1972</span> <span class="ticker-diamond">◆</span>
+                <span>Todo Mar del Plata</span> <span class="ticker-diamond">◆</span>
+                <span>Cobro contrareembolso</span> <span class="ticker-diamond">◆</span>
+                <span>Retiro en tu local</span>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE SEGMENTOS -->
+        <section class="segmentos-section" id="servicios" aria-labelledby="seg-title">
+            <div class="container">
+                <div class="section-center-head">
+                    <div class="eyebrow-tag">Soluciones a Medida</div>
+                    <h2 id="seg-title" class="section-h2 font-display">
+                        ¿Qué tipo de envío necesitás coordinar?
+                    </h2>
+                    <p style="color: var(--text-muted); margin: 0 auto;">
+                        Estructuras operativas dedicadas según el volumen, la urgencia y los requerimientos de tu negocio o necesidad personal.
+                    </p>
+                </div>
+
+                <div class="segmentos-grid">
+                    <!-- Segmento 01 -->
+                    <article class="double-bezel-card">
+                        <span class="watermark-num font-display">01</span>
+                        <div>
+                            <span class="seg-badge font-sub">Particulares & Trámites</span>
+                            <h3 class="card-h3 font-display">Cadetería Express</h3>
+                            <p class="card-p">
+                                Envío de llaves, documentación bancaria, compras personales o encomiendas urgentes de punto a punto en menos de 120 minutos.
+                            </p>
+                        </div>
+                        <a href="./servicios-envios-express.html" class="card-link-btn font-sub">
+                            <span>Ver Servicio Express</span> <span>→</span>
+                        </a>
+                    </article>
+
+                    <!-- Segmento 02 -->
+                    <article class="double-bezel-card">
+                        <span class="watermark-num font-display">02</span>
+                        <div>
+                            <span class="seg-badge font-sub">Marcas & Tiendas</span>
+                            <h3 class="card-h3 font-display">Plan Emprendedores</h3>
+                            <p class="card-p">
+                                Tarifas planas por zonas, integración con Mercado Envíos Flex, retiro programado en tu showroom y rendición de dinero en 24 horas.
+                            </p>
+                        </div>
+                        <a href="./servicios-plan-emprendedores.html" class="card-link-btn font-sub">
+                            <span>Ver Plan Emprendedores</span> <span>→</span>
+                        </a>
+                    </article>
+
+                    <!-- Segmento 03 -->
+                    <article class="double-bezel-card">
+                        <span class="watermark-num font-display">03</span>
+                        <div>
+                            <span class="seg-badge font-sub">Empresas & PyMEs</span>
+                            <h3 class="card-h3 font-display">Cuenta Corriente</h3>
+                            <p class="card-p">
+                                Factura A mensual consolidada, choferes fijos para trámites corporativos y depósito de mercadería en nuestra base central.
+                            </p>
+                        </div>
+                        <a href="./servicios-empresas-cuenta-corriente.html" class="card-link-btn font-sub">
+                            <span>Abrir Cuenta Empresa</span> <span>→</span>
+                        </a>
+                    </article>
+                </div>
+
+                <!-- MARDELIVERY GASTRONOMÍA -->
+                <div class="mardelivery-block">
+                    <div>
+                        <span class="mardelivery-badge font-sub">Especial Gastronomía</span>
+                        <h3 class="font-display">MarDelivery: Repartidores para tu restaurante</h3>
+                        <p>
+                            Unificá tu flota con repartidores equipados con mochila térmica, seguro de accidentes al día y capacitación exclusiva en transporte de alimentos.
+                        </p>
+                        <a href="https://wa.me/5492236602699?text=Hola,%20tengo%20un%20comercio%20gastronómico%20y%20quiero%20conocer%20MarDelivery" class="btn-cta-pill" target="_blank" rel="noopener">
+                            Consultar MarDelivery 🍔
+                        </a>
+                    </div>
+                    <div style="text-align: center; font-size: 64px;">
+                        🛵🍲
+                    </div>
+                </div>
+
+                <!-- BUSCADOR DE TRACKING EN VIVO -->
+                <div class="tracking-box-wrap" id="tracking">
+                    <div class="eyebrow-tag">Seguimiento en Tiempo Real</div>
+                    <h3 class="font-display" style="font-size: 26px; margin-bottom: 8px;">¿Dónde está tu paquete?</h3>
+                    <p style="color: var(--text-muted); margin: 0 auto; font-size: 14px;">
+                        Ingresá el código alfanumérico que te enviamos por WhatsApp para ver la posición de la moto.
+                    </p>
+                    <div class="tracking-input-row">
+                        <input type="text" id="track-code-input" class="tracking-input font-mono" placeholder="Ej. DR-84920">
+                        <button class="btn-track-action font-sub" onclick="testTrack()">Rastrear</button>
+                    </div>
+                    <div id="track-result-msg" style="display:none; margin-top:16px; font-size:13px; font-weight:700; color: #16a34a;" class="font-mono">
+                        ● Paquete #DR-84920: En tránsito por zona Güemes. Cadete: Lucas M.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER OFICIAL INSTITUCIONAL -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <div style="font-size: 20px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px;">
+                        🛵 Envíos DosRuedas
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.6; margin-bottom: 16px;">
+                        Base operativa central en Friuli 1972, Mar del Plata. Logística de última milla con motos propias, choferes contratados y cobro contrareembolso.
+                    </p>
+                    <div style="color: var(--edr-yellow-accent); font-size: 12px; font-weight: 700;">
+                        Lunes a Viernes de 8:00 a 20:00 hs · Sábados de 9:00 a 14:00 hs
+                    </div>
+                </div>
+
+                <div class="footer-cols">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="./servicios-envios-express.html">Envíos Express 2hs</a></li>
+                        <li><a href="./servicios-enviosflex.html">Mercado Envíos Flex</a></li>
+                        <li><a href="./servicios-envios-contrareembolso.html">Contrareembolso</a></li>
+                        <li><a href="./servicios-deposito-fulfillment.html">Depósito en Friuli</a></li>
+                        <li><a href="./servicios-plan-emprendedores.html">Plan Emprendedores</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-cols">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="./nosotros-sobre-nosotros.html">Sobre Nosotros</a></li>
+                        <li><a href="./nosotros-preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
+                        <li><a href="./contacto.html">Ubicación y Base</a></li>
+                        <li><a href="./contacto.html">Trabajá con Nosotros</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-cols">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="https://wa.me/5492236602699" target="_blank" rel="noopener">WhatsApp: 223 660-2699</a></li>
+                        <li><a href="tel:+5492235246756">Teléfono: 223 524-6756</a></li>
+                        <li><a href="mailto:matiascejas@enviosdosruedas.com">matiascejas@enviosdosruedas.com</a></li>
+                        <li><span style="color: rgba(255,255,255,0.5);">Friuli 1972, Mar del Plata</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom-row">
+                <span>© 2026 Envíos DosRuedas · Todos los derechos reservados · Mar del Plata</span>
+                <span>Propuesta nueva optimizada conforme a <code>SISTEMA_DISENO_Y_DEFINICION_SITIO.md</code></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LÓGICA INTERACTIVA DEL COTIZADOR Y TEMA -->
+    <script>
+        let currentSpeed = 'flex';
+
+        const zoneDistances = {
+            'centro': 1.0,
+            'guemes': 1.1,
+            'puerto': 1.4,
+            'norte': 1.3,
+            'oeste': 1.25
+        };
+
+        const packageMultipliers = {
+            'sobre': 0.85,
+            'estandar': 1.0,
+            'mediano': 1.35
+        };
+
+        function selectSpeed(speed) {
+            currentSpeed = speed;
+            document.getElementById('spd-flex').classList.toggle('active', speed === 'flex');
+            document.getElementById('spd-express').classList.toggle('active', speed === 'express');
+            updateCalc();
+        }
+
+        function updateCalc() {
+            const origin = document.getElementById('calc-origin').value;
+            const dest = document.getElementById('calc-destination').value;
+            const size = document.getElementById('calc-size').value;
+
+            const baseRate = 2500;
+            const dist = (zoneDistances[origin] + zoneDistances[dest]) / 2;
+            const sizeMult = packageMultipliers[size];
+            const speedMult = currentSpeed === 'express' ? 1.45 : 1.0;
+
+            const price = Math.round((baseRate * dist * sizeMult * speedMult) / 50) * 50;
+
+            document.getElementById('quote-price').innerText = '$' + price.toLocaleString('es-AR');
+
+            const etaEl = document.getElementById('quote-eta');
+            if (currentSpeed === 'express') {
+                etaEl.innerHTML = '<span style="color:#d93025;">⚡ En menos de 120 minutos</span>';
+            } else {
+                etaEl.innerHTML = '<span style="color:#16a34a;">⏱ Entrega hoy antes de 18:00</span>';
+            }
+
+            const originName = document.getElementById('calc-origin').options[document.getElementById('calc-origin').selectedIndex].text;
+            const destName = document.getElementById('calc-destination').options[document.getElementById('calc-destination').selectedIndex].text;
+            const speedName = currentSpeed === 'express' ? 'Express (2 horas)' : 'En el día';
+
+            const msg = encodeURIComponent(`Hola Envíos DosRuedas! Quiero pedir un envío:\n• Origen: ${originName}\n• Destino: ${destName}\n• Modalidad: ${speedName}\n• Tarifa estimada: $${price}\n¿Tienen disponibilidad?`);
+            document.getElementById('btn-pedir-wa').href = `https://wa.me/5492236602699?text=${msg}`;
+        }
+
+        function testTrack() {
+            const val = document.getElementById('track-code-input').value.trim();
+            const res = document.getElementById('track-result-msg');
+            if (val) {
+                res.style.display = 'block';
+                res.innerText = `● Paquete #${val}: En tránsito hacia destino. Cadete en ruta en Mar del Plata.`;
+            } else {
+                res.style.display = 'block';
+                res.innerText = '● Paquete #DR-84920: En camino por Güemes. Entrega estimada en 25 min.';
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme') || 'light';
+            const next = current === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            document.getElementById('theme-icon').innerText = next === 'dark' ? '☀️' : '🌙';
+        }
+
+        updateCalc();
+    </script>
+</body>
+</html>
