@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan Visual de Optimización — Envíos DosRuedas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Bebas+Neue&family=Geist+Mono:wght@500;700&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #0950F6;
+      --blue-dark: #073BC2;
+      --blue-surface: #E6EEFE;
+      --yellow: #FFEC01;
+      --yellow-bright: #FFF45C;
+      --ink: #071536;
+      --ink-light: #162447;
+      --white: #FFFFFF;
+      --gray-bg: #F4F7FC;
+      --gray-border: #DDE5F5;
+      --font-display: 'Anton SC', sans-serif;
+      --font-sub: 'Bebas Neue', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --font-mono: 'Geist Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--gray-bg);
+      color: var(--ink);
+      line-height: 1.4;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* HEADER */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      color: var(--white);
+      border-radius: 28px;
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(9, 80, 246, 0.25);
+    }
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255, 236, 1, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--yellow);
+      color: var(--blue);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--blue-surface);
+      max-width: 650px;
+      font-weight: 300;
+    }
+
+    /* GRID 3 COLUMNS */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* BIG PICTURE CARDS */
+    .card {
+      background: var(--white);
+      border-radius: 22px;
+      border: 1px solid var(--gray-border);
+      padding: 1.75rem;
+      box-shadow: 0 8px 24px rgba(7, 21, 54, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(9, 80, 246, 0.1);
+    }
+    .card-label {
+      font-family: var(--font-sub);
+      font-size: 1.5rem;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .step-num {
+      background: var(--blue);
+      color: var(--white);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+
+    /* VISUAL MOCKUP CONTAINERS */
+    .visual-box {
+      background: var(--ink);
+      border-radius: 16px;
+      padding: 1.25rem;
+      color: var(--white);
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* BEFORE vs AFTER SPLIT */
+    .split-view {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .split-view { grid-template-columns: 1fr; }
+    }
+    .state-panel {
+      border-radius: 20px;
+      padding: 2rem;
+      border: 2px dashed;
+    }
+    .state-before {
+      background: #FFF5F5;
+      border-color: #FEB2B2;
+      color: #9B2C2C;
+    }
+    .state-after {
+      background: #F0FFF4;
+      border-color: #9AE6B4;
+      color: #22543D;
+    }
+    .state-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* STACK VISUALIZER (STACKING BLOCKS) */
+    .blocks-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+    }
+    .block-item {
+      padding: 0.65rem 1rem;
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+    .block-blue { background: rgba(9, 80, 246, 0.15); color: var(--blue); border: 1px solid rgba(9, 80, 246, 0.3); }
+    .block-yellow { background: var(--yellow); color: var(--blue); border: 1px solid var(--yellow-bright); }
+    .block-dark { background: var(--ink); color: var(--white); }
+    .block-red { background: #FED7D7; color: #9B2C2C; }
+    .block-green { background: #C6F6D5; color: #22543D; }
+
+    /* SUMMARY STATS */
+    .stat-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .stat-badge {
+      background: var(--blue-surface);
+      border-radius: 14px;
+      padding: 1rem 1.4rem;
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+    }
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .stat-desc {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      margin-top: 0.35rem;
+      font-weight: 600;
+    }
+
+    /* ACTION BUTTON */
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--yellow);
+      color: var(--blue);
+      padding: 0.9rem 1.75rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      align-self: flex-start;
+      box-shadow: 0 6px 16px rgba(255, 236, 1, 0.4);
+    }
+    .btn-action:hover {
+      background: var(--yellow-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(255, 236, 1, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HEADER / HERO -->
+    <header class="hero-banner">
+      <div class="badge-pill">
+        <span>⚡</span> Big Pics & Little Words · Diagnóstico & Plan
+      </div>
+      <h1 class="hero-title">OPTIMIZACIÓN DE HOME</h1>
+      <p class="hero-subtitle">
+        Cómo transformar 10 archivos aislados en una web ultra rápida, liviana y coherente para <strong>Envíos DosRuedas</strong>.
+      </p>
+    </header>
+
+    <!-- BEFORE VS AFTER (THE BIG PICTURE) -->
+    <section>
+      <div class="split-view">
+        
+        <!-- HOY: FRAGMENTADO -->
+        <div class="state-panel state-before">
+          <div class="state-title">
+            <span>❌</span> HOY: 10 PIEZAS SUELTAS
+          </div>
+          <div class="blocks-stack">
+            <div class="block-item block-red"><span>optimized-header.html</span> <span>21 KB</span></div>
+            <div class="block-item block-red"><span>hero-adaptado.html</span> <span>59 KB</span></div>
+            <div class="block-item block-red"><span>services-overview.html</span> <span>48 KB</span></div>
+            <div class="block-item block-red"><span>segmentos-home.html</span> <span>17 KB</span></div>
+            <div class="block-item block-red"><span>logistica + mardelivery</span> <span>43 KB</span></div>
+            <div class="block-item block-red"><span>social-proof + carrusel</span> <span>42 KB</span></div>
+            <div class="block-item block-red"><span>cta + optimized-footer</span> <span>48 KB</span></div>
+          </div>
+          <div style="margin-top: 1.25rem; font-size: 0.95rem; font-weight: 600;">
+            ⚠️ Problema: 10 llamadas a fuentes duplicadas, 6 fondos animados compitiendo en GPU, scripts repetidos.
+          </div>
+        </div>
+
+        <!-- META: ENSAMBLADO Y VELOZ -->
+        <div class="state-panel state-after">
+          <div class="state-title">
+            <span>✅</span> META: 1 SINGLE PAGE ENSAMBLADA
+          </div>
+          <div class="blocks-stack">
+            <div class="block-item block-green"><span>1. Header Unificado (Sticky + Blur)</span> <span>OK</span></div>
+            <div class="block-item block-yellow"><span>2. Hero Animado (Mapa + Ticker + Badge)</span> <span>PRIORIDAD</span></div>
+            <div class="block-item block-green"><span>3. Servicios + Segmentos (Grid limpia)</span> <span>OK</span></div>
+            <div class="block-item block-green"><span>4. MarDelivery + Emprendedores</span> <span>OK</span></div>
+            <div class="block-item block-green"><span>5. Social Proof + Redes (Lazy load)</span> <span>OK</span></div>
+            <div class="block-item block-green"><span>6. CTA Directo WhatsApp + Footer</span> <span>OK</span></div>
+          </div>
+          <div style="margin-top: 1.25rem; font-size: 0.95rem; font-weight: 600;">
+            🚀 Resultado: 1 solo archivo o bundle, carga en < 1 segundo, 60fps en celulares viejos.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3 KEY PILLARS -->
+    <section class="grid-3">
+
+      <!-- PILAR 1 -->
+      <div class="card">
+        <div class="card-label">
+          <span class="step-num">1</span> COLORES Y CONTRASTE
+        </div>
+        <div class="visual-box" style="background: var(--blue);">
+          <div style="background: var(--yellow); color: var(--blue); padding: 0.75rem 1.25rem; border-radius: 12px; font-weight: 800; font-size: 1.1rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+            AMARILLO #FFEC01
+            <div style="font-size: 0.75rem; font-family: var(--font-mono); font-weight: 600;">TEXTO AZUL (#0950F6)</div>
+          </div>
+          <div style="margin-top: 0.8rem; font-size: 0.8rem; color: #FF9B9B; font-weight: 700; background: rgba(0,0,0,0.4); padding: 0.3rem 0.6rem; border-radius: 6px;">
+            ⛔ NUNCA TEXTO BLANCO EN AMARILLO
+          </div>
+        </div>
+        <p style="font-size: 0.95rem; color: var(--ink-light);">
+          Regla visual estricta: todo botón o placa amarilla lleva letras en azul o negro tinta para asegurar lectura bajo el sol en Mar del Plata.
+        </p>
+      </div>
+
+      <!-- PILAR 2 -->
+      <div class="card">
+        <div class="card-label">
+          <span class="step-num">2</span> IMÁGENES LOCALES
+        </div>
+        <div class="visual-box" style="flex-direction: row; gap: 0.75rem; justify-content: space-around;">
+          <div style="text-align: center;">
+            <img src="../../public/logo.webp" alt="Logo" style="height: 38px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));" />
+            <div style="font-size: 0.7rem; font-family: var(--font-mono); margin-top: 0.4rem; color: var(--yellow);">logo.webp</div>
+          </div>
+          <div style="text-align: center;">
+            <img src="../../public/card_mapa.webp" alt="Mapa" style="height: 48px; border-radius: 8px; border: 1px solid var(--blue);" />
+            <div style="font-size: 0.7rem; font-family: var(--font-mono); margin-top: 0.4rem; color: var(--yellow);">card_mapa.webp</div>
+          </div>
+          <div style="text-align: center;">
+            <img src="../../public/persona_icono.webp" alt="Rider" style="height: 48px; border-radius: 50%; border: 2px solid var(--yellow);" />
+            <div style="font-size: 0.7rem; font-family: var(--font-mono); margin-top: 0.4rem; color: var(--yellow);">persona_icono.webp</div>
+          </div>
+        </div>
+        <p style="font-size: 0.95rem; color: var(--ink-light);">
+          Cero enlaces rotos o externos lentos. Todas las fotos usan las versiones WebP locales en <code>propuestas/public/</code>.
+        </p>
+      </div>
+
+      <!-- PILAR 3 -->
+      <div class="card">
+        <div class="card-label">
+          <span class="step-num">3</span> RENDIMIENTO GPU Y CPU
+        </div>
+        <div class="visual-box">
+          <svg width="220" height="70" viewBox="0 0 220 70">
+            <!-- Pulsing line -->
+            <path d="M 10 35 Q 60 10, 110 35 T 210 35" fill="none" stroke="var(--yellow)" stroke-width="4" stroke-linecap="round" />
+            <circle cx="110" cy="35" r="7" fill="var(--white)" />
+          </svg>
+          <div style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--blue-surface); margin-top: 0.5rem;">
+            1 Loop GSAP unificado · Cero lag
+          </div>
+        </div>
+        <p style="font-size: 0.95rem; color: var(--ink-light);">
+          Reemplazar los 6 lienzos canvas individuales por un solo animador central para que la batería del celular no sufra.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- METRICS IMPACT -->
+    <section class="card" style="background: var(--ink); color: var(--white); border: none;">
+      <div class="card-label" style="color: var(--yellow); font-size: 1.8rem;">
+        📊 IMPACTO ESPERADO DE LA OPTIMIZACIÓN
+      </div>
+      <div class="stat-row">
+        <div class="stat-badge" style="background: rgba(255, 255, 255, 0.07);">
+          <div class="stat-val" style="color: var(--yellow);">95+</div>
+          <div class="stat-desc" style="color: var(--white);">Mobile PageSpeed</div>
+        </div>
+        <div class="stat-badge" style="background: rgba(255, 255, 255, 0.07);">
+          <div class="stat-val" style="color: #68D391;">-65%</div>
+          <div class="stat-desc" style="color: var(--white);">Peso de red (KB)</div>
+        </div>
+        <div class="stat-badge" style="background: rgba(255, 255, 255, 0.07);">
+          <div class="stat-val" style="color: var(--yellow);">0.8s</div>
+          <div class="stat-desc" style="color: var(--white);">Tiempo de carga</div>
+        </div>
+        <div class="stat-badge" style="background: rgba(255, 255, 255, 0.07);">
+          <div class="stat-val" style="color: #63B3ED;">100%</div>
+          <div class="stat-desc" style="color: var(--white);">Flota Propia Visible</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROXIMO PASO RECOMENDADO -->
+    <div style="display: flex; justify-content: space-between; align-items: center; background: var(--white); border: 1px solid var(--gray-border); padding: 1.75rem 2rem; border-radius: 20px; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h3 style="font-family: var(--font-display); font-size: 1.7rem; color: var(--blue);">¿SIGUIENTE PASO?</h3>
+        <p style="color: var(--ink-light); font-size: 0.95rem;">Ensamblar la página completa <code>home-completo.html</code> combinando el nuevo Hero y las secciones optimizadas.</p>
+      </div>
+      <a href="hero-adaptado.html" class="btn-action">
+        Ver Hero Adaptado →
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

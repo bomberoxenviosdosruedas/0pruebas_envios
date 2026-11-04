@@ -1,0 +1,1698 @@
+<!doctype html>
+<html lang="es-AR" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0950F6" />
+  <meta name="description"
+    content="Mensajería urbana y logística e-commerce en Mar del Plata. Envíos en el día con flota propia, cero tercerización y base física en Friuli 1972." />
+  <title>Envíos DosRuedas — Logística y Mensajería Urbana en Mar del Plata</title>
+
+  <!-- Google Fonts Oficiales (1 sola llamada unificada) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Anton+SC&family=Bebas+Neue&family=Geist+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* ========================================================================
+     * TOKENS OFICIALES Y VARIABLES GLOBALES
+     * ======================================================================== */
+    :root {
+      color-scheme: light;
+      --color-brand-blue-50: #e6eefe;
+      --color-brand-blue-100: #bacefd;
+      --color-brand-blue-200: #8eaffb;
+      --color-brand-blue-300: #628ff9;
+      --color-brand-blue-400: #3570f8;
+      --color-brand-blue-500: #0950f6;
+      --color-brand-blue-600: #073bc2;
+      --color-brand-blue-900: #062f96;
+
+      --color-brand-yellow-50: #fffde6;
+      --color-brand-yellow-100: #fffab8;
+      --color-brand-yellow-200: #fff78a;
+      --color-brand-yellow-300: #fff45c;
+      --color-brand-yellow-400: #fff12e;
+      --color-brand-yellow-500: #ffec01;
+      --color-brand-yellow-600: #e6d400;
+
+      --color-white: #ffffff;
+      --color-ink: #071536;
+      --color-surface-gray: #f8fafc;
+      --color-border-subtle: rgba(9, 80, 246, 0.12);
+
+      /* Tipografías */
+      --font-display: "Anton SC", "Anton", Impact, sans-serif;
+      --font-subhead: "Bebas Neue", sans-serif;
+      --font-body: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Geist Mono", monospace;
+
+      /* Sombras y elevaciones */
+      --shadow-sm: 0 2px 4px rgba(9, 80, 246, 0.06);
+      --shadow-md: 0 8px 24px rgba(9, 80, 246, 0.12);
+      --shadow-float: 0 25px 50px -12px rgba(9, 80, 246, 0.2);
+      --shadow-accent-sm: 0 2px 6px rgba(255, 236, 1, 0.2);
+      --shadow-glow-yellow: 0 0 25px rgba(255, 241, 46, 0.45);
+      --shadow-cta-glow: 0 0 28px rgba(255, 236, 1, 0.45), 0 8px 24px rgba(9, 80, 246, 0.2);
+
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --duration-ui: 180ms;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      min-width: 320px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--color-white);
+      color: var(--color-ink);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    ::selection {
+      background: var(--color-brand-yellow-500);
+      color: var(--color-brand-blue-500);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ========================================================================
+     * HEADER OPTIMIZADO (STICKY + BLUR + DROPDOWNS + DRAWER)
+     * ======================================================================== */
+    header#optimized-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(9, 80, 246, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    header#optimized-header.scrolled {
+      background: rgba(7, 59, 194, 0.96);
+      box-shadow: 0 10px 30px rgba(7, 21, 54, 0.25);
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .brand-logo-img {
+      height: 40px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: var(--color-white);
+    }
+    .brand-tagline {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-brand-yellow-500);
+      font-weight: 600;
+    }
+
+    /* Links escritorio */
+    .nav-desktop-menu {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    @media (min-width: 992px) {
+      .nav-desktop-menu { display: flex; }
+    }
+
+    .nav-btn-link {
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 500;
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .nav-btn-link:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--color-brand-yellow-500);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-cta-header {
+      background: var(--color-brand-yellow-500);
+      color: var(--color-brand-blue-500);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.55rem 1.15rem;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: var(--shadow-accent-sm);
+      transition: all 0.2s ease;
+    }
+    .btn-cta-header:hover {
+      background: var(--color-brand-yellow-400);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(255, 236, 1, 0.4);
+    }
+
+    .btn-mobile-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-white);
+    }
+    @media (min-width: 992px) {
+      .btn-mobile-toggle { display: none; }
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 1050;
+      background: rgba(7, 21, 54, 0.7);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-drawer.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .drawer-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 82%;
+      max-width: 340px;
+      background: var(--color-brand-blue-500);
+      color: var(--color-white);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+    }
+    .mobile-drawer.active .drawer-content {
+      transform: translateX(0);
+    }
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding-bottom: 1rem;
+    }
+    .drawer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .drawer-nav a {
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.65rem 0.5rem;
+      border-radius: 6px;
+      color: var(--color-white);
+    }
+    .drawer-nav a:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--color-brand-yellow-500);
+    }
+
+    /* ========================================================================
+     * HERO SECTION (MAPA, BADGE, ANIMACIONES GSAP, TICKER)
+     * ======================================================================== */
+    .hero-section {
+      position: relative;
+      background: var(--color-brand-blue-500);
+      color: var(--color-white);
+      padding-top: 6.5rem;
+      padding-bottom: 4rem;
+      overflow: hidden;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.45;
+    }
+
+    .hero-glow-1 {
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(255, 236, 1, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-glow-2 {
+      position: absolute;
+      bottom: -150px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(7, 59, 194, 0.8) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (min-width: 992px) {
+      .hero-container {
+        grid-template-columns: 1.15fr 0.85fr;
+        padding-top: 2rem;
+      }
+    }
+
+    .hero-badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--color-brand-yellow-500);
+      color: var(--color-brand-blue-500);
+      padding: 0.4rem 0.95rem;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-accent-sm);
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+      animation: pulse-dot 1.8s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .hero-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      text-wrap: balance;
+    }
+    .hero-heading .yellow-text {
+      color: var(--color-brand-yellow-500);
+    }
+
+    .hero-lead {
+      font-size: 1.18rem;
+      color: var(--color-brand-blue-50);
+      font-weight: 300;
+      line-height: 1.6;
+      max-width: 580px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-hero-primary {
+      background: var(--color-brand-yellow-500);
+      color: var(--color-brand-blue-500);
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 1rem 1.8rem;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      box-shadow: var(--shadow-cta-glow);
+      transition: all 0.2s ease;
+    }
+    .btn-hero-primary:hover {
+      background: var(--color-brand-yellow-400);
+      transform: translateY(-2px);
+      box-shadow: 0 0 34px rgba(255, 236, 1, 0.65);
+    }
+
+    .btn-hero-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--color-white);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 1rem 1.6rem;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      backdrop-filter: blur(4px);
+      transition: all 0.2s ease;
+    }
+    .btn-hero-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--color-white);
+    }
+
+    /* Ticker diferenciales */
+    .hero-ticker-wrap {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .ticker-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .ticker-num {
+      font-family: var(--font-subhead);
+      font-size: 2rem;
+      color: var(--color-brand-yellow-500);
+      line-height: 1;
+    }
+    .ticker-lbl {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-brand-blue-100);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Columna Visual del Hero */
+    .hero-visual-stage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-frame-box {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(7, 21, 54, 0.45);
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      background: var(--color-brand-blue-600);
+    }
+    .map-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .map-frame-box:hover .map-img {
+      transform: scale(1.03);
+    }
+
+    /* Floating Chip Repartidor */
+    .floating-rider-card {
+      position: absolute;
+      bottom: -20px;
+      left: -15px;
+      background: var(--color-white);
+      color: var(--color-ink);
+      border-radius: 16px;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      box-shadow: 0 16px 36px rgba(7, 21, 54, 0.28);
+      border: 1px solid var(--color-brand-blue-100);
+      z-index: 15;
+      animation: float-chip 3.5s ease-in-out infinite;
+    }
+    @keyframes float-chip {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .rider-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--color-brand-yellow-500);
+      background: var(--color-brand-blue-50);
+    }
+    .rider-info-name {
+      font-weight: 700;
+      font-size: 0.92rem;
+      line-height: 1.2;
+    }
+    .rider-info-status {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--color-brand-blue-500);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* ========================================================================
+     * SECCIÓN SERVICIOS (INTERACTIVA 3D)
+     * ======================================================================== */
+    .section-standard {
+      padding: 5.5rem 1.5rem;
+      position: relative;
+    }
+    .section-blue {
+      background-color: var(--color-brand-blue-500);
+      color: var(--color-white);
+    }
+    .section-white {
+      background-color: var(--color-white);
+      color: var(--color-ink);
+    }
+    .section-gray {
+      background-color: var(--color-surface-gray);
+      color: var(--color-ink);
+    }
+    .section-dark {
+      background-color: #031811;
+      color: #FAFCFB;
+    }
+
+    .section-head {
+      max-width: 800px;
+      margin: 0 auto 3.5rem auto;
+      text-align: center;
+    }
+    .section-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.95rem;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+    .badge-yellow-on-blue {
+      background: var(--color-brand-yellow-500);
+      color: var(--color-brand-blue-500);
+      box-shadow: var(--shadow-accent-sm);
+    }
+    .badge-blue-on-white {
+      background: var(--color-brand-blue-50);
+      color: var(--color-brand-blue-500);
+      border: 1px solid var(--color-brand-blue-200);
+    }
+    .badge-green-on-dark {
+      background: rgba(46, 204, 133, 0.15);
+      color: #2ECC85;
+      border: 1px solid rgba(46, 204, 133, 0.3);
+    }
+
+    .section-title-large {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle-text {
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    /* Grid de tarjetas de servicios */
+    .services-grid-cards {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .service-card {
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-theme-express {
+      background: linear-gradient(145deg, #0950F6 0%, #073BC2 100%);
+      border: 2px solid var(--color-brand-yellow-500);
+      color: var(--color-white);
+      box-shadow: 0 16px 40px rgba(9, 80, 246, 0.28);
+    }
+    .card-theme-express:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(255, 236, 1, 0.25);
+    }
+    .card-theme-flex {
+      background: linear-gradient(145deg, #FFEC01 0%, #FFF12E 100%);
+      color: var(--color-brand-blue-500);
+      box-shadow: 0 16px 40px rgba(255, 236, 1, 0.2);
+    }
+    .card-theme-flex:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(9, 80, 246, 0.15);
+    }
+    .card-theme-lowcost {
+      background: var(--color-white);
+      color: var(--color-brand-blue-500);
+      border: 1px solid var(--color-brand-blue-100);
+      box-shadow: var(--shadow-sm);
+    }
+    .card-theme-lowcost:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-brand-blue-300);
+    }
+    .card-theme-3pl {
+      background: linear-gradient(145deg, #071536 0%, #0b2259 100%);
+      color: var(--color-white);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: var(--shadow-md);
+    }
+    .card-theme-3pl:hover {
+      transform: translateY(-6px);
+      border-color: var(--color-brand-yellow-500);
+    }
+
+    .service-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      width: fit-content;
+    }
+    .tag-yellow { background: var(--color-brand-yellow-500); color: var(--color-brand-blue-500); }
+    .tag-blue { background: var(--color-brand-blue-500); color: var(--color-white); }
+    .tag-dark { background: rgba(255, 255, 255, 0.15); color: var(--color-white); }
+
+    .service-card-title {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .service-card-desc {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+    .service-card-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .card-theme-lowcost .service-card-stats {
+      border-top-color: var(--color-brand-blue-100);
+    }
+    .card-theme-flex .service-card-stats {
+      border-top-color: rgba(9, 80, 246, 0.15);
+    }
+    .stat-mini-val {
+      font-family: var(--font-subhead);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    .stat-mini-lbl {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    /* ========================================================================
+     * SECCIÓN SEGMENTOS (E-COMMERCE / COMERCIOS / GASTRO)
+     * ======================================================================== */
+    .segmentos-grid {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .segmento-box {
+      background: var(--color-white);
+      border-radius: 20px;
+      padding: 2.25rem;
+      border: 1px solid var(--color-brand-blue-100);
+      box-shadow: 0 10px 30px rgba(9, 80, 246, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: all 0.3s ease;
+    }
+    .segmento-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(9, 80, 246, 0.12);
+      border-color: var(--color-brand-blue-300);
+    }
+    .segmento-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--color-brand-blue-50);
+      color: var(--color-brand-blue-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .segmento-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--color-brand-blue-500);
+      line-height: 1;
+    }
+    .segmento-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--color-ink);
+    }
+    .segmento-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .check-icon {
+      color: var(--color-brand-blue-500);
+      font-weight: 700;
+    }
+
+    /* ========================================================================
+     * SECCIÓN LOGÍSTICA & FLOTA PROPIA (FRIULI 1972)
+     * ======================================================================== */
+    .logistica-card-highlight {
+      max-width: 1240px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--color-brand-blue-500) 0%, #062f96 100%);
+      color: var(--color-white);
+      border-radius: 28px;
+      padding: 3.5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      box-shadow: 0 25px 60px rgba(7, 21, 54, 0.25);
+    }
+    @media (min-width: 992px) {
+      .logistica-card-highlight {
+        grid-template-columns: 1.2fr 0.8fr;
+        padding: 4.5rem;
+      }
+    }
+    .flota-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .flota-pill {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ========================================================================
+     * SECCIÓN MARDELIVERY (GASTRONOMÍA NOCTURNA)
+     * ======================================================================== */
+    .mardelivery-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      background: #031811;
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      border: 1px solid rgba(46, 204, 133, 0.25);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    @media (min-width: 992px) {
+      .mardelivery-wrap { grid-template-columns: 1fr 1fr; padding: 4rem; }
+    }
+    .md-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      color: #2ECC85;
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .md-btn {
+      background: #2ECC85;
+      color: #031811;
+      font-weight: 700;
+      padding: 0.85rem 1.6rem;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 20px rgba(46, 204, 133, 0.35);
+    }
+    .md-btn:hover {
+      background: #27b374;
+      transform: translateY(-2px);
+    }
+
+    /* ========================================================================
+     * SECCIÓN SOCIAL PROOF & MÉTRICAS
+     * ======================================================================== */
+    .metrics-row {
+      max-width: 1240px;
+      margin: 0 auto 3.5rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .metric-card {
+      background: var(--color-white);
+      border-radius: 18px;
+      padding: 1.75rem;
+      text-align: center;
+      border: 1px solid var(--color-brand-blue-100);
+      box-shadow: var(--shadow-sm);
+    }
+    .metric-big {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      color: var(--color-brand-blue-500);
+      line-height: 1;
+    }
+    .metric-tag {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-ink);
+      margin-top: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    /* ========================================================================
+     * CTA WHATSAPP & FINAL CONVERSIÓN
+     * ======================================================================== */
+    .cta-banner-box {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--color-brand-blue-500) 0%, #073BC2 100%);
+      color: var(--color-white);
+      border-radius: 28px;
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-float);
+    }
+    .cta-banner-box::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255, 236, 1, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-big-btn {
+      background: var(--color-brand-yellow-500);
+      color: var(--color-brand-blue-500);
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 1.15rem;
+      padding: 1.15rem 2.4rem;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: var(--shadow-cta-glow);
+      transition: all 0.2s ease;
+      margin-top: 2rem;
+    }
+    .cta-big-btn:hover {
+      background: var(--color-brand-yellow-400);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 35px rgba(255, 236, 1, 0.6);
+    }
+
+    /* ========================================================================
+     * FOOTER OPTIMIZADO CON FRANJA AMARILLA CANÓNICA
+     * ======================================================================== */
+    footer#optimized-footer {
+      background-color: var(--color-brand-blue-500);
+      color: var(--color-white);
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-yellow-top-bar {
+      height: 6px;
+      background-color: var(--color-brand-yellow-500);
+      width: 100%;
+      box-shadow: 0 2px 10px rgba(255, 236, 1, 0.4);
+    }
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem 2.5rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @media (min-width: 768px) {
+      .footer-container { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .footer-container { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; }
+    }
+    .footer-col-title {
+      font-family: var(--font-subhead);
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      color: var(--color-brand-yellow-500);
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+    }
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+    }
+    .footer-links-list a {
+      color: var(--color-brand-blue-50);
+      transition: color 0.2s ease;
+    }
+    .footer-links-list a:hover {
+      color: var(--color-brand-yellow-500);
+      text-decoration: underline;
+    }
+    .footer-bottom-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--color-brand-blue-100);
+    }
+
+    /* Modal de Servicio */
+    .service-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(7, 21, 54, 0.82);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .service-modal-overlay.active {
+      display: flex;
+    }
+    .modal-card {
+      background: var(--color-white);
+      color: var(--color-ink);
+      border-radius: 24px;
+      max-width: 580px;
+      width: 100%;
+      padding: 2.25rem;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+      border: 2px solid var(--color-brand-blue-500);
+    }
+    .btn-modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--color-surface-gray);
+      color: var(--color-ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========================================================================
+   * HEADER PRINCIPAL
+   * ======================================================================== -->
+  <header id="optimized-header">
+    <div class="nav-inner">
+      <a href="#inicio" class="brand-link" aria-label="Ir al inicio">
+        <img src="../../public/logo.webp" alt="Envíos DosRuedas" class="brand-logo-img" />
+        <div class="brand-text">
+          <span class="brand-title">ENVÍOS DOSRUEDAS</span>
+          <span class="brand-tagline">Mar del Plata · Flota Propia</span>
+        </div>
+      </a>
+
+      <!-- Menú Escritorio -->
+      <nav class="nav-desktop-menu" aria-label="Navegación principal">
+        <a href="#inicio" class="nav-btn-link">Inicio</a>
+        <a href="#servicios" class="nav-btn-link">Servicios</a>
+        <a href="#segmentos" class="nav-btn-link">Para quién</a>
+        <a href="#logistica" class="nav-btn-link">Flota Propia</a>
+        <a href="#mardelivery" class="nav-btn-link">MarDelivery</a>
+        <a href="#contacto" class="nav-btn-link">Contacto</a>
+      </nav>
+
+      <!-- Botones de Acción -->
+      <div class="header-actions">
+        <a href="https://wa.me/5492236025348?text=Hola%20Envios%20DosRuedas,%20quiero%20cotizar%20un%20envio" target="_blank" rel="noopener" class="btn-cta-header">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Cotizar Ahora</span>
+        </a>
+        <button class="btn-mobile-toggle" id="btn-mobile-toggle" aria-label="Abrir menú de navegación">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <span style="font-family: var(--font-display); font-size: 1.3rem;">MENÚ PRINCIPAL</span>
+        <button id="drawer-close" style="color: var(--color-white); font-size: 1.5rem;">✕</button>
+      </div>
+      <nav class="drawer-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#segmentos">Para Quién</a>
+        <a href="#logistica">Flota Propia (Friuli 1972)</a>
+        <a href="#mardelivery">MarDelivery</a>
+        <a href="#metricas">Métricas</a>
+        <a href="#contacto">Contacto & WhatsApp</a>
+      </nav>
+      <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.15);">
+        <a href="tel:2236025348" style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--color-brand-yellow-500); display: block; margin-bottom: 0.5rem;">
+          📞 223 602-5348
+        </a>
+        <span style="font-size: 0.75rem; color: var(--color-brand-blue-100);">Friuli 1972, Mar del Plata</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ========================================================================
+     * HERO SECTION
+     * ======================================================================== -->
+    <section class="hero-section" id="inicio">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
+
+      <div class="hero-container">
+        
+        <!-- Texto y llamadas a la acción -->
+        <div>
+          <div class="hero-badge-live">
+            <span class="live-dot"></span>
+            <span>Flota Activa en Calle · Mar del Plata</span>
+          </div>
+
+          <h1 class="hero-heading">
+            EL MOTOR DE TU <br />
+            <span class="yellow-text">ÚLTIMA MILLA</span> <br />
+            EN MAR DEL PLATA
+          </h1>
+
+          <p class="hero-lead">
+            Mensajería express y logística e-commerce con <strong>flota propia</strong>, cero tercerización y base física en Friuli 1972. Llegamos a toda la ciudad en el día.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="https://wa.me/5492236025348?text=Hola,%20necesito%20coordinar%20un%20envio" target="_blank" rel="noopener" class="btn-hero-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Pedir Envío Inmediato</span>
+            </a>
+            <a href="#servicios" class="btn-hero-secondary">
+              <span>Conocer Servicios</span>
+              <span>↓</span>
+            </a>
+          </div>
+
+          <div class="hero-ticker-wrap">
+            <div class="ticker-item">
+              <span class="ticker-num">+500K</span>
+              <span class="ticker-lbl">Paquetes Entregados</span>
+            </div>
+            <div class="ticker-item">
+              <span class="ticker-num">99.4%</span>
+              <span class="ticker-lbl">Efectividad a Tiempo</span>
+            </div>
+            <div class="ticker-item">
+              <span class="ticker-num">100%</span>
+              <span class="ticker-lbl">Flota Propia Contratada</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual / Mapa + Chip de Repartidor -->
+        <div class="hero-visual-stage">
+          <div class="map-frame-box">
+            <img src="../../public/card_mapa.webp" alt="Mapa de cobertura en Mar del Plata" class="map-img" />
+          </div>
+
+          <div class="floating-rider-card">
+            <img src="../../public/persona_icono.webp" alt="Repartidor de Envíos DosRuedas" class="rider-avatar" />
+            <div>
+              <div class="rider-info-name">Repartidor Asignado</div>
+              <div class="rider-info-status">● En ruta · Friuli 1972</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+     * SECCIÓN SERVICIOS
+     * ======================================================================== -->
+    <section class="section-standard section-gray" id="servicios">
+      <div class="section-head">
+        <div class="section-pill-badge badge-blue-on-white">
+          <span>⚡</span> Portafolio de Soluciones
+        </div>
+        <h2 class="section-title-large" style="color: var(--color-brand-blue-500);">
+          LOGÍSTICA A TU MEDIDA
+        </h2>
+        <p class="section-subtitle-text" style="color: var(--color-ink);">
+          Desde encomiendas urgentes punto a punto hasta almacenamiento y despacho masivo para tiendas online.
+        </p>
+      </div>
+
+      <div class="services-grid-cards">
+        
+        <!-- Card 1: Express -->
+        <div class="service-card card-theme-express">
+          <div>
+            <span class="service-card-tag tag-yellow">PUNTO A PUNTO</span>
+            <h3 class="service-card-title" style="margin-top: 1rem;">MENSAJERÍA EXPRESS</h3>
+            <p class="service-card-desc">Entrega en menos de 60 a 90 minutos en todo el casco urbano de Mar del Plata. Ideal para trámites, llaves, documentación y urgencias.</p>
+          </div>
+          <div class="service-card-stats">
+            <div>
+              <div class="stat-mini-val" style="color: var(--color-brand-yellow-500);">< 90 min</div>
+              <div class="stat-mini-lbl">Tiempo promedio</div>
+            </div>
+            <div>
+              <div class="stat-mini-val" style="color: var(--color-brand-yellow-500);">Motos</div>
+              <div class="stat-mini-lbl">Vehículo asignado</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Flex E-commerce -->
+        <div class="service-card card-theme-flex">
+          <div>
+            <span class="service-card-tag tag-blue">TIENDAS ONLINE</span>
+            <h3 class="service-card-title" style="margin-top: 1rem;">LOGÍSTICA E-COMMERCE</h3>
+            <p class="service-card-desc">Envíos en el día para ventas web, Tienda Nube y redes sociales. Rendición semanal clara y retiro diario por tu local o depósito.</p>
+          </div>
+          <div class="service-card-stats">
+            <div>
+              <div class="stat-mini-val" style="color: var(--color-brand-blue-500);">Same Day</div>
+              <div class="stat-mini-lbl">Entrega en el día</div>
+            </div>
+            <div>
+              <div class="stat-mini-val" style="color: var(--color-brand-blue-500);">Cobro contra entrega</div>
+              <div class="stat-mini-lbl">Gestión de cobros</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Low Cost Programado -->
+        <div class="service-card card-theme-lowcost">
+          <div>
+            <span class="service-card-tag tag-blue">MÁXIMO AHORRO</span>
+            <h3 class="service-card-title" style="margin-top: 1rem;">ENVÍO PROGRAMADO</h3>
+            <p class="service-card-desc">Tarifa bonificada para despachos coordinados en franjas horarias de mañana o tarde. Optimiza los costos logísticos de tu negocio.</p>
+          </div>
+          <div class="service-card-stats">
+            <div>
+              <div class="stat-mini-val" style="color: var(--color-brand-blue-500);">-30%</div>
+              <div class="stat-mini-lbl">Costo por envío</div>
+            </div>
+            <div>
+              <div class="stat-mini-val" style="color: var(--color-brand-blue-500);">Franjas fijas</div>
+              <div class="stat-mini-lbl">Ventanas de entrega</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: 3PL Fulfillment -->
+        <div class="service-card card-theme-3pl">
+          <div>
+            <span class="service-card-tag tag-dark">INTEGRAL</span>
+            <h3 class="service-card-title" style="margin-top: 1rem;">DEPÓSITO & FULFILLMENT</h3>
+            <p class="service-card-desc">Almacenamos tu mercadería en nuestra base de Friuli 1972, armamos los paquetes y los distribuimos directo a tus clientes sin que muevas un dedo.</p>
+          </div>
+          <div class="service-card-stats">
+            <div>
+              <div class="stat-mini-val" style="color: var(--color-brand-yellow-500);">Friuli 1972</div>
+              <div class="stat-mini-lbl">Base física y depósito</div>
+            </div>
+            <div>
+              <div class="stat-mini-val" style="color: var(--color-brand-yellow-500);">Pick & Pack</div>
+              <div class="stat-mini-lbl">Preparación de pedidos</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+     * SECCIÓN SEGMENTOS (PARA QUIÉN)
+     * ======================================================================== -->
+    <section class="section-standard section-white" id="segmentos">
+      <div class="section-head">
+        <div class="section-pill-badge badge-blue-on-white">
+          <span>🎯</span> Cobertura Especializada
+        </div>
+        <h2 class="section-title-large" style="color: var(--color-brand-blue-500);">
+          SOLUCIONES PARA CADA SECTOR
+        </h2>
+        <p class="section-subtitle-text" style="color: var(--color-ink);">
+          Adaptamos nuestros tiempos y protocolos a las exigencias operativas de tu rubro.
+        </p>
+      </div>
+
+      <div class="segmentos-grid">
+        
+        <div class="segmento-box">
+          <div class="segmento-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+          </div>
+          <h3 class="segmento-title">E-COMMERCE & TIENDAS</h3>
+          <p style="font-size: 0.92rem; color: #4B5563;">Vendes más cuando tus clientes reciben su compra en pocas horas. Retiro diario y confirmación de entrega.</p>
+          <ul class="segmento-list">
+            <li><span class="check-icon">✓</span> Integración con Tienda Nube y WooCommerce</li>
+            <li><span class="check-icon">✓</span> Cobro en efectivo contra entrega (COD)</li>
+            <li><span class="check-icon">✓</span> Rendición de dinero puntual cada semana</li>
+          </ul>
+        </div>
+
+        <div class="segmento-box">
+          <div class="segmento-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </div>
+          <h3 class="segmento-title">FARMACIAS & REPUESTOS</h3>
+          <p style="font-size: 0.92rem; color: #4B5563;">Mercaderías delicadas y urgentes que requieren manipulación segura y tiempos de entrega garantizados.</p>
+          <ul class="segmento-list">
+            <li><span class="check-icon">✓</span> Cajas térmicas y sujeción protegida</li>
+            <li><span class="check-icon">✓</span> Entrega con firma y comprobante</li>
+            <li><span class="check-icon">✓</span> Envíos en moto o utilitario según peso</li>
+          </ul>
+        </div>
+
+        <div class="segmento-box">
+          <div class="segmento-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
+          <h3 class="segmento-title">EMPRESAS & ESTUDIOS</h3>
+          <p style="font-size: 0.92rem; color: #4B5563;">Trámites bancarios, gestiones notariales, intercambio de contratos y paquetería corporativa con cuenta corriente.</p>
+          <ul class="segmento-list">
+            <li><span class="check-icon">✓</span> Factura A y liquidación mensual clara</li>
+            <li><span class="check-icon">✓</span> Cadetes de confianza con seguro al día</li>
+            <li><span class="check-icon">✓</span> Hoja de ruta coordinada por WhatsApp</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+     * SECCIÓN LOGÍSTICA & FLOTA PROPIA (FRIULI 1972)
+     * ======================================================================== -->
+    <section class="section-standard section-gray" id="logistica">
+      <div class="logistica-card-highlight">
+        <div>
+          <div class="section-pill-badge badge-yellow-on-blue">
+            <span>🛡️</span> Cero Tercerización
+          </div>
+          <h2 style="font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); line-height: 0.92; text-transform: uppercase; margin-bottom: 1.25rem;">
+            FLOTA PROPIA Y BASE FÍSICA EN MAR DEL PLATA
+          </h2>
+          <p style="font-size: 1.1rem; line-height: 1.6; color: var(--color-brand-blue-50); font-weight: 300;">
+            A diferencia de las aplicaciones genéricas, en Envíos DosRuedas conocemos a cada repartidor. Tenemos base operativa y depósito en <strong>Friuli 1972</strong>, lo que garantiza total respaldo para tus envíos de valor.
+          </p>
+
+          <div class="flota-pills-row">
+            <span class="flota-pill">🏍️ Motos ágiles para paquetería urbana</span>
+            <span class="flota-pill">🚐 Utilitarios para bultos pesados</span>
+            <span class="flota-pill">📍 Base propia en Friuli 1972</span>
+            <span class="flota-pill">📋 Repartidores identificados con seguro</span>
+          </div>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.15); text-align: center;">
+          <div style="font-family: var(--font-subhead); font-size: 3rem; color: var(--color-brand-yellow-500); line-height: 1;">
+            FRIULI 1972
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-brand-blue-100); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+            Base de Operaciones · Mar del Plata
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-white); opacity: 0.85;">
+            Lunes a Viernes de 8:00 a 18:00 hs<br />Sábados de 8:00 a 13:00 hs
+          </p>
+          <a href="https://maps.google.com/?q=Friuli+1972+Mar+del+Plata" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.25rem; background: var(--color-white); color: var(--color-brand-blue-500); padding: 0.6rem 1.25rem; border-radius: 10px; font-weight: 700; font-size: 0.85rem;">
+            <span>Ver Ubicación en Google Maps</span> ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+     * SECCIÓN MARDELIVERY (GASTRONOMÍA)
+     * ======================================================================== -->
+    <section class="section-standard" style="background: #020F0B;" id="mardelivery">
+      <div class="mardelivery-wrap">
+        <div>
+          <div class="section-pill-badge badge-green-on-dark">
+            <span>🍔</span> Vertical Gastronómica
+          </div>
+          <h2 class="md-title">
+            MARDELIVERY: TU ALIADO GASTRONÓMICO
+          </h2>
+          <p style="font-size: 1.05rem; line-height: 1.6; color: #C2DDD3; font-weight: 300; margin-bottom: 2rem;">
+            Servicio nocturno especializado para hamburgueserías, pizzerías, sushi y restaurantes marplatenses. Cajas térmicas higienizadas, reparto veloz y cuidado extremo para que tu comida llegue caliente y perfecta.
+          </p>
+          <a href="https://wa.me/5492236025348?text=Hola,%20tengo%20un%20comercio%20gastronomico%20y%20quiero%20conocer%20MarDelivery" target="_blank" rel="noopener" class="md-btn">
+            <span>Sumar mi local a MarDelivery</span> →
+          </a>
+        </div>
+
+        <div style="background: rgba(46, 204, 133, 0.06); border: 1px solid rgba(46, 204, 133, 0.2); border-radius: 20px; padding: 2rem;">
+          <h4 style="font-family: var(--font-subhead); font-size: 1.6rem; color: #2ECC85; margin-bottom: 1rem;">VENTAJAS PARA TU RESTÓ</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.95rem; color: #FAFCFB;">
+            <li>🟢 <strong>Cero comisión por plato:</strong> Pagas solo el viaje de reparto.</li>
+            <li>🟢 <strong>Repartidores dedicados:</strong> En tu puerta en los picos de demanda.</li>
+            <li>🟢 <strong>Cobro POS y Efectivo:</strong> Cobran en la puerta de tu cliente y te rinden en el acto.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+     * SECCIÓN MÉTRICAS Y PRUEBA SOCIAL
+     * ======================================================================== -->
+    <section class="section-standard section-white" id="metricas">
+      <div class="section-head">
+        <div class="section-pill-badge badge-blue-on-white">
+          <span>📈</span> Trayectoria Comprobada
+        </div>
+        <h2 class="section-title-large" style="color: var(--color-brand-blue-500);">
+          NÚMEROS QUE GENERAN CONFIANZA
+        </h2>
+        <p class="section-subtitle-text" style="color: var(--color-ink);">
+          Más de una década moviendo la economía y el comercio local de Mar del Plata.
+        </p>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-big">+500.000</div>
+          <div class="metric-tag">Envíos Completados</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-big">99.4%</div>
+          <div class="metric-tag">Efectividad Horaria</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-big">+350</div>
+          <div class="metric-tag">Comercios Activos</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-big">15+</div>
+          <div class="metric-tag">Años en Mar del Plata</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+     * SECCIÓN CTA WHATSAPP DIRECTO
+     * ======================================================================== -->
+    <section class="section-standard section-gray" id="contacto">
+      <div class="cta-banner-box">
+        <div class="section-pill-badge badge-yellow-on-blue">
+          <span>⚡</span> Respuesta Inmediata
+        </div>
+        <h2 style="font-family: var(--font-display); font-size: clamp(2.4rem, 5.5vw, 4.2rem); line-height: 0.95; text-transform: uppercase; margin-bottom: 1.25rem;">
+          ¿LISTO PARA RESOLVER TUS ENVÍOS HOY?
+        </h2>
+        <p style="font-size: 1.2rem; color: var(--color-brand-blue-50); max-width: 650px; margin: 0 auto; font-weight: 300;">
+          Escribinos por WhatsApp y coordinamos tu retiro en minutos. Cotizaciones transparentes sin sorpresas.
+        </p>
+        <a href="https://wa.me/5492236025348?text=Hola%20Envios%20DosRuedas,%20quiero%20coordinar%20un%20envio%20ahora" target="_blank" rel="noopener" class="cta-big-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Escribir al WhatsApp (223 602-5348)</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+   * FOOTER OPTIMIZADO (CON FIRMA AMARILLA DE 6PX)
+   * ======================================================================== -->
+  <footer id="optimized-footer">
+    <div class="footer-yellow-top-bar"></div>
+
+    <div class="footer-container">
+      
+      <!-- Col 1: Marca y Base -->
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <img src="../../public/logo.webp" alt="Envíos DosRuedas" style="height: 38px;" />
+          <span style="font-family: var(--font-display); font-size: 1.4rem;">ENVÍOS DOSRUEDAS</span>
+        </div>
+        <p style="font-size: 0.92rem; color: var(--color-brand-blue-100); line-height: 1.6; margin-bottom: 1.25rem;">
+          Líderes en mensajería urbana y logística e-commerce en Mar del Plata. Flota propia y trazabilidad en cada paquete.
+        </p>
+        <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-brand-yellow-500);">
+          📍 Friuli 1972 · Mar del Plata, Argentina
+        </div>
+      </div>
+
+      <!-- Col 2: Enlaces Rápidos -->
+      <div>
+        <h4 class="footer-col-title">SERVICIOS</h4>
+        <ul class="footer-links-list">
+          <li><a href="#servicios">Mensajería Express</a></li>
+          <li><a href="#servicios">Logística E-Commerce</a></li>
+          <li><a href="#servicios">Envíos Programados</a></li>
+          <li><a href="#servicios">Depósito & Fulfillment</a></li>
+          <li><a href="#mardelivery">MarDelivery (Gastronomía)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Secciones -->
+      <div>
+        <h4 class="footer-col-title">EMPRESA</h4>
+        <ul class="footer-links-list">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#segmentos">Para Comercios</a></li>
+          <li><a href="#logistica">Flota Propia</a></li>
+          <li><a href="#metricas">Métricas y Confianza</a></li>
+          <li><a href="#contacto">Cotizar por WhatsApp</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Atención y Horarios -->
+      <div>
+        <h4 class="footer-col-title">ATENCIÓN AL CLIENTE</h4>
+        <p style="font-size: 0.9rem; color: var(--color-brand-blue-50); line-height: 1.6; margin-bottom: 1rem;">
+          <strong>Lunes a Viernes:</strong> 08:00 a 18:00 hs<br />
+          <strong>Sábados:</strong> 08:00 a 13:00 hs<br />
+          <strong>Guardia MarDelivery:</strong> Jueves a Domingos (Noche)
+        </p>
+        <a href="tel:2236025348" style="font-family: var(--font-mono); font-weight: 700; color: var(--color-brand-yellow-500); font-size: 1.1rem; display: block;">
+          📞 223 602-5348
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom-bar">
+      © 2026 Envíos DosRuedas. Todos los derechos reservados · Mar del Plata, Buenos Aires, Argentina.
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+   * SCRIPTS OPTIMIZADOS (HEADER SCROLL + MOBILE DRAWER + CANVAS GRID + GSAP)
+   * ======================================================================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      // 1. Header scroll blur trigger
+      const header = document.getElementById("optimized-header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 40) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      }, { passive: true });
+
+      // 2. Mobile Drawer
+      const mobileToggle = document.getElementById("btn-mobile-toggle");
+      const mobileDrawer = document.getElementById("mobile-drawer");
+      const drawerClose = document.getElementById("drawer-close");
+
+      function toggleDrawer(open) {
+        if (open) {
+          mobileDrawer.classList.add("active");
+          document.body.style.overflow = "hidden";
+        } else {
+          mobileDrawer.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      }
+
+      mobileToggle?.addEventListener("click", () => toggleDrawer(true));
+      drawerClose?.addEventListener("click", () => toggleDrawer(false));
+      mobileDrawer?.addEventListener("click", (e) => {
+        if (e.target === mobileDrawer) toggleDrawer(false);
+      });
+      mobileDrawer?.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", () => toggleDrawer(false));
+      });
+
+      // 3. Canvas procedural background en Hero
+      const canvas = document.getElementById("hero-canvas");
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        let width, height;
+
+        function resizeCanvas() {
+          width = canvas.width = canvas.offsetWidth;
+          height = canvas.height = canvas.offsetHeight;
+        }
+        window.addEventListener("resize", resizeCanvas, { passive: true });
+        resizeCanvas();
+
+        let t = 0;
+        function renderCanvas() {
+          t += 0.015;
+          ctx.clearRect(0, 0, width, height);
+
+          // Grid sutil
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.04)";
+          ctx.lineWidth = 1;
+          const gridSize = 45;
+          for (let x = 0; x < width; x += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+          }
+          for (let y = 0; y < height; y += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+          }
+
+          // Línea de pulso dinámica
+          ctx.strokeStyle = "rgba(255, 236, 1, 0.25)";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          for (let x = 0; x < width; x += 15) {
+            const y = height * 0.5 + Math.sin(x * 0.008 + t) * 28 + Math.cos(x * 0.003 - t * 0.5) * 15;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+
+          requestAnimationFrame(renderCanvas);
+        }
+        renderCanvas();
+      }
+
+      // 4. GSAP Entrada Hero
+      if (window.gsap) {
+        gsap.from(".hero-heading", {
+          opacity: 0,
+          y: 35,
+          duration: 0.9,
+          ease: "power3.out"
+        });
+        gsap.from(".hero-lead", {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          delay: 0.2,
+          ease: "power2.out"
+        });
+        gsap.from(".hero-visual-stage", {
+          opacity: 0,
+          scale: 0.92,
+          duration: 1,
+          delay: 0.35,
+          ease: "power2.out"
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
