@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Propuestas Estructurales para inicio.html | Envíos DosRuedas</title>
+    <style>
+        /* ============================================================
+           RESET Y TOKENS DE BAJA FIDELIDAD (html-wireframe)
+           Restricción intencional: Grayscale, bordes sobrios, tipografía de sistema
+           ============================================================ */
+        :root {
+            --wf-bg: #f8f9fa;
+            --wf-surface: #ffffff;
+            --wf-surface-alt: #f1f3f5;
+            --wf-border: #ced4da;
+            --wf-border-strong: #868e96;
+            --wf-text-main: #212529;
+            --wf-text-muted: #6c757d;
+            --wf-text-faint: #adb5bd;
+            --wf-highlight: #e9ecef;
+            --wf-focus: #000000;
+            --wf-radius-sm: 4px;
+            --wf-radius-md: 8px;
+            --wf-max-w: 1200px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--wf-bg);
+            color: var(--wf-text-main);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* BARRA SUPERIOR DE CONTROL / SWITCHER DE VARIANTES */
+        .wf-control-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 12px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border-bottom: 2px solid #000000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .wf-control-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .wf-badge {
+            background-color: #495057;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+
+        .wf-switcher {
+            display: flex;
+            background-color: #2b2b2b;
+            padding: 3px;
+            border-radius: 6px;
+            gap: 2px;
+        }
+
+        .wf-tab-btn {
+            background: none;
+            border: none;
+            color: #ced4da;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .wf-tab-btn:hover {
+            color: #ffffff;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .wf-tab-btn.active {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .wf-tab-btn:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
+        }
+
+        /* ANOTACIÓN DE TRADE-OFF DE LA VARIANTE */
+        .wf-tradeoff-banner {
+            background-color: #e9ecef;
+            border-bottom: 1px solid var(--wf-border);
+            padding: 10px 20px;
+            font-size: 13px;
+            color: var(--wf-text-muted);
+            text-align: center;
+        }
+
+        .wf-tradeoff-banner strong {
+            color: var(--wf-text-main);
+        }
+
+        /* CONTENEDOR DE LA PROPUESTA */
+        .wf-proposal-view {
+            display: none;
+            max-width: var(--wf-max-w);
+            margin: 0 auto;
+            padding: 30px 20px 80px;
+        }
+
+        .wf-proposal-view.active {
+            display: block;
+        }
+
+        /* ELEMENTOS GENÉRICOS DE WIREFRAME */
+        .wf-block {
+            border: 1px dashed var(--wf-border-strong);
+            background-color: var(--wf-surface);
+            border-radius: var(--wf-radius-md);
+            padding: 24px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .wf-block-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--wf-text-muted);
+            background-color: var(--wf-surface-alt);
+            border: 1px solid var(--wf-border);
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-bottom: 12px;
+        }
+
+        .wf-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .wf-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .wf-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .wf-box-placeholder {
+            border: 1px solid var(--wf-border);
+            background-color: var(--wf-surface-alt);
+            border-radius: var(--wf-radius-sm);
+            padding: 18px;
+            text-align: center;
+        }
+
+        .wf-placeholder-graphic {
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed var(--wf-border-strong);
+            background-color: #fafbfc;
+            color: var(--wf-text-muted);
+            font-size: 12px;
+            border-radius: var(--wf-radius-sm);
+            margin-top: 10px;
+        }
+
+        .wf-btn {
+            display: inline-block;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 2px solid #000000;
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: var(--wf-radius-sm);
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .wf-btn-secondary {
+            background-color: var(--wf-surface);
+            color: var(--wf-text-main);
+            border-color: var(--wf-border-strong);
+        }
+
+        .wf-input-mock {
+            width: 100%;
+            padding: 10px;
+            font-size: 13px;
+            border: 1px solid var(--wf-border-strong);
+            background-color: #fff;
+            border-radius: var(--wf-radius-sm);
+            margin-bottom: 10px;
+            color: var(--wf-text-main);
+        }
+
+        /* HEADER SIMULADO */
+        .wf-mock-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--wf-border);
+            padding: 16px 0;
+            margin-bottom: 24px;
+        }
+
+        .wf-logo-mock {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .wf-nav-mock {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--wf-text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .wf-grid-2, .wf-grid-3, .wf-grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .wf-nav-mock {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE SELECCIÓN DE DIRECCIÓN ESTRUCTURAL -->
+    <header class="wf-control-bar" role="banner">
+        <div class="wf-control-title">
+            <span>Explorador de Wireframes</span>
+            <span class="wf-badge">3 Direcciones</span>
+            <span style="color:#adb5bd; font-weight: normal;">| Rediseño inicio.html</span>
+        </div>
+        <nav class="wf-switcher" aria-label="Selector de dirección de wireframe">
+            <button class="wf-tab-btn active" onclick="switchDirection('dir1', this)" aria-pressed="true">
+                1. Conversión Directa
+            </button>
+            <button class="wf-tab-btn" onclick="switchDirection('dir2', this)" aria-pressed="false">
+                2. Segmentación por Perfil
+            </button>
+            <button class="wf-tab-btn" onclick="switchDirection('dir3', this)" aria-pressed="false">
+                3. Mapa de Cobertura & Tiempos
+            </button>
+        </nav>
+    </header>
+
+    <!-- ==============================================================
+         DIRECCIÓN 1: ENFOQUE CONVERSIÓN DIRECTA
+         Trade-off: Prioriza la acción transaccional sobre el storytelling.
+         Ideal para clientes que entran a cotizar o pedir de inmediato.
+         ============================================================== -->
+    <section id="dir1" class="wf-proposal-view active" aria-labelledby="title-dir1">
+        <div class="wf-tradeoff-banner">
+            <strong>Dirección 1: Conversión Directa</strong> — Ubica un cotizador interactivo inmediatamente en el Hero. Reduce la fricción y acelera la generación de leads por WhatsApp o sistema.
+        </div>
+
+        <div class="wf-mock-header">
+            <div class="wf-logo-mock">🛵 Envíos DosRuedas</div>
+            <div class="wf-nav-mock">
+                <span>Servicios</span>
+                <span>Planes para Emprendedores</span>
+                <span>Empresas</span>
+                <span>Nosotros</span>
+            </div>
+            <div class="wf-btn wf-btn-secondary" style="padding: 6px 12px; font-size: 13px;">WhatsApp Directo</div>
+        </div>
+
+        <!-- HERO CON COTIZADOR EMBEBIDO -->
+        <div class="wf-block">
+            <span class="wf-block-label">Sección 1: Hero Principal (7 cols mensaje / 5 cols cotizador)</span>
+            <div class="wf-grid-2" style="align-items: center;">
+                <div>
+                    <h1 id="title-dir1" style="font-size: 28px; font-weight: 800; margin-bottom: 12px; line-height: 1.2;">
+                        Tu mensajería en Mar del Plata. Envíos en el día con flota propia.
+                    </h1>
+                    <p style="color: var(--wf-text-muted); margin-bottom: 18px; font-size: 15px;">
+                        Llegamos a cada rincón de Mar del Plata sin tercerizar repartidores. Cadetería express, e-commerce Flex y logística para locales.
+                    </p>
+                    <div style="display: flex; gap: 12px; align-items: center; font-size: 13px; color: var(--wf-text-muted); margin-bottom: 16px;">
+                        <span>✓ Entregas en 2 horas</span>
+                        <span>✓ Seguimiento digital</span>
+                        <span>✓ Cobro contrareembolso</span>
+                    </div>
+                </div>
+
+                <!-- COTIZADOR INTEGRADO INMEDIATO -->
+                <div class="wf-box-placeholder" style="text-align: left; border: 2px solid var(--wf-border-strong); background-color: #fff;">
+                    <div style="font-weight: 700; font-size: 15px; margin-bottom: 8px;">Calculá el costo de tu envío</div>
+                    <div style="font-size: 12px; color: var(--wf-text-muted); margin-bottom: 12px;">Cotización estimada al instante para Mar del Plata</div>
+                    
+                    <label style="font-size: 11px; font-weight: 600; text-transform: uppercase;">Zona de Retiro</label>
+                    <div class="wf-input-mock">Macrocentro / Centro</div>
+
+                    <label style="font-size: 11px; font-weight: 600; text-transform: uppercase;">Zona de Entrega</label>
+                    <div class="wf-input-mock">Constitución / Zona Norte</div>
+
+                    <label style="font-size: 11px; font-weight: 600; text-transform: uppercase;">Tipo de paquete</label>
+                    <div class="wf-input-mock">Bulto chico / Sobre (hasta 2kg)</div>
+
+                    <div style="background-color: var(--wf-surface-alt); padding: 12px; border-radius: 4px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 13px; color: var(--wf-text-muted);">Estimado:</span>
+                        <strong style="font-size: 18px;">$3.200 ARS</strong>
+                    </div>
+
+                    <button class="wf-btn" style="width: 100%;">Pedir Moto por WhatsApp</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BARRA DE SERVICIOS DIRECTOS -->
+        <div class="wf-block">
+            <span class="wf-block-label">Sección 2: Grid de 4 Servicios Principales</span>
+            <div class="wf-grid-4">
+                <div class="wf-box-placeholder">
+                    <strong>Envíos Express</strong>
+                    <p style="font-size: 12px; color: var(--wf-text-muted); margin: 6px 0;">Entregas urgentes punto a punto en menos de 120 minutos.</p>
+                    <span style="font-size: 11px; text-decoration: underline;">Ver detalles →</span>
+                </div>
+                <div class="wf-box-placeholder">
+                    <strong>Mercado Envíos Flex</strong>
+                    <p style="font-size: 12px; color: var(--wf-text-muted); margin: 6px 0;">Coordinación diaria de ventas de Mercado Libre en el día.</p>
+                    <span style="font-size: 11px; text-decoration: underline;">Ver detalles →</span>
+                </div>
+                <div class="wf-box-placeholder">
+                    <strong>Contrareembolso</strong>
+                    <p style="font-size: 12px; color: var(--wf-text-muted); margin: 6px 0;">Cobramos tu mercadería en mano y te transferimos el dinero.</p>
+                    <span style="font-size: 11px; text-decoration: underline;">Ver detalles →</span>
+                </div>
+                <div class="wf-box-placeholder">
+                    <strong>Depósito & Fulfillment</strong>
+                    <p style="font-size: 12px; color: var(--wf-text-muted); margin: 6px 0;">Guardamos tu stock y despachamos sin que te muevas.</p>
+                    <span style="font-size: 11px; text-decoration: underline;">Ver detalles →</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRACKING RÁPIDO Y PRUEBA SOCIAL -->
+        <div class="wf-grid-2">
+            <div class="wf-block">
+                <span class="wf-block-label">Sección 3A: Buscador de Tracking</span>
+                <p style="font-size: 13px; margin-bottom: 8px;">¿Ya tenés un envío en curso? Ingresá el código:</p>
+                <div style="display: flex; gap: 8px;">
+                    <input class="wf-input-mock" placeholder="Ej. DR-9482" style="margin-bottom: 0;">
+                    <button class="wf-btn" style="padding: 10px 14px;">Rastrear</button>
+                </div>
+            </div>
+            <div class="wf-block">
+                <span class="wf-block-label">Sección 3B: Métricas Reales</span>
+                <div style="display: flex; justify-content: space-around; text-align: center; padding-top: 10px;">
+                    <div><strong style="font-size: 20px;">+15.000</strong><p style="font-size: 11px; color: var(--wf-text-muted);">Envíos mensuales</p></div>
+                    <div><strong style="font-size: 20px;">100%</strong><p style="font-size: 11px; color: var(--wf-text-muted);">Motos propias</p></div>
+                    <div><strong style="font-size: 20px;">4.9 ★</strong><p style="font-size: 11px; color: var(--wf-text-muted);">Satisfacción</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================================================
+         DIRECCIÓN 2: ENFOQUE SEGMENTACIÓN POR PERFIL
+         Trade-off: Divide a la audiencia desde el primer scroll para que
+         cada visitante (emprendedor, empresa o particular) encuentre su propuesta.
+         ============================================================== -->
+    <section id="dir2" class="wf-proposal-view" aria-labelledby="title-dir2">
+        <div class="wf-tradeoff-banner">
+            <strong>Dirección 2: Segmentación por Perfil</strong> — Resuelve la ambigüedad separando tres caminos claros: Emprendedores online, Empresas con cuenta corriente y Particulares.
+        </div>
+
+        <div class="wf-mock-header">
+            <div class="wf-logo-mock">🛵 Envíos DosRuedas</div>
+            <div class="wf-nav-mock">
+                <span>¿Para quién es?</span>
+                <span>Planes Emprendedores</span>
+                <span>Cuenta Corriente</span>
+                <span>Preguntas</span>
+            </div>
+            <div class="wf-btn wf-btn-secondary" style="padding: 6px 12px; font-size: 13px;">Portal Clientes</div>
+        </div>
+
+        <!-- HERO EDITORIAL CON 3 TARJETAS DE PERFIL -->
+        <div class="wf-block" style="text-align: center; padding: 40px 20px;">
+            <span class="wf-block-label">Sección 1: Hero con Propuesta de Valor Dividida</span>
+            <h1 id="title-dir2" style="font-size: 32px; font-weight: 800; max-width: 700px; margin: 0 auto 12px;">
+                Logística urbana adaptada exactamente al volumen de tu negocio
+            </h1>
+            <p style="color: var(--wf-text-muted); max-width: 550px; margin: 0 auto 28px; font-size: 15px;">
+                Desde un paquete ocasional hasta operaciones diarias de e-commerce con depósito central en Friuli 1972, Mar del Plata.
+            </p>
+
+            <div class="wf-grid-3" style="text-align: left;">
+                <!-- PERFIL 1 -->
+                <div class="wf-box-placeholder" style="border: 2px solid var(--wf-border-strong); background-color: #fff; padding: 24px;">
+                    <div style="font-size: 12px; font-weight: 700; color: var(--wf-text-muted); text-transform: uppercase;">01. Ecommerce & Locales</div>
+                    <h3 style="font-size: 18px; margin: 8px 0;">Plan Emprendedores</h3>
+                    <p style="font-size: 13px; color: var(--wf-text-muted); margin-bottom: 16px;">
+                        Tarifas planas por zona, retiro programado en tu showroom y entregas el mismo día para Mercado Libre Flex y Tiendanube.
+                    </p>
+                    <ul style="font-size: 12px; margin-bottom: 18px; padding-left: 16px; color: var(--wf-text-muted);">
+                        <li>Rendición de dinero en 24hs</li>
+                        <li>Etiquetas térmicas y tracking</li>
+                    </ul>
+                    <a class="wf-btn" style="width: 100%;" href="#">Ver Plan Emprendedores</a>
+                </div>
+
+                <!-- PERFIL 2 -->
+                <div class="wf-box-placeholder" style="border: 2px solid #000; background-color: #fff; padding: 24px;">
+                    <div style="font-size: 12px; font-weight: 700; color: #000; text-transform: uppercase;">02. B2B & Distribuidoras</div>
+                    <h3 style="font-size: 18px; margin: 8px 0;">Cuenta Corriente</h3>
+                    <p style="font-size: 13px; color: var(--wf-text-muted); margin-bottom: 16px;">
+                        Factura A mensual, choferes fijos para trámites bancarios, depósito de mercadería y envíos interurbanos de mayor porte.
+                    </p>
+                    <ul style="font-size: 12px; margin-bottom: 18px; padding-left: 16px; color: var(--wf-text-muted);">
+                        <li>Atención de cuenta personalizada</li>
+                        <li>Prioridad operativa garantizada</li>
+                    </ul>
+                    <a class="wf-btn" style="width: 100%;" href="#">Abrir Cuenta Empresa</a>
+                </div>
+
+                <!-- PERFIL 3 -->
+                <div class="wf-box-placeholder" style="border: 2px solid var(--wf-border-strong); background-color: #fff; padding: 24px;">
+                    <div style="font-size: 12px; font-weight: 700; color: var(--wf-text-muted); text-transform: uppercase;">03. Envíos Puntuales</div>
+                    <h3 style="font-size: 18px; margin: 8px 0;">Cadetería Express</h3>
+                    <p style="font-size: 13px; color: var(--wf-text-muted); margin-bottom: 16px;">
+                        Envío de llaves, documentación urgente, repuestos o compras particulares entre barrios de Mar del Plata.
+                    </p>
+                    <ul style="font-size: 12px; margin-bottom: 18px; padding-left: 16px; color: var(--wf-text-muted);">
+                        <li>Moto en menos de 30 minutos</li>
+                        <li>Pago en efectivo o transferencia</li>
+                    </ul>
+                    <a class="wf-btn wf-btn-secondary" style="width: 100%;" href="#">Pedir Cadete Ahora</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MARDELIVERY & GASTRONOMÍA DESTACADO -->
+        <div class="wf-block">
+            <span class="wf-block-label">Sección 2: Módulo Especial MarDelivery (Gastronómico)</span>
+            <div class="wf-grid-2" style="align-items: center;">
+                <div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">¿Tenés rotisería, cafetería o restaurante?</h3>
+                    <p style="font-size: 14px; color: var(--wf-text-muted); margin-bottom: 12px;">
+                        Unificá tu flota con repartidores exclusivos capacitados en transporte de alimentos con mochila térmica y seguro al día.
+                    </p>
+                    <button class="wf-btn wf-btn-secondary">Conocer MarDelivery Gastronomía</button>
+                </div>
+                <div class="wf-placeholder-graphic">
+                    [Ilustración: Mochila térmica + Protocolo gastronómico]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================================================
+         DIRECCIÓN 3: MAPA DE COBERTURA Y TIEMPOS
+         Trade-off: Prioriza la certeza geográfica y la velocidad operativa.
+         Resuelve dudas inmediatas sobre "¿llegan a mi barrio y a qué hora?".
+         ============================================================== -->
+    <section id="dir3" class="wf-proposal-view" aria-labelledby="title-dir3">
+        <div class="wf-tradeoff-banner">
+            <strong>Dirección 3: Mapa de Cobertura & Tiempos</strong> — Pone la geografía de Mar del Plata al centro para despejar dudas de alcance, tiempos de corte y radios de entrega.
+        </div>
+
+        <div class="wf-mock-header">
+            <div class="wf-logo-mock">🛵 Envíos DosRuedas</div>
+            <div class="wf-nav-mock">
+                <span>Zonas de Cobertura</span>
+                <span>Tiempos de Entrega</span>
+                <span>Tarifario</span>
+                <span>Base Friuli</span>
+            </div>
+            <div class="wf-btn wf-btn-secondary" style="padding: 6px 12px; font-size: 13px;">Contactar</div>
+        </div>
+
+        <!-- HERO CON MAPA ESQUEMÁTICO AL CENTRO -->
+        <div class="wf-block">
+            <span class="wf-block-label">Sección 1: Centro de Operaciones & Radios de Entrega</span>
+            <div class="wf-grid-2" style="align-items: center;">
+                <div>
+                    <h1 id="title-dir3" style="font-size: 28px; font-weight: 800; margin-bottom: 10px;">
+                        Cobertura total en Mar del Plata. Desde Friuli al resto de la ciudad.
+                    </h1>
+                    <p style="font-size: 14px; color: var(--wf-text-muted); margin-bottom: 16px;">
+                        Organizamos las entregas por anillos urbanos y franjas de corte claras para que nunca tengas demoras con tus clientes.
+                    </p>
+                    
+                    <div style="margin-bottom: 16px;">
+                        <div style="padding: 10px; background-color: var(--wf-surface-alt); border-radius: 4px; margin-bottom: 8px;">
+                            <strong>Zona 1 (Centro / Puerto / Macrocentro):</strong> Entregas en 60 a 90 min.
+                        </div>
+                        <div style="padding: 10px; background-color: var(--wf-surface-alt); border-radius: 4px; margin-bottom: 8px;">
+                            <strong>Zona 2 (Norte / Constitución / Los Troncos):</strong> En el día (Corte 15:00 hs).
+                        </div>
+                        <div style="padding: 10px; background-color: var(--wf-surface-alt); border-radius: 4px;">
+                            <strong>Zona 3 (Playa Grande / Bosque / Batán):</strong> Recorridos programados.
+                        </div>
+                    </div>
+
+                    <button class="wf-btn">Descargar Mapa Tarifario PDF</button>
+                </div>
+
+                <div class="wf-placeholder-graphic" style="height: 280px;">
+                    <div style="font-weight: 700; margin-bottom: 8px;">[Mapa Interactivo de Radios Urbanos]</div>
+                    <div style="font-size: 12px; color: var(--wf-text-muted);">Base Operativa: Friuli 1972</div>
+                    <div style="font-size: 11px; color: var(--wf-text-faint); margin-top: 6px;">Visualización de zonas A, B, C y D con tiempos promedio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CÓMO FUNCIONA EL CIRCUITO DE 4 PASOS -->
+        <div class="wf-block">
+            <span class="wf-block-label">Sección 2: Flujo Operativo Simple</span>
+            <div class="wf-grid-4">
+                <div class="wf-box-placeholder">
+                    <span style="font-size: 20px; font-weight: 800;">1</span>
+                    <h4 style="margin: 6px 0;">Solicitud</h4>
+                    <p style="font-size: 12px; color: var(--wf-text-muted);">Cargas el pedido por WhatsApp o por nuestra app de clientes.</p>
+                </div>
+                <div class="wf-box-placeholder">
+                    <span style="font-size: 20px; font-weight: 800;">2</span>
+                    <h4 style="margin: 6px 0;">Retiro</h4>
+                    <p style="font-size: 12px; color: var(--wf-text-muted);">Un repartidor con identificación retira en tu local o domicilio.</p>
+                </div>
+                <div class="wf-box-placeholder">
+                    <span style="font-size: 20px; font-weight: 800;">3</span>
+                    <h4 style="margin: 6px 0;">Ruta & Tracking</h4>
+                    <p style="font-size: 12px; color: var(--wf-text-muted);">El destinatario recibe link de seguimiento en tiempo real.</p>
+                </div>
+                <div class="wf-box-placeholder">
+                    <span style="font-size: 20px; font-weight: 800;">4</span>
+                    <h4 style="margin: 6px 0;">Entrega & Rendición</h4>
+                    <p style="font-size: 12px; color: var(--wf-text-muted);">Firma digital o cobro en mano rendido en 24 horas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCRIPT LIVIANO DEL WIREFRAME SELECTOR -->
+    <script>
+        function switchDirection(dirId, button) {
+            // Ocultar todas las propuestas
+            document.querySelectorAll('.wf-proposal-view').forEach(view => {
+                view.classList.remove('active');
+            });
+
+            // Desmarcar todos los botones
+            document.querySelectorAll('.wf-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-pressed', 'false');
+            });
+
+            // Activar seleccionada
+            const targetView = document.getElementById(dirId);
+            if (targetView) {
+                targetView.classList.add('active');
+                button.classList.add('active');
+                button.setAttribute('aria-pressed', 'true');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipo Interactivo - Inicio | Envíos DosRuedas Mar del Plata</title>
+    <meta name="description" content="Prototipo de alta fidelidad interactivo para la nueva página de inicio de Envíos DosRuedas con cotizador en vivo y rastreo en tiempo real.">
+    
+    <style>
+        /* ============================================================
+           SISTEMA DE TOKENS DE DISEÑO (design-artifact)
+           Paleta intencional, soporte dark/light nativo y variables CSS
+           ============================================================ */
+        :root {
+            --color-brand-blue: #0950F6;
+            --color-brand-blue-hover: #0740c7;
+            --color-brand-yellow: #FFEC01;
+            --color-brand-yellow-hover: #ebd900;
+            --color-brand-ink: #071536;
+            
+            /* Temas claros por defecto */
+            --bg-page: #f8faff;
+            --bg-surface: #ffffff;
+            --bg-surface-elevated: #ffffff;
+            --bg-subtle: #edf3ff;
+            --border-subtle: #d6e2fb;
+            --border-medium: #b3ccfa;
+            --text-primary: #0a1738;
+            --text-secondary: #4a5c82;
+            --text-muted: #7487aa;
+            
+            --hero-bg: #0950F6;
+            --hero-text: #ffffff;
+            --hero-card-bg: rgba(255, 255, 255, 0.96);
+            --hero-card-text: #071536;
+            
+            --shadow-sm: 0 2px 8px rgba(9, 80, 246, 0.06);
+            --shadow-md: 0 8px 24px rgba(9, 80, 246, 0.10);
+            --shadow-lg: 0 16px 40px rgba(9, 80, 246, 0.14);
+            --shadow-yellow: 0 6px 20px rgba(255, 236, 1, 0.35);
+
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-full: 9999px;
+            --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --max-w: 1240px;
+        }
+
+        /* TEMA OSCURO EXPLÍCITO O POR PREFERENCIA DEL SISTEMA */
+        :root[data-theme="dark"],
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg-page: #050c1e;
+                --bg-surface: #0a1738;
+                --bg-surface-elevated: #11224f;
+                --bg-subtle: #0f1e42;
+                --border-subtle: #1c336b;
+                --border-medium: #2a478d;
+                --text-primary: #f2f6ff;
+                --text-secondary: #a3badf;
+                --text-muted: #6e84ac;
+
+                --hero-bg: #071536;
+                --hero-text: #ffffff;
+                --hero-card-bg: #0c1c44;
+                --hero-card-text: #ffffff;
+
+                --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+                --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+                --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        /* ENCABEZADOS Y TEXT-WRAP */
+        h1, h2, h3, h4 {
+            text-wrap: balance;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            font-weight: 800;
+        }
+
+        p {
+            text-wrap: pretty;
+        }
+
+        .tabular {
+            font-variant-numeric: tabular-nums;
+        }
+
+        a, button, input, select {
+            font-family: inherit;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--color-brand-yellow);
+            outline-offset: 3px;
+        }
+
+        /* CONTENEDOR GENERAL */
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================================
+           HEADER DE NAVEGACIÓN
+           ============================================================ */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(9, 80, 246, 0.95);
+            backdrop-filter: blur(12px);
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 14px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .logo-badge {
+            background-color: var(--color-brand-yellow);
+            color: var(--color-brand-blue);
+            font-weight: 900;
+            font-size: 14px;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            letter-spacing: 0.04em;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-brand-yellow);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-whatsapp-header {
+            background-color: var(--color-brand-yellow);
+            color: var(--color-brand-ink);
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: var(--shadow-yellow);
+            transition: transform 0.15s ease, background-color 0.15s ease;
+        }
+
+        .btn-whatsapp-header:hover {
+            background-color: var(--color-brand-yellow-hover);
+            transform: translateY(-1px);
+        }
+
+        /* ============================================================
+           HERO SECTION CON COTIZADOR EN VIVO
+           ============================================================ */
+        .hero-section {
+            background: linear-gradient(145deg, #0740c7 0%, #0950F6 60%, #1562ff 100%);
+            color: #ffffff;
+            padding: 60px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(255, 236, 1, 0.18);
+            border: 1px solid rgba(255, 236, 1, 0.4);
+            color: var(--color-brand-yellow);
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(34px, 4.2vw, 54px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .hero-title span.highlight {
+            color: var(--color-brand-yellow);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-desc {
+            font-size: 17px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            max-width: 520px;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 6px 12px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* TARJETA INTERACTIVA DE COTIZACIÓN EN VIVO */
+        .calculator-card {
+            background-color: var(--hero-card-bg);
+            color: var(--hero-card-text);
+            padding: 28px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 50px rgba(0, 15, 60, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .calc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 14px;
+        }
+
+        .calc-title {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .calc-badge {
+            background-color: var(--color-brand-yellow);
+            color: #071536;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+        }
+
+        .form-row {
+            margin-bottom: 14px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .form-select, .form-input {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-medium);
+            background-color: var(--bg-surface);
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: border-color 0.15s ease;
+        }
+
+        .form-select:focus, .form-input:focus {
+            border-color: var(--color-brand-blue);
+        }
+
+        .speed-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .speed-btn {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-subtle);
+            padding: 8px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.15s ease;
+        }
+
+        .speed-btn.active {
+            background-color: var(--color-brand-blue);
+            color: #ffffff;
+            border-color: var(--color-brand-blue);
+        }
+
+        /* RESULTADO DE COTIZACIÓN */
+        .quote-result-box {
+            background-color: var(--bg-subtle);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin: 20px 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .quote-price-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .quote-price-val {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--color-brand-blue);
+        }
+
+        .quote-time-estimate {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0b8043;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-order-whatsapp {
+            width: 100%;
+            background-color: var(--color-brand-yellow);
+            color: var(--color-brand-ink);
+            border: none;
+            padding: 14px;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: var(--shadow-yellow);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-order-whatsapp:hover {
+            background-color: var(--color-brand-yellow-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           SECCIÓN DE RASTREO / TRACKING INTERACTIVO
+           ============================================================ */
+        .tracking-section {
+            padding: 60px 0;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 36px;
+        }
+
+        .section-eyebrow {
+            color: var(--color-brand-blue);
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .tracking-input-box {
+            max-width: 580px;
+            margin: 0 auto 24px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-track {
+            background-color: var(--color-brand-blue);
+            color: #ffffff;
+            border: none;
+            padding: 0 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-track:hover {
+            background-color: var(--color-brand-blue-hover);
+        }
+
+        /* ESTADOS DE TRACKING */
+        .track-state-container {
+            max-width: 680px;
+            margin: 0 auto;
+            border: 1px solid var(--border-medium);
+            background: var(--bg-surface-elevated);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-step {
+            display: flex;
+            gap: 16px;
+            padding-bottom: 20px;
+            position: relative;
+        }
+
+        .timeline-step:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-step:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 28px;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--border-medium);
+        }
+
+        .timeline-step.completed:not(:last-child)::before {
+            background-color: var(--color-brand-blue);
+        }
+
+        .timeline-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--border-subtle);
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            z-index: 1;
+        }
+
+        .timeline-step.completed .timeline-icon {
+            background-color: var(--color-brand-blue);
+            color: #ffffff;
+        }
+
+        .timeline-step.current .timeline-icon {
+            background-color: var(--color-brand-yellow);
+            color: var(--color-brand-ink);
+            box-shadow: 0 0 0 4px rgba(255, 236, 1, 0.3);
+        }
+
+        .timeline-content h4 {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .timeline-time {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* ============================================================
+           SECCIÓN DE SERVICIOS ESPECIALIZADOS
+           ============================================================ */
+        .services-section {
+            padding: 80px 0;
+            background-color: var(--bg-page);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-medium);
+        }
+
+        .service-badge {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .badge-blue { background: var(--bg-subtle); color: var(--color-brand-blue); }
+        .badge-yellow { background: rgba(255, 236, 1, 0.25); color: #877700; }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            color: var(--color-brand-blue);
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .service-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ============================================================
+           FOOTER MODERNO Y LIVIANO
+           ============================================================ */
+        .site-footer {
+            background-color: #071536;
+            color: #ffffff;
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--color-brand-yellow);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.15s ease;
+        }
+
+        .footer-col a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .main-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA PRINCIPAL CON SELECTOR DE TEMA -->
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a href="#" class="logo-wrap">
+                <span class="logo-badge">EDR</span>
+                <span class="logo-text">Envíos DosRuedas</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegación principal">
+                <a href="#cotizador" class="nav-link">Cotizador</a>
+                <a href="#tracking" class="nav-link">Rastrear Envío</a>
+                <a href="#servicios" class="nav-link">Servicios</a>
+                <a href="./servicios-plan-emprendedores.html" class="nav-link">Emprendedores</a>
+                <a href="./contacto.html" class="nav-link">Contacto</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="theme-toggle-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Cambiar tema de color">
+                    <span id="theme-icon">🌙</span> <span id="theme-text">Oscuro</span>
+                </button>
+                <a href="https://wa.me/5492235000000?text=Hola,%20quiero%20coordinar%20un%20envío" class="btn-whatsapp-header" target="_blank" rel="noopener">
+                    WhatsApp 💬
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ============================================================
+             HERO CON COTIZADOR EN VIVO
+             ============================================================ -->
+        <section class="hero-section" id="cotizador" aria-labelledby="hero-heading">
+            <div class="container">
+                <div class="hero-grid">
+                    
+                    <!-- Copy principal -->
+                    <div>
+                        <div class="hero-tag">
+                            <span>⚡ Flota 100% propia en Mar del Plata</span>
+                        </div>
+                        <h1 id="hero-heading" class="hero-title">
+                            Tus paquetes en destino <span class="highlight">el mismo día</span> y sin vueltas.
+                        </h1>
+                        <p class="hero-desc">
+                            Mensajería urbana, distribución de e-commerce y cadetería comercial con base en Friuli 1972. Llegamos a toda la ciudad con repartidores contratados directamente.
+                        </p>
+                        
+                        <div class="hero-pills">
+                            <span class="hero-pill">✓ Entrega express en 2hs</span>
+                            <span class="hero-pill">✓ Cobro contrareembolso</span>
+                            <span class="hero-pill">✓ Mercado Envíos Flex</span>
+                            <span class="hero-pill">✓ Depósito y guardería de stock</span>
+                        </div>
+                    </div>
+
+                    <!-- Calculadora interactiva -->
+                    <div class="calculator-card" role="region" aria-label="Calculadora de envíos">
+                        <div class="calc-header">
+                            <div>
+                                <div class="calc-title">Cotizá tu envío al instante</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">Precios transparentes para Mar del Plata</div>
+                            </div>
+                            <span class="calc-badge">En vivo</span>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="zone-origin" class="form-label">Zona de Retiro</label>
+                            <select id="zone-origin" class="form-select" onchange="calculateQuote()">
+                                <option value="centro">Centro / Macrocentro / La Perla</option>
+                                <option value="guemes">Güemes / Playa Grande / Varese</option>
+                                <option value="puerto">Puerto / Punta Mogotes</option>
+                                <option value="norte">Constitución / Aeroparque</option>
+                                <option value="oeste">Monolito / Los Andes / Libertad</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="zone-destination" class="form-label">Zona de Entrega</label>
+                            <select id="zone-destination" class="form-select" onchange="calculateQuote()">
+                                <option value="guemes">Güemes / Playa Grande / Varese</option>
+                                <option value="centro">Centro / Macrocentro / La Perla</option>
+                                <option value="puerto">Puerto / Punta Mogotes</option>
+                                <option value="norte">Constitución / Aeroparque</option>
+                                <option value="oeste">Monolito / Los Andes / Libertad</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="package-size" class="form-label">Tamaño del Paquete</label>
+                            <select id="package-size" class="form-select" onchange="calculateQuote()">
+                                <option value="sobre">Sobre / Documento chico (hasta 500g)</option>
+                                <option value="estandar" selected>Caja chica / Bolsa ecommerce (hasta 3kg)</option>
+                                <option value="mediano">Bulto mediano en mochila (hasta 8kg)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <label class="form-label">Velocidad de Envío</label>
+                            <div class="speed-options" role="radiogroup">
+                                <button type="button" class="speed-btn active" id="speed-standard" onclick="setSpeed('standard')" aria-checked="true">
+                                    En el día (Flex)
+                                </button>
+                                <button type="button" class="speed-btn" id="speed-express" onclick="setSpeed('express')" aria-checked="false">
+                                    Express (En 2hs) ⚡
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Desglose de cotización -->
+                        <div class="quote-result-box">
+                            <div>
+                                <span class="quote-price-label">Tarifa estimada:</span>
+                                <div class="quote-price-val tabular" id="quote-display">$2.800</div>
+                            </div>
+                            <div class="quote-time-estimate" id="time-display">
+                                <span>⏱ Entrega hoy antes de las 18:00</span>
+                            </div>
+                        </div>
+
+                        <a id="btn-whatsapp-quote" class="btn-order-whatsapp" href="#" target="_blank" rel="noopener">
+                            <span>Solicitar este envío por WhatsApp</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECCIÓN DE TRACKING EN TIEMPO REAL (INTERACTIVA)
+             ============================================================ -->
+        <section class="tracking-section" id="tracking" aria-labelledby="track-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-eyebrow">Rastreo en Tiempo Real</div>
+                    <h2 id="track-heading" class="section-title">¿Dónde está tu paquete?</h2>
+                    <p class="section-subtitle">Ingresá tu código de seguimiento para ver el estado del cadete y la hora de entrega estimada.</p>
+                </div>
+
+                <div class="tracking-input-box">
+                    <input type="text" id="track-code-input" class="form-input" placeholder="Ej. DR-84920 (Probá con este código o 'DR-ERROR')" aria-label="Código de seguimiento">
+                    <button class="btn-track" onclick="simulateTracking()">Rastrear</button>
+                </div>
+
+                <div id="track-result-area" class="track-state-container" aria-live="polite">
+                    <!-- Estado Inicial / Demo -->
+                    <div id="track-state-success">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 12px;">
+                            <div>
+                                <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">ENVÍO ACTIVO</div>
+                                <strong style="font-size: 18px; color: var(--color-brand-blue);">#DR-84920</strong>
+                            </div>
+                            <span style="background-color: rgba(11, 128, 67, 0.15); color: #0b8043; font-weight: 800; font-size: 12px; padding: 4px 10px; border-radius: var(--radius-full);">
+                                ● En camino
+                            </span>
+                        </div>
+
+                        <div class="timeline-step completed">
+                            <div class="timeline-icon">✓</div>
+                            <div class="timeline-content">
+                                <h4>Retirado en remitente</h4>
+                                <p>Paquete retirado en Friuli 1972 por el cadete Lucas M.</p>
+                                <span class="timeline-time">Hoy, 10:15 hs</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-step current">
+                            <div class="timeline-icon">🛵</div>
+                            <div class="timeline-content">
+                                <h4>En tránsito hacia el domicilio</h4>
+                                <p>El repartidor está a 8 cuadras de tu ubicación.</p>
+                                <span class="timeline-time">Hoy, 11:40 hs</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-step">
+                            <div class="timeline-icon">3</div>
+                            <div class="timeline-content">
+                                <h4>Entrega en destino</h4>
+                                <p>Estimado entre las 12:00 hs y las 12:30 hs.</p>
+                                <span class="timeline-time">Pendiente</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Estado Error (Oculto por defecto) -->
+                    <div id="track-state-error" style="display: none; text-align: center; padding: 20px 0;">
+                        <div style="font-size: 36px; margin-bottom: 10px;">🔍</div>
+                        <h3 style="font-size: 18px; color: #d93025; margin-bottom: 6px;">Código de envío no encontrado</h3>
+                        <p style="font-size: 14px; color: var(--text-secondary); max-width: 440px; margin: 0 auto 16px;">
+                            Verificá que el código comience con "DR-" o consultanos por WhatsApp indicando el nombre del remitente y destinatario.
+                        </p>
+                        <button class="btn-track" onclick="resetTrackingDemo()" style="padding: 8px 16px; font-size: 13px;">Probar código de ejemplo</button>
+                    </div>
+
+                    <!-- Estado Cargando (Oculto por defecto) -->
+                    <div id="track-state-loading" style="display: none; text-align: center; padding: 30px 0;">
+                        <div style="font-size: 24px; animation: spin 1s infinite linear;">⚙️</div>
+                        <p style="font-size: 14px; color: var(--text-secondary); margin-top: 10px;">Buscando estado en la red de Mar del Plata...</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SECCIÓN DE SERVICIOS
+             ============================================================ -->
+        <section class="services-section" id="servicios" aria-labelledby="services-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-eyebrow">Soluciones Logísticas</div>
+                    <h2 id="services-heading" class="section-title">Servicios diseñados para tu ritmo</h2>
+                    <p class="section-subtitle">Tanto si vendes por internet como si necesitas cadetería corporativa para tu oficina.</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Servicio 1 -->
+                    <article class="service-card">
+                        <div>
+                            <span class="service-badge badge-yellow">Urgente</span>
+                            <h3>Envíos Express</h3>
+                            <p>Servicio punto a punto prioritario en moto. Retiro en 20 minutos y entrega en menos de 2 horas en cualquier punto de Mar del Plata.</p>
+                        </div>
+                        <a href="./servicios-envios-express.html" class="service-link">Conocer Express →</a>
+                    </article>
+
+                    <!-- Servicio 2 -->
+                    <article class="service-card">
+                        <div>
+                            <span class="service-badge badge-blue">Ecommerce</span>
+                            <h3>Mercado Envíos Flex</h3>
+                            <p>Entregá tus ventas de Mercado Libre y Tiendanube el mismo día. Retiro en tu depósito y rendición de métricas con reputación verde.</p>
+                        </div>
+                        <a href="./servicios-enviosflex.html" class="service-link">Conocer Envíos Flex →</a>
+                    </article>
+
+                    <!-- Servicio 3 -->
+                    <article class="service-card">
+                        <div>
+                            <span class="service-badge badge-blue">Cobranza</span>
+                            <h3>Contrareembolso</h3>
+                            <p>Tus clientes pagan al recibir en efectivo o transferencia. Cobramos el pedido y te transferimos el dinero a tu cuenta en 24 horas.</p>
+                        </div>
+                        <a href="./servicios-envios-contrareembolso.html" class="service-link">Conocer Contrareembolso →</a>
+                    </article>
+
+                    <!-- Servicio 4 -->
+                    <article class="service-card">
+                        <div>
+                            <span class="service-badge badge-blue">Empresas</span>
+                            <h3>Depósito & Fulfillment</h3>
+                            <p>Almacenamos tus productos en nuestra base de Friuli 1972, armamos los paquetes y los despachamos sin que tengas que mover un dedo.</p>
+                        </div>
+                        <a href="./servicios-deposito-fulfillment.html" class="service-link">Conocer Fulfillment →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 10px;">🛵 Envíos DosRuedas</div>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 14px; max-width: 360px; margin-bottom: 16px;">
+                        Base operativa central en Friuli 1972, Mar del Plata, Provincia de Buenos Aires. Logística de última milla con personal propio.
+                    </p>
+                    <div style="color: var(--color-brand-yellow); font-size: 13px; font-weight: 700;">
+                        Lunes a Viernes de 8:00 a 20:00 hs | Sábados de 9:00 a 14:00 hs
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="./servicios-envios-express.html">Envíos Express</a></li>
+                        <li><a href="./servicios-enviosflex.html">Mercado Envíos Flex</a></li>
+                        <li><a href="./servicios-envios-contrareembolso.html">Contrareembolso</a></li>
+                        <li><a href="./servicios-deposito-fulfillment.html">Depósito y Stock</a></li>
+                        <li><a href="./servicios-plan-emprendedores.html">Plan Emprendedores</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="https://wa.me/5492235000000" target="_blank" rel="noopener">WhatsApp Directo</a></li>
+                        <li><a href="./nosotros-sobre-nosotros.html">Sobre Nosotros</a></li>
+                        <li><a href="./nosotros-preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
+                        <li><a href="./contacto.html">Ubicación Friuli 1972</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 Envíos DosRuedas. Todos los derechos reservados. Mar del Plata.</span>
+                <span>Prototipo interactivo generado con suite Effective HTML.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         LÓGICA JAVASCRIPT DEL PROTOTIPO INTERACTIVO
+         ============================================================ -->
+    <script>
+        // ESTADO DE LA CALCULADORA
+        let currentSpeed = 'standard';
+
+        const zoneDistances = {
+            'centro': 1,
+            'guemes': 1.1,
+            'puerto': 1.4,
+            'norte': 1.3,
+            'oeste': 1.2
+        };
+
+        const packageMultipliers = {
+            'sobre': 0.85,
+            'estandar': 1.0,
+            'mediano': 1.35
+        };
+
+        function setSpeed(speed) {
+            currentSpeed = speed;
+            document.getElementById('speed-standard').classList.toggle('active', speed === 'standard');
+            document.getElementById('speed-express').classList.toggle('active', speed === 'express');
+            document.getElementById('speed-standard').setAttribute('aria-checked', speed === 'standard');
+            document.getElementById('speed-express').setAttribute('aria-checked', speed === 'express');
+            calculateQuote();
+        }
+
+        function calculateQuote() {
+            const origin = document.getElementById('zone-origin').value;
+            const destination = document.getElementById('zone-destination').value;
+            const size = document.getElementById('package-size').value;
+
+            const basePrice = 2500;
+            const distFactor = (zoneDistances[origin] + zoneDistances[destination]) / 2;
+            const sizeFactor = packageMultipliers[size];
+            const speedFactor = currentSpeed === 'express' ? 1.45 : 1.0;
+
+            const finalPrice = Math.round((basePrice * distFactor * sizeFactor * speedFactor) / 50) * 50;
+
+            // Actualizar vista
+            document.getElementById('quote-display').innerText = '$' + finalPrice.toLocaleString('es-AR');
+
+            const timeEl = document.getElementById('time-display');
+            if (currentSpeed === 'express') {
+                timeEl.innerHTML = '<span style="color:#d93025;">⚡ Entrega Express en menos de 120 min</span>';
+            } else {
+                timeEl.innerHTML = '<span style="color:#0b8043;">⏱ Entrega hoy antes de las 18:00</span>';
+            }
+
+            // Preparar mensaje para WhatsApp
+            const originText = document.getElementById('zone-origin').options[document.getElementById('zone-origin').selectedIndex].text;
+            const destText = document.getElementById('zone-destination').options[document.getElementById('zone-destination').selectedIndex].text;
+            const speedText = currentSpeed === 'express' ? 'Express (2 horas)' : 'En el día';
+            
+            const waMsg = encodeURIComponent(`Hola Envíos DosRuedas! Quiero solicitar un envío:\n• Origen: ${originText}\n• Destino: ${destText}\n• Modalidad: ${speedText}\n• Cotización estimada: $${finalPrice}\n¿Tienen disponibilidad?`);
+            document.getElementById('btn-whatsapp-quote').href = `https://wa.me/5492235000000?text=${waMsg}`;
+        }
+
+        // SIMULADOR DE TRACKING CON DIFERENTES ESTADOS
+        function simulateTracking() {
+            const codeInput = document.getElementById('track-code-input').value.trim().toUpperCase();
+            const successArea = document.getElementById('track-state-success');
+            const errorArea = document.getElementById('track-state-error');
+            const loadingArea = document.getElementById('track-state-loading');
+
+            // Mostrar estado de carga simulado
+            successArea.style.display = 'none';
+            errorArea.style.display = 'none';
+            loadingArea.style.display = 'block';
+
+            setTimeout(() => {
+                loadingArea.style.display = 'none';
+                if (!codeInput || codeInput === 'DR-ERROR' || codeInput.includes('ERR')) {
+                    errorArea.style.display = 'block';
+                } else {
+                    successArea.style.display = 'block';
+                }
+            }, 600);
+        }
+
+        function resetTrackingDemo() {
+            document.getElementById('track-code-input').value = 'DR-84920';
+            simulateTracking();
+        }
+
+        // TOGGLE DE TEMA CLARO / OSCURO
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme') || 'light';
+            const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', nextTheme);
+            document.getElementById('theme-icon').innerText = nextTheme === 'dark' ? '☀️' : '🌙';
+            document.getElementById('theme-text').innerText = nextTheme === 'dark' ? 'Claro' : 'Oscuro';
+        }
+
+        // Iniciar cálculo
+        calculateQuote();
+    </script>
+</body>
+</html>

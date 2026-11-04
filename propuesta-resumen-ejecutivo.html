@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Pager: Comparativa de Rediseño | inicio.html</title>
+    <style>
+        :root {
+            --brand-blue: #0950F6;
+            --brand-yellow: #FFEC01;
+            --ink: #0A1738;
+            --bg: #F4F7FC;
+            --surface: #FFFFFF;
+            --border: #DCE5F5;
+            --text-muted: #536485;
+            --radius: 12px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--ink);
+            line-height: 1.4;
+            padding: 30px 16px;
+        }
+
+        .onepager-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(9, 80, 246, 0.08);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .onepager-header {
+            background-color: var(--brand-blue);
+            color: #FFFFFF;
+            padding: 32px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .tag-pill {
+            background-color: var(--brand-yellow);
+            color: var(--brand-blue);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 10px;
+            border-radius: 999px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .onepager-title {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+
+        .read-time {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* GRID COMPARATIVO */
+        .content-body {
+            padding: 36px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .comp-card {
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            position: relative;
+        }
+
+        .comp-card.highlight {
+            border-color: var(--brand-blue);
+            background-color: #F8FAFF;
+        }
+
+        .card-badge {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .badge-red { background-color: #fee2e2; color: #b91c1c; }
+        .badge-green { background-color: #dcfce7; color: #15803d; }
+
+        .comp-title {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .feature-list {
+            list-style: none;
+            font-size: 14px;
+            space-y: 8px;
+        }
+
+        .feature-list li {
+            padding: 6px 0;
+            border-bottom: 1px dashed var(--border);
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* VISUALES DE IMPACTO (BIG PICS LITTLE WORDS) */
+        .metrics-banner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            background-color: var(--ink);
+            color: #FFFFFF;
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .metric-big {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--brand-yellow);
+            line-height: 1;
+            margin-bottom: 6px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .metric-sub {
+            font-size: 12px;
+            color: #A3BADF;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* ACCIONES */
+        .links-bar {
+            background-color: #EFF4FC;
+            padding: 20px 24px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn-link {
+            background-color: var(--brand-blue);
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-link:hover {
+            background-color: #0740c7;
+        }
+
+        .btn-secondary {
+            background-color: #FFFFFF;
+            color: var(--ink);
+            border: 1px solid var(--border);
+        }
+
+        @media (max-width: 700px) {
+            .comparison-grid, .metrics-banner {
+                grid-template-columns: 1fr;
+            }
+            .onepager-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="onepager-wrap">
+        <!-- HEADER EJECUTIVO -->
+        <header class="onepager-header">
+            <div>
+                <span class="tag-pill">Decisión Rápida de Producto</span>
+                <h1 class="onepager-title">Rediseño de Portada: inicio.html</h1>
+            </div>
+            <div class="read-time">⏱ Lectura: 1 min</div>
+        </header>
+
+        <div class="content-body">
+            
+            <!-- TARJETAS COMPARATIVAS (ACTUAL VS PROPUESTO) -->
+            <div class="comparison-grid">
+                <!-- ACTUAL -->
+                <div class="comp-card">
+                    <span class="card-badge badge-red">Versión Actual (actuales/inicio.html)</span>
+                    <h2 class="comp-title">Estructura Monolítica</h2>
+                    <ul class="feature-list">
+                        <li>⚠️ <strong>3.342 líneas de código:</strong> Código muy denso con Tailwind en línea y estilos duplicados.</li>
+                        <li>⚠️ <strong>Sin cotizador en vivo:</strong> El botón "Cotizá tu envío" obliga a salir de la portada hacia otra página.</li>
+                        <li>⚠️ <strong>Fricción inicial:</strong> El usuario tiene que scrollear mucho para entender precios y cobertura.</li>
+                        <li>⚠️ <strong>Dependencia CDN:</strong> Requiere internet para cargar librerías y fuentes externas.</li>
+                    </ul>
+                </div>
+
+                <!-- PROPUESTA NUEVA -->
+                <div class="comp-card highlight">
+                    <span class="card-badge badge-green">Nueva Propuesta (propuesta-prototipo-inicio.html)</span>
+                    <h2 class="comp-title">Conversión en Primera Pantalla</h2>
+                    <ul class="feature-list">
+                        <li>✅ <strong>Cotizador en vivo en el Hero:</strong> Calcula origen/destino y arma el pedido de WhatsApp en 2 clics.</li>
+                        <li>✅ <strong>Rastreo interactivo de paquetes:</strong> Simulación de estados (carga, éxito con ruta y control de error).</li>
+                        <li>✅ <strong>Ligero y 100% autocontenido:</strong> Abre con doble clic en cualquier máquina sin servidores ni dependencias.</li>
+                        <li>✅ <strong>Tokens modo claro/oscuro:</strong> Respeta el tema del sistema y permite alternar manualmente.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CIFRAS CLAVE (BIG PICS LITTLE WORDS) -->
+            <div class="metrics-banner">
+                <div>
+                    <div class="metric-big">-70%</div>
+                    <div class="metric-sub">Fricción para cotizar</div>
+                </div>
+                <div>
+                    <div class="metric-big">2 Clics</div>
+                    <div class="metric-sub">Para enviar solicitud a WhatsApp</div>
+                </div>
+                <div>
+                    <div class="metric-big">100%</div>
+                    <div class="metric-sub">Autocontenido (Offline ready)</div>
+                </div>
+            </div>
+
+            <!-- ACCESO DIRECTO A LOS ARTEFACTOS GENERADOS -->
+            <div class="links-bar">
+                <span style="font-size: 14px; font-weight: 700;">Explora las propuestas generadas en tu navegador:</span>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a class="btn-link btn-secondary" href="./propuesta-wireframe-inicio.html" target="_blank">
+                        📐 Ver Wireframes (3 layouts)
+                    </a>
+                    <a class="btn-link" href="./propuesta-prototipo-inicio.html" target="_blank">
+                        ✨ Probar Prototipo Interactivo
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
