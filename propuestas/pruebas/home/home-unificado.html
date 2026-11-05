@@ -1,65 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es-AR" class="scroll-smooth">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0950F6" />
-  <meta name="description"
-    content="Mensajería urbana y logística e-commerce en Mar del Plata. Envíos en el día con flota propia, cero tercerización y base física en Friuli 1972." />
-  <title>Envíos DosRuedas — Logística y Mensajería Urbana en Mar del Plata</title>
+  <meta name="description" content="Envíos DosRuedas: Mensajería urbana y logística e-commerce en Mar del Plata. Envíos en el día, Mercado Envíos Flex, cadetería corporativa y base operativa física en Friuli 1972." />
+  <title>Envíos DosRuedas — Mensajería y Logística E-Commerce en Mar del Plata</title>
 
-  <!-- Google Fonts Oficiales (1 sola llamada unificada) -->
+  <!-- Google Fonts Oficiales (1 sola llamada unificada y optimizada) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Anton&family=Anton+SC&family=Bebas+Neue&family=Geist+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Anton+SC&family=Bebas+Neue&family=Geist+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     /* ========================================================================
-     * TOKENS OFICIALES Y VARIABLES GLOBALES
+     * 1. TOKENS DE DISEÑO Y VARIABLES GLOBALES
      * ======================================================================== */
     :root {
       color-scheme: light;
-      --color-brand-blue-50: #e6eefe;
-      --color-brand-blue-100: #bacefd;
-      --color-brand-blue-200: #8eaffb;
-      --color-brand-blue-300: #628ff9;
-      --color-brand-blue-400: #3570f8;
-      --color-brand-blue-500: #0950f6;
-      --color-brand-blue-600: #073bc2;
-      --color-brand-blue-900: #062f96;
 
-      --color-brand-yellow-50: #fffde6;
-      --color-brand-yellow-100: #fffab8;
-      --color-brand-yellow-200: #fff78a;
-      --color-brand-yellow-300: #fff45c;
-      --color-brand-yellow-400: #fff12e;
-      --color-brand-yellow-500: #ffec01;
-      --color-brand-yellow-600: #e6d400;
+      /* Escala de 6 Azules Oficiales */
+      --color-brand-blue-50: #E6EEFE;
+      --color-brand-blue-100: #BACEFD;
+      --color-brand-blue-200: #8EAFFB;
+      --color-brand-blue-300: #628FF9;
+      --color-brand-blue-400: #3570F8;
+      --color-brand-blue-500: #0950F6;
+      --color-brand-blue-600: #073BC2;
 
-      --color-white: #ffffff;
-      --color-ink: #071536;
-      --color-surface-gray: #f8fafc;
-      --color-border-subtle: rgba(9, 80, 246, 0.12);
+      /* Amarillos de Alta Visibilidad */
+      --color-brand-yellow-50: #FFFDE6;
+      --color-brand-yellow-100: #FFFAB8;
+      --color-brand-yellow-200: #FFF78A;
+      --color-brand-yellow-300: #FFF45C;
+      --color-brand-yellow-400: #FFF12E;
+      --color-brand-yellow-500: #FFEC01;
+      --color-brand-yellow-600: #E6D400;
+
+      --color-white: #FFFFFF;
+
+      /* Alias rápidos */
+      --blue: var(--color-brand-blue-500);
+      --blue-deep: var(--color-brand-blue-600);
+      --blue-surface: var(--color-brand-blue-50);
+      --yellow: var(--color-brand-yellow-500);
+      --yellow-contrast: #0950F6;
+      --white: #FFFFFF;
 
       /* Tipografías */
       --font-display: "Anton SC", "Anton", Impact, sans-serif;
       --font-subhead: "Bebas Neue", sans-serif;
+      --font-subheading: "Bebas Neue", sans-serif;
       --font-body: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-sans: "Outfit", sans-serif;
       --font-mono: "Geist Mono", monospace;
 
-      /* Sombras y elevaciones */
-      --shadow-sm: 0 2px 4px rgba(9, 80, 246, 0.06);
-      --shadow-md: 0 8px 24px rgba(9, 80, 246, 0.12);
-      --shadow-float: 0 25px 50px -12px rgba(9, 80, 246, 0.2);
-      --shadow-accent-sm: 0 2px 6px rgba(255, 236, 1, 0.2);
-      --shadow-glow-yellow: 0 0 25px rgba(255, 241, 46, 0.45);
-      --shadow-cta-glow: 0 0 28px rgba(255, 236, 1, 0.45), 0 8px 24px rgba(9, 80, 246, 0.2);
-
+      /* Microinteracciones y Sombras */
       --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-      --duration-ui: 180ms;
+      --ease-out-ui: cubic-bezier(0.23, 1, 0.32, 1);
+      --duration-feedback: 160ms;
+      --shadow-sm: 0 2px 4px rgba(9, 80, 246, 0.06), 0 1px 2px rgba(9, 80, 246, 0.03);
+      --shadow-md: 0 8px 24px rgba(9, 80, 246, 0.12);
+      --shadow-float: 0 25px 50px -12px rgba(9, 80, 246, 0.15);
+      --shadow-elevated: 0 16px 40px rgba(9, 80, 246, 0.18);
+      --shadow-antigravity-deep: 0 24px 64px rgba(9, 80, 246, 0.22);
+      --shadow-accent-sm: 0 2px 4px rgba(255, 236, 1, 0.25);
+      --shadow-cta-glow: 0 0 28px rgba(255, 236, 1, 0.45), 0 8px 24px rgba(9, 80, 246, 0.18);
+
+      /* Dimensiones */
+      --pad: clamp(16px, 4vw, 56px);
+      --header-h: 82px;
+
+      /* Paleta Especial MarDelivery (Gastronomía Nocturna) */
+      --color-md-bg: #031811;
+      --color-md-bg-subtle: #05241B;
+      --color-md-card-bg: rgba(6, 34, 25, 0.88);
+      --color-md-card-inner: #072B20;
+      --color-md-banner-bg: #0A3326;
+      --color-md-green: #2ECC85;
+      --color-md-green-hover: #26b976;
+      --color-md-green-glow: rgba(46, 204, 133, 0.35);
+      --color-md-amber: #F5B938;
+      --color-md-white: #FAFCFB;
+      --color-md-border: rgba(46, 204, 133, 0.22);
     }
 
     *, *::before, *::after {
@@ -69,17 +92,16 @@
     }
 
     html {
-      min-width: 320px;
       scroll-behavior: smooth;
     }
 
     body {
-      background-color: var(--color-white);
-      color: var(--color-ink);
       font-family: var(--font-body);
+      background-color: var(--color-white);
+      color: var(--color-brand-blue-500);
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      line-height: 1.5;
     }
 
     a {
@@ -92,1607 +114,3717 @@
       background: none;
       border: none;
       cursor: pointer;
+      color: inherit;
     }
 
-    ::selection {
-      background: var(--color-brand-yellow-500);
-      color: var(--color-brand-blue-500);
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
 
-    .sr-only {
+    /* Accesibilidad: foco visible */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
       position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+      top: -100px;
+      left: 1rem;
+      z-index: 9999;
+      background: var(--yellow);
+      color: var(--blue);
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      border-radius: 8px;
+      transition: top 0.2s ease;
     }
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* Utilidades tipográficas universales */
+    .font-display { font-family: var(--font-display); text-transform: uppercase; letter-spacing: -0.025em; }
+    .font-subheading { font-family: var(--font-subheading); text-transform: uppercase; letter-spacing: 0.05em; }
+    .font-mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+    .font-sans { font-family: var(--font-sans); }
 
     /* ========================================================================
-     * HEADER OPTIMIZADO (STICKY + BLUR + DROPDOWNS + DRAWER)
+     * 2. HEADER MODULAR (NAVEGADOR)
      * ======================================================================== */
-    header#optimized-header {
-      position: fixed;
+    .site-header {
+      position: sticky;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(9, 80, 246, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
-    header#optimized-header.scrolled {
-      background: rgba(7, 59, 194, 0.96);
-      box-shadow: 0 10px 30px rgba(7, 21, 54, 0.25);
-    }
-
-    .nav-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0.75rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
+      gap: 20px;
+      min-height: var(--header-h);
+      padding: 12px var(--pad);
+      background: rgba(9, 80, 246, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+      transition: background 0.28s ease, min-height 0.28s ease, box-shadow 0.28s ease;
     }
 
-    .brand-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .brand-logo-img {
-      height: 40px;
-      width: auto;
-      display: block;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-    }
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-    .brand-title {
-      font-family: var(--font-display);
-      font-size: 1.45rem;
-      line-height: 1;
-      letter-spacing: 0.02em;
-      color: var(--color-white);
-    }
-    .brand-tagline {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-brand-yellow-500);
-      font-weight: 600;
+    .site-header.scrolled {
+      background: rgba(7, 59, 194, 0.98);
+      min-height: 70px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
     }
 
-    /* Links escritorio */
-    .nav-desktop-menu {
-      display: none;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    @media (min-width: 992px) {
-      .nav-desktop-menu { display: flex; }
-    }
-
-    .nav-btn-link {
-      color: var(--color-white);
-      font-family: var(--font-body);
-      font-size: 0.92rem;
-      font-weight: 500;
-      padding: 0.5rem 0.85rem;
-      border-radius: 8px;
-      transition: all 0.2s ease;
+    .brand {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 12px;
+      color: var(--white);
+      flex-shrink: 0;
     }
-    .nav-btn-link:hover {
+
+    .brand-logo-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 8px;
       background: rgba(255, 255, 255, 0.12);
-      color: var(--color-brand-yellow-500);
+      padding: 2px;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      font: 24px/0.95 var(--font-display);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .brand-name small {
+      margin-top: 4px;
+      font: 500 9px/1 var(--font-mono);
+      letter-spacing: 0.14em;
+      color: var(--yellow);
+    }
+
+    .primary-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link,
+    .dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 9999px;
+      color: rgba(255, 255, 255, 0.92);
+      font: 14px/1 var(--font-sans);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: background var(--duration-feedback) var(--ease-out), color var(--duration-feedback);
+    }
+
+    .nav-link:hover,
+    .dropdown-trigger:hover,
+    .nav-item:hover > .dropdown-trigger {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--yellow);
+    }
+
+    .chevron-icon {
+      width: 13px;
+      height: 13px;
+      transition: transform 0.22s var(--ease-out);
+    }
+
+    .nav-item:hover .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 260px;
+      padding: 10px;
+      background: var(--blue-deep);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 20px 48px -8px rgba(7, 21, 54, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px) scale(0.97);
+      transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out), visibility 0.2s;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-item:hover .nav-dropdown,
+    .nav-item:focus-within .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .dropdown-link {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: var(--white);
+      transition: background 150ms ease;
+    }
+
+    .dropdown-link:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .dropdown-link-title {
+      font: 14px var(--font-subhead);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+
+    .dropdown-link-desc {
+      font: 11px/1.3 var(--font-sans);
+      color: rgba(255, 255, 255, 0.82);
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 14px;
+      flex-shrink: 0;
     }
 
-    .btn-cta-header {
-      background: var(--color-brand-yellow-500);
-      color: var(--color-brand-blue-500);
-      font-family: var(--font-body);
+    .phone-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      font: 12px var(--font-mono);
+      font-weight: 600;
+      transition: background 160ms, border-color 160ms;
+    }
+
+    .phone-pill:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 0 8px 0 16px;
+      border-radius: 9999px;
+      background: var(--yellow);
+      color: var(--blue);
+      font: 17px/1 var(--font-subhead);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       font-weight: 700;
-      font-size: 0.88rem;
-      padding: 0.55rem 1.15rem;
-      border-radius: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      box-shadow: var(--shadow-accent-sm);
-      transition: all 0.2s ease;
-    }
-    .btn-cta-header:hover {
-      background: var(--color-brand-yellow-400);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(255, 236, 1, 0.4);
+      box-shadow: 0 4px 14px rgba(255, 236, 1, 0.35);
+      transition: transform var(--duration-feedback) var(--ease-out), filter var(--duration-feedback);
     }
 
-    .btn-mobile-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    .header-cta:hover {
+      filter: brightness(1.05);
+      transform: translateY(-2px);
+    }
+
+    .arrow-disc {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--yellow);
+    }
+
+    .arrow-disc svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.8;
+    }
+
+    .menu-toggle {
+      display: none;
       width: 42px;
       height: 42px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--color-white);
-    }
-    @media (min-width: 992px) {
-      .btn-mobile-toggle { display: none; }
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--white);
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Mobile Drawer */
-    .mobile-drawer {
+    /* Cajón Móvil Deslizante */
+    .mobile-overlay {
       position: fixed;
       inset: 0;
-      z-index: 1050;
-      background: rgba(7, 21, 54, 0.7);
-      backdrop-filter: blur(6px);
+      z-index: 2000;
+      background: rgba(7, 21, 54, 0.75);
+      backdrop-filter: blur(8px);
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
+      visibility: hidden;
+      transition: opacity 0.28s ease, visibility 0.28s;
     }
-    .mobile-drawer.active {
+
+    .mobile-overlay.is-active {
       opacity: 1;
-      pointer-events: auto;
+      visibility: visible;
     }
-    .drawer-content {
+
+    .mobile-drawer-box {
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
-      width: 82%;
-      max-width: 340px;
-      background: var(--color-brand-blue-500);
-      color: var(--color-white);
-      padding: 1.75rem;
+      width: 86%;
+      max-width: 360px;
+      background: var(--blue-deep);
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 20px;
+      overflow-y: auto;
       transform: translateX(100%);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+      box-shadow: -12px 0 40px rgba(0, 0, 0, 0.45);
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
     }
-    .mobile-drawer.active .drawer-content {
+
+    .mobile-overlay.is-active .mobile-drawer-box {
       transform: translateX(0);
     }
-    .drawer-header {
+
+    .drawer-top-bar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      padding-bottom: 1rem;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 16px;
+      color: var(--white);
     }
-    .drawer-nav {
+
+    .drawer-close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--white);
+    }
+
+    .mobile-nav-list {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 4px;
     }
-    .drawer-nav a {
-      font-size: 1.1rem;
-      font-weight: 600;
-      padding: 0.65rem 0.5rem;
-      border-radius: 6px;
-      color: var(--color-white);
+
+    .mobile-nav-heading {
+      font: 11px var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--yellow);
+      margin-top: 14px;
+      margin-bottom: 2px;
+      padding-left: 8px;
     }
-    .drawer-nav a:hover {
-      background: rgba(255,255,255,0.1);
-      color: var(--color-brand-yellow-500);
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font: 16px var(--font-subhead);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: background 150ms, color 150ms;
+    }
+
+    .mobile-nav-link:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--yellow);
+    }
+
+    @media (max-width: 960px) {
+      .primary-nav,
+      .phone-pill {
+        display: none;
+      }
+      .menu-toggle {
+        display: flex;
+      }
     }
 
     /* ========================================================================
-     * HERO SECTION (MAPA, BADGE, ANIMACIONES GSAP, TICKER)
+     * 3. HERO SECTION (HERO_PARA_ADAPTAR)
      * ======================================================================== */
     .hero-section {
       position: relative;
-      background: var(--color-brand-blue-500);
-      color: var(--color-white);
-      padding-top: 6.5rem;
-      padding-bottom: 4rem;
+      background: var(--blue);
+      color: var(--white);
       overflow: hidden;
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding-top: clamp(24px, 4vw, 40px);
     }
 
-    #hero-canvas {
+    .route-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.45;
+      z-index: 1;
+    }
+
+    .hero-main {
+      position: relative;
+      z-index: 2;
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: clamp(24px, 4vw, 48px) var(--pad);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(24px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      font: 600 12px var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--yellow);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 10px var(--yellow);
+    }
+
+    .hero-title {
+      font: clamp(44px, 6.5vw, 84px)/0.92 var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      text-wrap: balance;
+    }
+
+    .headline-pill {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--blue);
+      padding: 0 14px 4px 14px;
+      border-radius: 12px;
+      transform: rotate(-1.5deg);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-deck {
+      font-size: clamp(16px, 1.35vw, 20px);
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 580px;
+      margin-bottom: 12px;
+    }
+
+    .hero-deck strong {
+      font-weight: 600;
+      color: var(--yellow);
+    }
+
+    .brand-promise {
+      font: 15px var(--font-mono);
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.05em;
+      margin-bottom: 28px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .hero-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 56px;
+      padding: 0 10px 0 24px;
+      border-radius: 9999px;
+      background: var(--yellow);
+      color: var(--blue);
+      font: 20px/1 var(--font-subhead);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: var(--shadow-cta-glow);
+      transition: transform var(--duration-feedback) var(--ease-out), filter var(--duration-feedback);
+    }
+
+    .hero-btn-primary:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.06);
+    }
+
+    .hero-btn-primary .arrow-disc {
+      width: 38px;
+      height: 38px;
+    }
+
+    .hero-btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--white);
+      font: 16px var(--font-subhead);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      transition: color 150ms;
+    }
+
+    .hero-btn-link:hover {
+      color: var(--yellow);
+    }
+
+    .hero-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      font: 11px var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .hero-proof span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .proof-mark {
+      width: 8px;
+      height: 8px;
+      background: var(--yellow);
+      border-radius: 2px;
+      transform: rotate(45deg);
+    }
+
+    .hero-art {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 480px;
+    }
+
+    .orbit {
+      position: absolute;
+      width: min(480px, 90vw);
+      height: min(480px, 90vw);
+      border: 1px dashed rgba(255, 236, 1, 0.4);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: spin-orbit 40s linear infinite;
+    }
+
+    @keyframes spin-orbit {
+      to { transform: rotate(360deg); }
+    }
+
+    .pulse-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 220px;
+      height: 220px;
+      border: 2px solid rgba(255, 236, 1, 0.6);
+      border-radius: 50%;
+      animation: pulse-ring 3.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulse-ring {
+      0% { opacity: 0.85; transform: translate(-50%, -50%) scale(0.6); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(2.8); }
+    }
+
+    .map-art {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 480px);
+      max-height: 480px;
+      object-fit: contain;
+      filter: drop-shadow(0 24px 48px rgba(3, 27, 94, 0.45));
+      border-radius: 24px;
+      transform: rotate(-2deg);
+    }
+
+    .map-chip {
+      position: absolute;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: var(--white);
+      color: var(--blue);
+      box-shadow: 0 16px 36px rgba(3, 35, 116, 0.3);
+      border: 1px solid rgba(9, 80, 246, 0.12);
+    }
+
+    .map-chip strong {
+      display: block;
+      font: 16px/1 var(--font-subhead);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .map-chip span {
+      font: 11px var(--font-mono);
+      color: rgba(9, 80, 246, 0.8);
+    }
+
+    .map-chip-base {
+      bottom: 8%;
+      left: -2%;
+    }
+
+    .map-chip-delivery {
+      top: 10%;
+      right: -2%;
+    }
+
+    /* Ticker continuo */
+    .ticker {
+      position: relative;
+      z-index: 3;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(7, 59, 194, 0.45);
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-left 32s linear infinite;
+    }
+
+    .ticker:hover .ticker-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee-left {
+      to { transform: translateX(-50%); }
+    }
+
+    .ticker-list {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      padding: 14px 28px;
+      list-style: none;
+    }
+
+    .ticker-list li {
+      display: inline-flex;
+      align-items: center;
+      gap: 36px;
+      font: 17px var(--font-subhead);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .ticker-list li::after {
+      content: "";
+      width: 7px;
+      height: 7px;
+      transform: rotate(45deg);
+      background: var(--yellow);
+    }
+
+    @media (max-width: 960px) {
+      .hero-main {
+        grid-template-columns: 1fr;
+        padding-top: 32px;
+      }
+      .hero-art {
+        min-height: 380px;
+      }
+      .map-chip-base {
+        left: 2%;
+        bottom: 4%;
+      }
+      .map-chip-delivery {
+        right: 2%;
+        top: 4%;
+      }
+    }
+
+    /* ========================================================================
+     * 4. SECCIÓN: SEGMENTOS (SEGMENTOS-HOME)
+     * ======================================================================== */
+    .segmentos-section {
+      padding: 5rem var(--pad);
+      max-width: 80rem;
+      margin: 0 auto;
+      width: 100%;
+      background: var(--color-white);
+    }
+
+    .segmentos-section .section-header {
+      text-align: center;
+      max-width: 52rem;
+      margin: 0 auto 3.5rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--color-brand-blue-400);
+    }
+
+    .section-kicker svg {
+      width: 0.875rem;
+      height: 0.875rem;
+      color: var(--yellow);
+      fill: var(--yellow);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      color: var(--color-brand-blue-500);
+      text-wrap: balance;
+    }
+
+    .highlight-yellow {
+      color: var(--yellow);
+      text-shadow: 0 0 20px rgba(255, 236, 1, 0.4);
+    }
+
+    .section-desc {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(9, 80, 246, 0.82);
+      text-wrap: balance;
+    }
+
+    .segmentos-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    @media (min-width: 840px) {
+      .segmentos-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .double-bezel-outer {
+      background-color: var(--color-brand-blue-50);
+      border-radius: 1.5rem;
+      padding: 0.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--duration-feedback) var(--ease-out-ui), box-shadow var(--duration-feedback) var(--ease-out-ui);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .double-bezel-outer:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-elevated);
+    }
+
+    .double-bezel-inner {
+      background-color: var(--color-white);
+      border-radius: 1.125rem;
+      border: 1px solid rgba(142, 175, 251, 0.4);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-watermark {
+      position: absolute;
+      top: -0.5rem;
+      right: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 6rem;
+      line-height: 1;
+      color: rgba(9, 80, 246, 0.04);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .card-icon-box {
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 0.875rem;
+      background-color: var(--color-brand-blue-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      color: var(--color-brand-blue-500);
+      border: 1px solid var(--color-brand-blue-100);
+    }
+
+    .card-icon-box svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-brand-blue-400);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-family: var(--font-subheading);
+      font-size: 1.6rem;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--color-brand-blue-500);
+      margin-bottom: 0.75rem;
+    }
+
+    .card-desc {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: rgba(9, 80, 246, 0.8);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-benefit {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-brand-blue-500);
+      background-color: var(--color-brand-blue-50);
+      padding: 0.65rem 0.85rem;
+      border-radius: 0.625rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .card-benefit svg {
+      width: 1rem;
+      height: 1rem;
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+
+    .cta-nested-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 1.25rem;
+      border-radius: 9999px;
+      font-family: var(--font-subheading);
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: all var(--duration-feedback) var(--ease-out-ui);
+    }
+
+    .pill-primary {
+      background-color: var(--yellow);
+      color: var(--blue);
+      box-shadow: var(--shadow-accent-sm);
+    }
+
+    .pill-primary:hover {
+      filter: brightness(1.06);
+      transform: translateY(-2px);
+    }
+
+    .pill-elevated {
+      background-color: var(--color-brand-blue-500);
+      color: var(--color-white);
+    }
+
+    .pill-elevated:hover {
+      background-color: var(--color-brand-blue-600);
+      transform: translateY(-2px);
+    }
+
+    .cta-nested-icon {
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .pill-elevated .cta-nested-icon {
+      background-color: var(--yellow);
+      color: var(--blue);
+    }
+
+    .cta-nested-icon svg {
+      width: 1rem;
+      height: 1rem;
+      stroke-width: 2.5;
+    }
+
+    /* ========================================================================
+     * 5. SECCIÓN: EMPRENDEDORES (EMPRENDEDORES-HOME)
+     * ======================================================================== */
+    .emprendedores-section {
+      position: relative;
+      background-color: var(--color-white);
+      padding: 5rem var(--pad);
+      overflow: hidden;
+      border-top: 1px solid var(--color-brand-blue-50);
+    }
+
+    .glow-blue {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 32rem;
+      height: 32rem;
+      border-radius: 9999px;
+      background-color: rgba(9, 80, 246, 0.06);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .glow-yellow {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 28rem;
+      height: 28rem;
+      border-radius: 9999px;
+      background-color: rgba(255, 236, 1, 0.08);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .header-box {
+      max-width: 52rem;
+      margin: 0 auto 3.5rem auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      background-color: var(--color-brand-blue-50);
+      border: 1px solid var(--color-brand-blue-100);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-brand-blue-500);
+      margin-bottom: 1rem;
+    }
+
+    .header-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.75rem);
+      line-height: 0.95;
+      color: var(--color-brand-blue-500);
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+
+    .mdq-pill {
+      display: inline-block;
+      background-color: var(--yellow);
+      color: var(--blue);
+      padding: 0 0.65rem 0.15rem 0.65rem;
+      border-radius: 0.6rem;
+      transform: rotate(-2deg);
+      box-shadow: 0 4px 12px rgba(255, 236, 1, 0.35);
+    }
+
+    .header-desc {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(9, 80, 246, 0.82);
+      max-width: 44rem;
+      margin: 0 auto;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 80rem;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 960px) {
+      .bento-grid {
+        grid-template-columns: repeat(12, 1fr);
+      }
+      .bento-card-pymes { grid-column: span 7; }
+      .bento-card-flex { grid-column: span 5; }
+      .bento-card-ahorro { grid-column: span 5; }
+      .bento-card-marcas { grid-column: span 7; }
+    }
+
+    .bento-card-base {
+      background-color: var(--color-brand-blue-50);
+      border-radius: 1.5rem;
+      padding: 0.5rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .inner-bento-card {
+      background-color: var(--color-white);
+      border-radius: 1.125rem;
+      border: 1px solid rgba(142, 175, 251, 0.4);
+      padding: 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .bento-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-brand-blue-400);
+      margin-bottom: 0.5rem;
+    }
+
+    .bento-title {
+      font-family: var(--font-subheading);
+      font-size: 1.75rem;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--color-brand-blue-500);
+      margin-bottom: 0.75rem;
+    }
+
+    .bento-desc {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: rgba(9, 80, 246, 0.8);
+      margin-bottom: 1.25rem;
+    }
+
+    .bento-perks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .bento-perk-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      color: var(--color-brand-blue-500);
+      font-weight: 500;
+    }
+
+    .bento-perk-item svg {
+      width: 1rem;
+      height: 1rem;
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+
+    /* Marquee de Marcas Locales */
+    .marquee-wrapper {
+      overflow: hidden;
+      position: relative;
+      padding: 0.75rem 0;
+      background: var(--color-brand-blue-50);
+      border-radius: 0.85rem;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 24s linear infinite;
+      gap: 1.5rem;
+    }
+
+    .marquee-track.paused {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee-scroll {
+      to { transform: translateX(-50%); }
+    }
+
+    .partner-pill {
+      font-family: var(--font-subheading);
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-brand-blue-500);
+      padding: 0.35rem 0.85rem;
+      background: var(--color-white);
+      border-radius: 9999px;
+      white-space: nowrap;
+      border: 1px solid var(--color-brand-blue-100);
+    }
+
+    .marquee-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    .btn-toggle-marquee {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-brand-blue-500);
+      background: var(--color-brand-blue-50);
+      padding: 0.4rem 0.85rem;
+      border-radius: 9999px;
+      border: 1px solid var(--color-brand-blue-100);
+      transition: background 150ms;
+    }
+
+    .btn-toggle-marquee:hover {
+      background: var(--color-brand-blue-100);
+    }
+
+    /* ========================================================================
+     * 6. SECCIÓN: SERVICIOS (SERVICES-OVERVIEW CON CANVAS Y MODAL 3D)
+     * ======================================================================== */
+    .services-section {
+      position: relative;
+      background: var(--blue);
+      color: var(--white);
+      padding: 5.5rem var(--pad);
+      overflow: hidden;
+    }
+
+    #network-canvas {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
       z-index: 1;
-      opacity: 0.45;
     }
 
-    .hero-glow-1 {
-      position: absolute;
-      top: -100px;
-      left: -100px;
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle, rgba(255, 236, 1, 0.18) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 2;
-    }
-    .hero-glow-2 {
-      position: absolute;
-      bottom: -150px;
-      right: -100px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(7, 59, 194, 0.8) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .hero-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+    .services-header {
       position: relative;
-      z-index: 10;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    @media (min-width: 992px) {
-      .hero-container {
-        grid-template-columns: 1.15fr 0.85fr;
-        padding-top: 2rem;
-      }
-    }
-
-    .hero-badge-live {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--color-brand-yellow-500);
-      color: var(--color-brand-blue-500);
-      padding: 0.4rem 0.95rem;
-      border-radius: 999px;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow-accent-sm);
-    }
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #10B981;
-      box-shadow: 0 0 8px #10B981;
-      animation: pulse-dot 1.8s infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
-    .hero-heading {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 6.5vw, 5.2rem);
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      text-wrap: balance;
-    }
-    .hero-heading .yellow-text {
-      color: var(--color-brand-yellow-500);
-    }
-
-    .hero-lead {
-      font-size: 1.18rem;
-      color: var(--color-brand-blue-50);
-      font-weight: 300;
-      line-height: 1.6;
-      max-width: 580px;
-      margin-bottom: 2rem;
-    }
-
-    .hero-cta-group {
+      z-index: 2;
+      max-width: 80rem;
+      margin: 0 auto 3rem auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.5rem;
     }
 
-    .btn-hero-primary {
-      background: var(--color-brand-yellow-500);
-      color: var(--color-brand-blue-500);
-      font-family: var(--font-body);
-      font-weight: 800;
-      font-size: 1.05rem;
-      padding: 1rem 1.8rem;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.65rem;
-      box-shadow: var(--shadow-cta-glow);
-      transition: all 0.2s ease;
-    }
-    .btn-hero-primary:hover {
-      background: var(--color-brand-yellow-400);
-      transform: translateY(-2px);
-      box-shadow: 0 0 34px rgba(255, 236, 1, 0.65);
-    }
-
-    .btn-hero-secondary {
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--color-white);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 1.05rem;
-      padding: 1rem 1.6rem;
-      border-radius: 12px;
+    .services-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      backdrop-filter: blur(4px);
-      transition: all 0.2s ease;
-    }
-    .btn-hero-secondary:hover {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: var(--color-white);
-    }
-
-    /* Ticker diferenciales */
-    .hero-ticker-wrap {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-    }
-    .ticker-item {
-      display: flex;
-      flex-direction: column;
-    }
-    .ticker-num {
-      font-family: var(--font-subhead);
-      font-size: 2rem;
-      color: var(--color-brand-yellow-500);
-      line-height: 1;
-    }
-    .ticker-lbl {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--color-brand-blue-100);
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--yellow);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
     }
 
-    /* Columna Visual del Hero */
-    .hero-visual-stage {
-      position: relative;
+    .services-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .services-title span {
+      color: var(--yellow);
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-toggle-rotate {
+      padding: 0.6rem 1rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 160ms;
+    }
+
+    .btn-toggle-rotate.active {
+      background: var(--yellow);
+      color: var(--blue);
+      border-color: var(--yellow);
+      font-weight: 700;
+    }
+
+    .btn-nav-round {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: var(--white);
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .map-frame-box {
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 25px 60px rgba(7, 21, 54, 0.45);
-      border: 2px solid rgba(255, 255, 255, 0.18);
-      background: var(--color-brand-blue-600);
-    }
-    .map-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-    .map-frame-box:hover .map-img {
-      transform: scale(1.03);
+      transition: background 150ms, color 150ms;
     }
 
-    /* Floating Chip Repartidor */
-    .floating-rider-card {
+    .btn-nav-round:hover {
+      background: var(--yellow);
+      color: var(--blue);
+    }
+
+    .btn-nav-round svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      stroke-width: 2.5;
+    }
+
+    .carousel-stage {
+      position: relative;
+      z-index: 2;
+      max-width: 80rem;
+      margin: 0 auto;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+    }
+
+    .service-card-wrapper {
       position: absolute;
-      bottom: -20px;
-      left: -15px;
-      background: var(--color-white);
-      color: var(--color-ink);
-      border-radius: 16px;
-      padding: 0.85rem 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      box-shadow: 0 16px 36px rgba(7, 21, 54, 0.28);
-      border: 1px solid var(--color-brand-blue-100);
-      z-index: 15;
-      animation: float-chip 3.5s ease-in-out infinite;
-    }
-    @keyframes float-chip {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    .rider-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--color-brand-yellow-500);
-      background: var(--color-brand-blue-50);
-    }
-    .rider-info-name {
-      font-weight: 700;
-      font-size: 0.92rem;
-      line-height: 1.2;
-    }
-    .rider-info-status {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--color-brand-blue-500);
-      font-weight: 600;
-      text-transform: uppercase;
+      width: min(340px, 86vw);
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
+      cursor: pointer;
     }
 
-    /* ========================================================================
-     * SECCIÓN SERVICIOS (INTERACTIVA 3D)
-     * ======================================================================== */
-    .section-standard {
-      padding: 5.5rem 1.5rem;
-      position: relative;
-    }
-    .section-blue {
-      background-color: var(--color-brand-blue-500);
-      color: var(--color-white);
-    }
-    .section-white {
-      background-color: var(--color-white);
-      color: var(--color-ink);
-    }
-    .section-gray {
-      background-color: var(--color-surface-gray);
-      color: var(--color-ink);
-    }
-    .section-dark {
-      background-color: #031811;
-      color: #FAFCFB;
-    }
-
-    .section-head {
-      max-width: 800px;
-      margin: 0 auto 3.5rem auto;
-      text-align: center;
-    }
-    .section-pill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.95rem;
-      border-radius: 999px;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.85rem;
-    }
-    .badge-yellow-on-blue {
-      background: var(--color-brand-yellow-500);
-      color: var(--color-brand-blue-500);
-      box-shadow: var(--shadow-accent-sm);
-    }
-    .badge-blue-on-white {
-      background: var(--color-brand-blue-50);
-      color: var(--color-brand-blue-500);
-      border: 1px solid var(--color-brand-blue-200);
-    }
-    .badge-green-on-dark {
-      background: rgba(46, 204, 133, 0.15);
-      color: #2ECC85;
-      border: 1px solid rgba(46, 204, 133, 0.3);
-    }
-
-    .section-title-large {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      line-height: 0.95;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-    .section-subtitle-text {
-      font-size: 1.1rem;
-      font-weight: 300;
-      line-height: 1.6;
-      opacity: 0.9;
-    }
-
-    /* Grid de tarjetas de servicios */
-    .services-grid-cards {
-      max-width: 1240px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.75rem;
-    }
-
-    .service-card {
-      border-radius: 20px;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.5rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .card-theme-express {
-      background: linear-gradient(145deg, #0950F6 0%, #073BC2 100%);
-      border: 2px solid var(--color-brand-yellow-500);
-      color: var(--color-white);
-      box-shadow: 0 16px 40px rgba(9, 80, 246, 0.28);
-    }
-    .card-theme-express:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 48px rgba(255, 236, 1, 0.25);
-    }
-    .card-theme-flex {
-      background: linear-gradient(145deg, #FFEC01 0%, #FFF12E 100%);
-      color: var(--color-brand-blue-500);
-      box-shadow: 0 16px 40px rgba(255, 236, 1, 0.2);
-    }
-    .card-theme-flex:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 48px rgba(9, 80, 246, 0.15);
-    }
-    .card-theme-lowcost {
-      background: var(--color-white);
-      color: var(--color-brand-blue-500);
-      border: 1px solid var(--color-brand-blue-100);
-      box-shadow: var(--shadow-sm);
-    }
-    .card-theme-lowcost:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--color-brand-blue-300);
-    }
-    .card-theme-3pl {
-      background: linear-gradient(145deg, #071536 0%, #0b2259 100%);
-      color: var(--color-white);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: var(--shadow-md);
-    }
-    .card-theme-3pl:hover {
-      transform: translateY(-6px);
-      border-color: var(--color-brand-yellow-500);
-    }
-
-    .service-card-tag {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      width: fit-content;
-    }
-    .tag-yellow { background: var(--color-brand-yellow-500); color: var(--color-brand-blue-500); }
-    .tag-blue { background: var(--color-brand-blue-500); color: var(--color-white); }
-    .tag-dark { background: rgba(255, 255, 255, 0.15); color: var(--color-white); }
-
-    .service-card-title {
-      font-family: var(--font-display);
-      font-size: 1.85rem;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-    .service-card-desc {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      opacity: 0.9;
-    }
-    .service-card-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    .card-theme-lowcost .service-card-stats {
-      border-top-color: var(--color-brand-blue-100);
-    }
-    .card-theme-flex .service-card-stats {
-      border-top-color: rgba(9, 80, 246, 0.15);
-    }
-    .stat-mini-val {
-      font-family: var(--font-subhead);
-      font-size: 1.4rem;
-      line-height: 1;
-    }
-    .stat-mini-lbl {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      opacity: 0.8;
-    }
-
-    /* ========================================================================
-     * SECCIÓN SEGMENTOS (E-COMMERCE / COMERCIOS / GASTRO)
-     * ======================================================================== */
-    .segmentos-grid {
-      max-width: 1240px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-    .segmento-box {
-      background: var(--color-white);
-      border-radius: 20px;
-      padding: 2.25rem;
-      border: 1px solid var(--color-brand-blue-100);
-      box-shadow: 0 10px 30px rgba(9, 80, 246, 0.05);
+    .service-card-inner {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 1.5rem;
+      padding: 2rem 1.75rem;
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
-      transition: all 0.3s ease;
-    }
-    .segmento-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(9, 80, 246, 0.12);
-      border-color: var(--color-brand-blue-300);
-    }
-    .segmento-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: var(--color-brand-blue-50);
-      color: var(--color-brand-blue-500);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .segmento-title {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      color: var(--color-brand-blue-500);
-      line-height: 1;
-    }
-    .segmento-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      font-size: 0.95rem;
-      color: var(--color-ink);
-    }
-    .segmento-list li {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .check-icon {
-      color: var(--color-brand-blue-500);
-      font-weight: 700;
-    }
-
-    /* ========================================================================
-     * SECCIÓN LOGÍSTICA & FLOTA PROPIA (FRIULI 1972)
-     * ======================================================================== */
-    .logistica-card-highlight {
-      max-width: 1240px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, var(--color-brand-blue-500) 0%, #062f96 100%);
-      color: var(--color-white);
-      border-radius: 28px;
-      padding: 3.5rem 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      align-items: center;
-      box-shadow: 0 25px 60px rgba(7, 21, 54, 0.25);
-    }
-    @media (min-width: 992px) {
-      .logistica-card-highlight {
-        grid-template-columns: 1.2fr 0.8fr;
-        padding: 4.5rem;
-      }
-    }
-    .flota-pills-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-    }
-    .flota-pill {
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    /* ========================================================================
-     * SECCIÓN MARDELIVERY (GASTRONOMÍA NOCTURNA)
-     * ======================================================================== */
-    .mardelivery-wrap {
-      max-width: 1240px;
-      margin: 0 auto;
-      background: #031811;
-      border-radius: 24px;
-      padding: 3rem 2rem;
-      border: 1px solid rgba(46, 204, 133, 0.25);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      align-items: center;
-    }
-    @media (min-width: 992px) {
-      .mardelivery-wrap { grid-template-columns: 1fr 1fr; padding: 4rem; }
-    }
-    .md-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      color: #2ECC85;
-      line-height: 0.95;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .md-btn {
-      background: #2ECC85;
-      color: #031811;
-      font-weight: 700;
-      padding: 0.85rem 1.6rem;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.2s ease;
-      box-shadow: 0 0 20px rgba(46, 204, 133, 0.35);
-    }
-    .md-btn:hover {
-      background: #27b374;
-      transform: translateY(-2px);
-    }
-
-    /* ========================================================================
-     * SECCIÓN SOCIAL PROOF & MÉTRICAS
-     * ======================================================================== */
-    .metrics-row {
-      max-width: 1240px;
-      margin: 0 auto 3.5rem auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-    .metric-card {
-      background: var(--color-white);
-      border-radius: 18px;
-      padding: 1.75rem;
-      text-align: center;
-      border: 1px solid var(--color-brand-blue-100);
-      box-shadow: var(--shadow-sm);
-    }
-    .metric-big {
-      font-family: var(--font-display);
-      font-size: 2.8rem;
-      color: var(--color-brand-blue-500);
-      line-height: 1;
-    }
-    .metric-tag {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--color-ink);
-      margin-top: 0.4rem;
-      text-transform: uppercase;
-    }
-
-    /* ========================================================================
-     * CTA WHATSAPP & FINAL CONVERSIÓN
-     * ======================================================================== */
-    .cta-banner-box {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, var(--color-brand-blue-500) 0%, #073BC2 100%);
-      color: var(--color-white);
-      border-radius: 28px;
-      padding: 4rem 2rem;
-      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
       position: relative;
       overflow: hidden;
-      box-shadow: var(--shadow-float);
+      color: var(--white);
+      text-align: left;
     }
-    .cta-banner-box::before {
-      content: "";
+
+    .card-watermark-icon {
       position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(255, 236, 1, 0.25) 0%, transparent 70%);
+      top: 1rem;
+      right: 1rem;
+      width: 7rem;
+      height: 7rem;
+      opacity: 0.06;
+      stroke: var(--white);
       pointer-events: none;
     }
-    .cta-big-btn {
-      background: var(--color-brand-yellow-500);
-      color: var(--color-brand-blue-500);
-      font-family: var(--font-body);
-      font-weight: 800;
-      font-size: 1.15rem;
-      padding: 1.15rem 2.4rem;
-      border-radius: 14px;
+
+    .card-icon-pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
-      box-shadow: var(--shadow-cta-glow);
-      transition: all 0.2s ease;
-      margin-top: 2rem;
-    }
-    .cta-big-btn:hover {
-      background: var(--color-brand-yellow-400);
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 35px rgba(255, 236, 1, 0.6);
-    }
-
-    /* ========================================================================
-     * FOOTER OPTIMIZADO CON FRANJA AMARILLA CANÓNICA
-     * ======================================================================== */
-    footer#optimized-footer {
-      background-color: var(--color-brand-blue-500);
-      color: var(--color-white);
-      position: relative;
-      overflow: hidden;
-    }
-    .footer-yellow-top-bar {
-      height: 6px;
-      background-color: var(--color-brand-yellow-500);
-      width: 100%;
-      box-shadow: 0 2px 10px rgba(255, 236, 1, 0.4);
-    }
-    .footer-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 4.5rem 1.5rem 2.5rem 1.5rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-    @media (min-width: 768px) {
-      .footer-container { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 1024px) {
-      .footer-container { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; }
-    }
-    .footer-col-title {
-      font-family: var(--font-subhead);
-      font-size: 1.4rem;
-      letter-spacing: 0.05em;
-      color: var(--color-brand-yellow-500);
-      margin-bottom: 1.25rem;
-      text-transform: uppercase;
-    }
-    .footer-links-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
       gap: 0.65rem;
-      font-size: 0.95rem;
-    }
-    .footer-links-list a {
-      color: var(--color-brand-blue-50);
-      transition: color 0.2s ease;
-    }
-    .footer-links-list a:hover {
-      color: var(--color-brand-yellow-500);
-      text-decoration: underline;
-    }
-    .footer-bottom-bar {
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 1.75rem 1.5rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--color-brand-blue-100);
     }
 
-    /* Modal de Servicio */
-    .service-modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: rgba(7, 21, 54, 0.82);
-      backdrop-filter: blur(8px);
-      display: none;
+    .icon-square {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.75rem;
+      background: var(--yellow);
+      color: var(--blue);
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
     }
-    .service-modal-overlay.active {
+
+    .icon-square svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      stroke-width: 2.5;
+    }
+
+    .card-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 0.3rem 0.65rem;
+      border-radius: 9999px;
+      color: var(--yellow);
+    }
+
+    .service-card-title {
+      font-family: var(--font-subheading);
+      font-size: 1.85rem;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+
+    .service-card-desc {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .card-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-val {
+      font-family: var(--font-subheading);
+      font-size: 1.15rem;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .stat-lbl {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    .card-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    /* Modal Ficha Técnica */
+    .service-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      background: rgba(7, 21, 54, 0.85);
+      backdrop-filter: blur(10px);
       display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
     }
-    .modal-card {
-      background: var(--color-white);
-      color: var(--color-ink);
-      border-radius: 24px;
-      max-width: 580px;
+
+    .service-modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .service-modal-dialog {
+      background: var(--blue-deep);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 1.75rem;
+      max-width: 38rem;
       width: 100%;
       padding: 2.25rem;
       position: relative;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-      border: 2px solid var(--color-brand-blue-500);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      color: var(--white);
+      max-height: 90vh;
+      overflow-y: auto;
     }
-    .btn-modal-close {
+
+    .modal-close-btn {
       position: absolute;
       top: 1.25rem;
       right: 1.25rem;
-      width: 36px;
-      height: 36px;
+      width: 2.25rem;
+      height: 2.25rem;
       border-radius: 50%;
-      background: var(--color-surface-gray);
-      color: var(--color-ink);
+      background: rgba(255, 255, 255, 0.12);
       display: flex;
       align-items: center;
       justify-content: center;
+      color: var(--white);
+      transition: background 150ms;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--yellow);
+      color: var(--blue);
+    }
+
+    /* ========================================================================
+     * 7. SECCIÓN: LOGÍSTICA (LOGISTICA-HOME-SECTION)
+     * ======================================================================== */
+    .logistica-section {
+      padding: 5.5rem var(--pad);
+      background-color: var(--color-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logistica-section .section-header {
+      max-width: 52rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .logistica-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .logistica-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .logistica-cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .outer-card {
+      background-color: var(--color-brand-blue-50);
+      border-radius: 1.5rem;
+      padding: 0.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--duration-feedback) var(--ease-out-ui), box-shadow var(--duration-feedback) var(--ease-out-ui);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .outer-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-elevated);
+    }
+
+    .inner-card {
+      background-color: var(--color-white);
+      border-radius: 1.125rem;
+      border: 1px solid rgba(142, 175, 251, 0.4);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background-color: var(--color-brand-blue-50);
+      border: 1px solid var(--color-brand-blue-100);
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-brand-blue-500);
+      margin-bottom: 1.25rem;
+    }
+
+    .card-heading {
+      font-family: var(--font-subheading);
+      font-size: 1.6rem;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--color-brand-blue-500);
+      margin-bottom: 0.75rem;
+    }
+
+    .card-paragraph {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: rgba(9, 80, 246, 0.8);
+      margin-bottom: 1.25rem;
+    }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-brand-blue-500);
+    }
+
+    .feature-item svg {
+      width: 0.875rem;
+      height: 0.875rem;
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+
+    /* Banner CTA Logística */
+    .cta-banner-outer {
+      background-color: var(--color-brand-blue-50);
+      border-radius: 1.75rem;
+      padding: 0.5rem;
+      max-width: 80rem;
+      margin: 3.5rem auto 0 auto;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cta-banner-inner {
+      background-color: var(--color-white);
+      border-radius: 1.35rem;
+      border: 1px solid rgba(142, 175, 251, 0.5);
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    @media (min-width: 840px) {
+      .cta-banner-inner {
+        flex-direction: row;
+        text-align: left;
+      }
+    }
+
+    .banner-title {
+      font-family: var(--font-subheading);
+      font-size: 2rem;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--color-brand-blue-500);
+      margin-bottom: 0.35rem;
+    }
+
+    .banner-desc {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: rgba(9, 80, 246, 0.8);
+      max-width: 38rem;
+    }
+
+    .btn-banner-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 9999px;
+      background-color: var(--yellow);
+      color: var(--blue);
+      font-family: var(--font-subheading);
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      box-shadow: var(--shadow-accent-sm);
+      white-space: nowrap;
+      transition: transform 160ms, filter 160ms;
+    }
+
+    .btn-banner-cta:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    /* ========================================================================
+     * 8. SECCIÓN: MARDELIVERY (VERTICAL GASTRONÓMICA NOCTURNA)
+     * ======================================================================== */
+    .md-section {
+      background-color: var(--color-md-bg);
+      color: var(--color-md-white);
+      padding: 5.5rem var(--pad);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .md-ambient-glow {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 32rem;
+      height: 32rem;
+      background: radial-gradient(circle, rgba(46, 204, 133, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .md-header {
+      max-width: 52rem;
+      margin: 0 auto 3.5rem auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .md-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      background-color: rgba(46, 204, 133, 0.12);
+      border: 1px solid rgba(46, 204, 133, 0.3);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-md-green);
+      margin-bottom: 1rem;
+    }
+
+    .md-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      color: var(--color-md-white);
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+
+    .title-pill-green {
+      display: inline-block;
+      background-color: var(--color-md-green);
+      color: var(--color-md-bg);
+      padding: 0 0.75rem 0.2rem 0.75rem;
+      border-radius: 0.65rem;
+      transform: rotate(-1.5deg);
+      box-shadow: 0 4px 16px rgba(46, 204, 133, 0.4);
+    }
+
+    .md-desc {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(250, 252, 251, 0.85);
+      max-width: 44rem;
+      margin: 0 auto;
+    }
+
+    .md-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      max-width: 80rem;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+      .md-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .md-cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .md-card-outer {
+      background-color: var(--color-md-card-bg);
+      border-radius: 1.5rem;
+      padding: 0.5rem;
+      border: 1px solid var(--color-md-border);
+      transition: transform 160ms, border-color 160ms;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .md-card-outer:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-md-green);
+    }
+
+    .md-card-inner {
+      background-color: var(--color-md-card-inner);
+      border-radius: 1.125rem;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .md-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-md-green);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .md-card-title {
+      font-family: var(--font-subheading);
+      font-size: 1.6rem;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--color-md-white);
+      margin-bottom: 0.75rem;
+    }
+
+    .md-card-desc {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: rgba(250, 252, 251, 0.8);
+      margin-bottom: 1.25rem;
+    }
+
+    .md-benefit-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-md-green);
+      background: rgba(46, 204, 133, 0.1);
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(46, 204, 133, 0.2);
+    }
+
+    .md-benefit-tag svg {
+      width: 0.875rem;
+      height: 0.875rem;
+      flex-shrink: 0;
+    }
+
+    /* Banner CTA MarDelivery */
+    .md-banner-outer {
+      background-color: var(--color-md-banner-bg);
+      border-radius: 1.75rem;
+      padding: 0.5rem;
+      max-width: 80rem;
+      margin: 3.5rem auto 0 auto;
+      border: 1px solid var(--color-md-border);
+      position: relative;
+      z-index: 2;
+    }
+
+    .md-banner-inner {
+      background-color: var(--color-md-card-inner);
+      border-radius: 1.35rem;
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    @media (min-width: 840px) {
+      .md-banner-inner {
+        flex-direction: row;
+        text-align: left;
+      }
+    }
+
+    .md-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 9999px;
+      background-color: var(--color-md-green);
+      color: var(--color-md-bg);
+      font-family: var(--font-subheading);
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      white-space: nowrap;
+      box-shadow: 0 4px 18px rgba(46, 204, 133, 0.35);
+      transition: transform 160ms, filter 160ms;
+    }
+
+    .md-btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    /* ========================================================================
+     * 9. SECCIÓN: COTIZADOR WHATSAPP (CTA-SECTION)
+     * ======================================================================== */
+    .cta-section {
+      padding: 5.5rem var(--pad);
+      background-color: var(--color-white);
+    }
+
+    .cta-outer-bezel {
+      max-width: 80rem;
+      margin: 0 auto;
+      background-color: var(--color-brand-blue-50);
+      border-radius: 2rem;
+      padding: 0.65rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-inner-card {
+      background-color: var(--color-white);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(142, 175, 251, 0.5);
+      padding: clamp(2rem, 5vw, 4rem);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .cta-inner-card {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .badge-inmediata {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      background-color: var(--color-brand-blue-50);
+      border: 1px solid var(--color-brand-blue-100);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-brand-blue-500);
+      margin-bottom: 1rem;
+    }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      color: var(--color-brand-blue-500);
+      margin-bottom: 1.25rem;
+      text-wrap: balance;
+    }
+
+    .cta-desc {
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: rgba(9, 80, 246, 0.85);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .field-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-brand-blue-400);
+    }
+
+    .field-input {
+      width: 100%;
+      padding: 0.9rem 1.15rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(142, 175, 251, 0.6);
+      background-color: var(--color-brand-blue-50);
+      color: var(--color-brand-blue-500);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      transition: border-color 150ms, background-color 150ms;
+    }
+
+    .field-input:focus {
+      outline: none;
+      border-color: var(--color-brand-blue-500);
+      background-color: var(--color-white);
+    }
+
+    .cta-submit-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      width: 100%;
+      padding: 1.1rem 1.75rem;
+      border-radius: 9999px;
+      background-color: var(--yellow);
+      color: var(--blue);
+      font-family: var(--font-subheading);
+      font-size: 1.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      box-shadow: var(--shadow-cta-glow);
+      transition: transform 160ms, filter 160ms;
+    }
+
+    .cta-submit-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    /* ========================================================================
+     * 10. SECCIÓN: REDES SOCIALES (CARRUSEL-REDES)
+     * ======================================================================== */
+    .carrusel-section {
+      padding: 5rem var(--pad);
+      background-color: var(--color-white);
+      border-top: 1px solid var(--color-brand-blue-50);
+    }
+
+    .carrusel-section .section-header {
+      max-width: 52rem;
+      margin: 0 auto 3.5rem auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .networks-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 840px) {
+      .networks-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .social-card-outer {
+      background-color: var(--color-brand-blue-50);
+      border-radius: 1.5rem;
+      padding: 0.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 160ms, box-shadow 160ms;
+    }
+
+    .social-card-outer:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-elevated);
+    }
+
+    .social-card-inner {
+      background-color: var(--color-white);
+      border-radius: 1.125rem;
+      border: 1px solid rgba(142, 175, 251, 0.4);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      position: relative;
+    }
+
+    /* ========================================================================
+     * 11. FOOTER MODULAR (OPTIMIZED-FOOTER)
+     * ======================================================================== */
+    .site-footer {
+      background: var(--blue-deep);
+      color: var(--white);
+      position: relative;
+    }
+
+    .footer-top-accent {
+      height: 6px;
+      background: var(--yellow);
+      width: 100%;
+    }
+
+    .footer-container {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 4.5rem var(--pad) 2rem var(--pad);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      }
+    }
+
+    .footer-brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-brand-logo img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px;
+    }
+
+    .footer-brand-title {
+      font: 22px/0.95 var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-brand-title small {
+      display: block;
+      margin-top: 4px;
+      font: 500 9px/1 var(--font-mono);
+      letter-spacing: 0.14em;
+      color: var(--yellow);
+    }
+
+    .footer-brand-desc {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.82);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-subheading);
+      font-size: 1.35rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      list-style: none;
+    }
+
+    .footer-link-item a {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.85);
+      transition: color 150ms, padding-left 150ms;
+      display: inline-block;
+    }
+
+    .footer-link-item a:hover {
+      color: var(--yellow);
+      padding-left: 4px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-contact-item svg {
+      width: 1.15rem;
+      height: 1.15rem;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .scroll-top-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: background 150ms, color 150ms;
+    }
+
+    .scroll-top-btn:hover {
+      background: var(--yellow);
+      color: var(--blue);
+    }
+
+    /* Modo movimiento reducido */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+
   <!-- ========================================================================
-   * HEADER PRINCIPAL
+   * 1. HEADER MODULAR (NAVEGADOR)
    * ======================================================================== -->
-  <header id="optimized-header">
-    <div class="nav-inner">
-      <a href="#inicio" class="brand-link" aria-label="Ir al inicio">
-        <img src="../../public/logo.webp" alt="Envíos DosRuedas" class="brand-logo-img" />
-        <div class="brand-text">
-          <span class="brand-title">ENVÍOS DOSRUEDAS</span>
-          <span class="brand-tagline">Mar del Plata · Flota Propia</span>
+  <header class="site-header" id="site-header">
+    <a class="brand" href="#inicio" aria-label="Envíos DosRuedas, inicio">
+      <img src="../../public/logo.webp" alt="Envíos DosRuedas" class="brand-logo-img" width="44" height="44" />
+      <span class="brand-name">
+        ENVÍOS DOSRUEDAS
+        <small>MENSAJERÍA · LOGÍSTICA MDP</small>
+      </span>
+    </a>
+
+    <!-- Navegación Principal de Escritorio -->
+    <nav class="primary-nav" id="primary-nav" aria-label="Navegación principal">
+      <div class="nav-item">
+        <a href="#inicio" class="nav-link">Inicio</a>
+      </div>
+
+      <!-- Dropdown: Servicios -->
+      <div class="nav-item">
+        <button type="button" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+          <span>Servicios</span>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+        </button>
+        <div class="nav-dropdown" role="menu">
+          <a href="#servicios" class="dropdown-link" role="menuitem">
+            <span class="dropdown-link-title">Envíos Express</span>
+            <span class="dropdown-link-desc">Mensajería en 3 horas con moto propia</span>
+          </a>
+          <a href="#servicios" class="dropdown-link" role="menuitem">
+            <span class="dropdown-link-title">Envíos LowCost</span>
+            <span class="dropdown-link-desc">Reparto económico diario para e-commerce</span>
+          </a>
+          <a href="#servicios" class="dropdown-link" role="menuitem">
+            <span class="dropdown-link-title">Mercado Envíos Flex</span>
+            <span class="dropdown-link-desc">Entregas en el día autorizadas para sellers MeLi</span>
+          </a>
+          <a href="#segmentos" class="dropdown-link" role="menuitem">
+            <span class="dropdown-link-title">Cuenta Corriente B2B</span>
+            <span class="dropdown-link-desc">Facturación unificada y ruteo corporativo</span>
+          </a>
         </div>
+      </div>
+
+      <!-- Dropdown: Plataformas -->
+      <div class="nav-item">
+        <button type="button" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+          <span>Plataformas</span>
+          <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+        </button>
+        <div class="nav-dropdown" role="menu">
+          <a href="#logistica" class="dropdown-link" role="menuitem">
+            <span class="dropdown-link-title">Logística DosRuedas</span>
+            <span class="dropdown-link-desc">Base Friuli 1972, depósito y DropOFF</span>
+          </a>
+          <a href="#mardelivery" class="dropdown-link" role="menuitem">
+            <span class="dropdown-link-title">MarDelivery Gastronomía</span>
+            <span class="dropdown-link-desc">Turno noche, sin comisiones del 35%</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Enlace directo: Emprendedores -->
+      <div class="nav-item">
+        <a href="#emprendedores-home" class="nav-link">Emprendedores</a>
+      </div>
+
+      <!-- Enlace directo: Contacto -->
+      <div class="nav-item">
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </div>
+    </nav>
+
+    <!-- Acciones del Header -->
+    <div class="header-actions">
+      <a class="phone-pill" href="tel:+5492236025348" aria-label="Llamar a Envíos DosRuedas">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>223 602-5348</span>
       </a>
 
-      <!-- Menú Escritorio -->
-      <nav class="nav-desktop-menu" aria-label="Navegación principal">
-        <a href="#inicio" class="nav-btn-link">Inicio</a>
-        <a href="#servicios" class="nav-btn-link">Servicios</a>
-        <a href="#segmentos" class="nav-btn-link">Para quién</a>
-        <a href="#logistica" class="nav-btn-link">Flota Propia</a>
-        <a href="#mardelivery" class="nav-btn-link">MarDelivery</a>
-        <a href="#contacto" class="nav-btn-link">Contacto</a>
-      </nav>
+      <a class="header-cta" href="#contacto">
+        <span>Cotizá tu envío</span>
+        <span class="arrow-disc" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </span>
+      </a>
 
-      <!-- Botones de Acción -->
-      <div class="header-actions">
-        <a href="https://wa.me/5492236025348?text=Hola%20Envios%20DosRuedas,%20quiero%20cotizar%20un%20envio" target="_blank" rel="noopener" class="btn-cta-header">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span>Cotizar Ahora</span>
-        </a>
-        <button class="btn-mobile-toggle" id="btn-mobile-toggle" aria-label="Abrir menú de navegación">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="mobile-nav" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="mobile-drawer" id="mobile-drawer">
-    <div class="drawer-content">
-      <div class="drawer-header">
-        <span style="font-family: var(--font-display); font-size: 1.3rem;">MENÚ PRINCIPAL</span>
-        <button id="drawer-close" style="color: var(--color-white); font-size: 1.5rem;">✕</button>
+  <!-- Drawer Móvil Responsivo -->
+  <div class="mobile-overlay" id="mobile-overlay">
+    <div class="mobile-drawer-box" id="mobile-nav" role="dialog" aria-label="Navegación móvil">
+      <div class="drawer-top-bar">
+        <span style="font: 20px var(--font-display); text-transform: uppercase;">MENÚ PRINCIPAL</span>
+        <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Cerrar menú">✕</button>
       </div>
-      <nav class="drawer-nav">
-        <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#segmentos">Para Quién</a>
-        <a href="#logistica">Flota Propia (Friuli 1972)</a>
-        <a href="#mardelivery">MarDelivery</a>
-        <a href="#metricas">Métricas</a>
-        <a href="#contacto">Contacto & WhatsApp</a>
+
+      <nav class="mobile-nav-list">
+        <a href="#inicio" class="mobile-nav-link">Inicio</a>
+
+        <div class="mobile-nav-heading">Servicios</div>
+        <a href="#servicios" class="mobile-nav-link">Envíos Express</a>
+        <a href="#servicios" class="mobile-nav-link">Envíos LowCost</a>
+        <a href="#servicios" class="mobile-nav-link">Envíos Flex (MeLi)</a>
+        <a href="#segmentos" class="mobile-nav-link">Cuenta Corriente B2B</a>
+
+        <div class="mobile-nav-heading">Plataformas</div>
+        <a href="#logistica" class="mobile-nav-link">Logística DosRuedas</a>
+        <a href="#mardelivery" class="mobile-nav-link">MarDelivery Gastronomía</a>
+
+        <div class="mobile-nav-heading">Atención y Contacto</div>
+        <a href="#emprendedores-home" class="mobile-nav-link">Plan Emprendedores</a>
+        <a href="#contacto" class="mobile-nav-link">Cotizar por WhatsApp</a>
+        <a href="#redes" class="mobile-nav-link">Comunidad Digital</a>
       </nav>
-      <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.15);">
-        <a href="tel:2236025348" style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--color-brand-yellow-500); display: block; margin-bottom: 0.5rem;">
+
+      <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.15);">
+        <a href="tel:+5492236025348" style="font: 14px var(--font-mono); color: var(--yellow); text-decoration: none; font-weight: 700;">
           📞 223 602-5348
         </a>
-        <span style="font-size: 0.75rem; color: var(--color-brand-blue-100);">Friuli 1972, Mar del Plata</span>
+        <p style="font-size: 11px; color: rgba(255, 255, 255, 0.7); margin-top: 4px;">Friuli 1972 · Mar del Plata</p>
       </div>
     </div>
   </div>
 
-  <main>
+  <main id="main">
 
     <!-- ========================================================================
-     * HERO SECTION
+     * 2. HERO PRINCIPAL (HERO_PARA_ADAPTAR)
      * ======================================================================== -->
-    <section class="hero-section" id="inicio">
-      <canvas id="hero-canvas"></canvas>
-      <div class="hero-glow-1"></div>
-      <div class="hero-glow-2"></div>
+    <section class="hero-section" id="inicio" aria-labelledby="hero-title">
+      <svg class="route-art" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-100 650 C160 510 240 770 460 625 S780 455 920 565 S1185 760 1550 380" fill="none" stroke="#FFEC01" stroke-width="2.5" stroke-dasharray="10 17" />
+        <path d="M-80 410 C180 280 300 470 530 355 S860 220 1030 330 S1280 460 1520 210" fill="none" stroke="#BACEFD" stroke-width="1.5" stroke-dasharray="4 14" />
+        <circle cx="460" cy="625" r="5" fill="#FFEC01" />
+        <circle cx="920" cy="565" r="6" fill="#FFEC01" />
+        <circle cx="1030" cy="330" r="4" fill="#FFEC01" />
+      </svg>
 
-      <div class="hero-container">
-        
-        <!-- Texto y llamadas a la acción -->
-        <div>
-          <div class="hero-badge-live">
-            <span class="live-dot"></span>
-            <span>Flota Activa en Calle · Mar del Plata</span>
+      <div class="hero-main">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            Flota propia · Base Friuli 1972 · Todo MDQ
           </div>
-
-          <h1 class="hero-heading">
-            EL MOTOR DE TU <br />
-            <span class="yellow-text">ÚLTIMA MILLA</span> <br />
-            EN MAR DEL PLATA
+          <h1 id="hero-title" class="hero-title">
+            El motor de tu <br />
+            <span class="headline-pill">Última milla</span> <br />
+            Somos la solución <br />
+            a tus envíos
           </h1>
-
-          <p class="hero-lead">
-            Mensajería express y logística e-commerce con <strong>flota propia</strong>, cero tercerización y base física en Friuli 1972. Llegamos a toda la ciudad en el día.
+          <p class="hero-deck">
+            Mensajería y logística e-commerce en Mar del Plata: <strong>envíos en el día con motos propias.</strong>
+            Llegamos a toda la ciudad y los repartidores son nuestros, sin tercerizaciones ni demoras.
           </p>
-
-          <div class="hero-cta-group">
-            <a href="https://wa.me/5492236025348?text=Hola,%20necesito%20coordinar%20un%20envio" target="_blank" rel="noopener" class="btn-hero-primary">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          <p class="brand-promise">Tu negocio no para, nosotros tampoco.</p>
+          <div class="hero-ctas">
+            <a class="hero-btn-primary" href="#contacto">
+              <span>Cotizá tu envío</span>
+              <span class="arrow-disc" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+            <a class="hero-btn-link" href="#servicios">
+              <span>Ver servicios</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-              <span>Pedir Envío Inmediato</span>
-            </a>
-            <a href="#servicios" class="btn-hero-secondary">
-              <span>Conocer Servicios</span>
-              <span>↓</span>
             </a>
           </div>
-
-          <div class="hero-ticker-wrap">
-            <div class="ticker-item">
-              <span class="ticker-num">+500K</span>
-              <span class="ticker-lbl">Paquetes Entregados</span>
-            </div>
-            <div class="ticker-item">
-              <span class="ticker-num">99.4%</span>
-              <span class="ticker-lbl">Efectividad a Tiempo</span>
-            </div>
-            <div class="ticker-item">
-              <span class="ticker-num">100%</span>
-              <span class="ticker-lbl">Flota Propia Contratada</span>
-            </div>
+          <div class="hero-proof" aria-label="Cobertura y operación">
+            <span><i class="proof-mark" aria-hidden="true"></i>Envíos en el día</span>
+            <span><i class="proof-mark" aria-hidden="true"></i>Flota 100% propia</span>
+            <span><i class="proof-mark" aria-hidden="true"></i>Base física en Friuli 1972</span>
           </div>
         </div>
 
-        <!-- Visual / Mapa + Chip de Repartidor -->
-        <div class="hero-visual-stage">
-          <div class="map-frame-box">
-            <img src="../../public/card_mapa.webp" alt="Mapa de cobertura en Mar del Plata" class="map-img" />
+        <div class="hero-art" aria-label="Mapa de cobertura en Mar del Plata">
+          <div class="orbit" aria-hidden="true"></div>
+          <span class="pulse-ring" aria-hidden="true"></span>
+          <img class="map-art" src="../../public/card_mapa.webp" alt="Mapa interactivo de cobertura y ruteo de Envíos DosRuedas en Mar del Plata" width="560" height="560" fetchpriority="high" />
+          <div class="map-chip map-chip-base">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span><strong>Base Friuli 1972</strong>Mar del Plata</span>
           </div>
-
-          <div class="floating-rider-card">
-            <img src="../../public/persona_icono.webp" alt="Repartidor de Envíos DosRuedas" class="rider-avatar" />
-            <div>
-              <div class="rider-info-name">Repartidor Asignado</div>
-              <div class="rider-info-status">● En ruta · Friuli 1972</div>
-            </div>
+          <div class="map-chip map-chip-delivery">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M13 2 3 14h8l-1 8 11-13h-8l1-7Z" />
+            </svg>
+            <span><strong>Entrega en el Día</strong>En todo MDQ</span>
           </div>
         </div>
+      </div>
 
+      <!-- Ticker Continuo de Ventajas -->
+      <div class="ticker" aria-label="Ventajas operativas">
+        <div class="ticker-track">
+          <ul class="ticker-list" aria-hidden="true">
+            <li>MERCADO ENVÍOS FLEX EN EL DÍA</li>
+            <li>RETIRO BONIFICADO EN TU LOCAL</li>
+            <li>FLOTA PROPIA EN CALLE</li>
+            <li>COBRO CONTRA REEMBOLSO</li>
+            <li>BASE OPERATIVA FRIULI 1972</li>
+            <li>RENDICIÓN EN 24 HORAS</li>
+            <li>COBERTURA EN TODO GENERAL PUEYRREDÓN</li>
+          </ul>
+          <ul class="ticker-list" aria-hidden="true">
+            <li>MERCADO ENVÍOS FLEX EN EL DÍA</li>
+            <li>RETIRO BONIFICADO EN TU LOCAL</li>
+            <li>FLOTA PROPIA EN CALLE</li>
+            <li>COBRO CONTRA REEMBOLSO</li>
+            <li>BASE OPERATIVA FRIULI 1972</li>
+            <li>RENDICIÓN EN 24 HORAS</li>
+            <li>COBERTURA EN TODO GENERAL PUEYRREDÓN</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <!-- ========================================================================
-     * SECCIÓN SERVICIOS
+     * 3. SECCIÓN: SEGMENTOS DE CLIENTES (SEGMENTOS-HOME)
      * ======================================================================== -->
-    <section class="section-standard section-gray" id="servicios">
-      <div class="section-head">
-        <div class="section-pill-badge badge-blue-on-white">
-          <span>⚡</span> Portafolio de Soluciones
+    <section class="segmentos-section" id="segmentos" aria-labelledby="segmentos-title">
+      <div class="section-header">
+        <div class="section-kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>Segmentos a Medida</span>
         </div>
-        <h2 class="section-title-large" style="color: var(--color-brand-blue-500);">
-          LOGÍSTICA A TU MEDIDA
+        <h2 id="segmentos-title" class="section-title">
+          Soluciones pensadas para <br /><span class="highlight-yellow">cada escala</span> de negocio
         </h2>
-        <p class="section-subtitle-text" style="color: var(--color-ink);">
-          Desde encomiendas urgentes punto a punto hasta almacenamiento y despacho masivo para tiendas online.
+        <p class="section-desc">
+          Desde un trámite urgente personal hasta la logística integral de tu tienda online o distribución corporativa.
         </p>
       </div>
 
-      <div class="services-grid-cards">
-        
-        <!-- Card 1: Express -->
-        <div class="service-card card-theme-express">
-          <div>
-            <span class="service-card-tag tag-yellow">PUNTO A PUNTO</span>
-            <h3 class="service-card-title" style="margin-top: 1rem;">MENSAJERÍA EXPRESS</h3>
-            <p class="service-card-desc">Entrega en menos de 60 a 90 minutos en todo el casco urbano de Mar del Plata. Ideal para trámites, llaves, documentación y urgencias.</p>
-          </div>
-          <div class="service-card-stats">
+      <div class="segmentos-cards-grid">
+        <!-- 01: Particulares -->
+        <div class="double-bezel-outer">
+          <div class="double-bezel-inner">
+            <span class="card-watermark" aria-hidden="true">01</span>
             <div>
-              <div class="stat-mini-val" style="color: var(--color-brand-yellow-500);">< 90 min</div>
-              <div class="stat-mini-lbl">Tiempo promedio</div>
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+              </div>
+              <span class="card-tag">Particulares · Mensajería</span>
+              <h3 class="card-title">Mandados, Trámites y Envíos Personales</h3>
+              <p class="card-desc">Llevamos llaves, documentación legal, compras o paquetes urgentes entre domicilios de la ciudad con seguimiento al instante por WhatsApp.</p>
+              <div class="card-benefit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                <span>Franja de 3 hs o entrega inmediata</span>
+              </div>
             </div>
             <div>
-              <div class="stat-mini-val" style="color: var(--color-brand-yellow-500);">Motos</div>
-              <div class="stat-mini-lbl">Vehículo asignado</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2: Flex E-commerce -->
-        <div class="service-card card-theme-flex">
-          <div>
-            <span class="service-card-tag tag-blue">TIENDAS ONLINE</span>
-            <h3 class="service-card-title" style="margin-top: 1rem;">LOGÍSTICA E-COMMERCE</h3>
-            <p class="service-card-desc">Envíos en el día para ventas web, Tienda Nube y redes sociales. Rendición semanal clara y retiro diario por tu local o depósito.</p>
-          </div>
-          <div class="service-card-stats">
-            <div>
-              <div class="stat-mini-val" style="color: var(--color-brand-blue-500);">Same Day</div>
-              <div class="stat-mini-lbl">Entrega en el día</div>
-            </div>
-            <div>
-              <div class="stat-mini-val" style="color: var(--color-brand-blue-500);">Cobro contra entrega</div>
-              <div class="stat-mini-lbl">Gestión de cobros</div>
+              <a href="#contacto" class="cta-nested-pill pill-primary">
+                <span>Cotizar Mandado</span>
+                <span class="cta-nested-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- Card 3: Low Cost Programado -->
-        <div class="service-card card-theme-lowcost">
-          <div>
-            <span class="service-card-tag tag-blue">MÁXIMO AHORRO</span>
-            <h3 class="service-card-title" style="margin-top: 1rem;">ENVÍO PROGRAMADO</h3>
-            <p class="service-card-desc">Tarifa bonificada para despachos coordinados en franjas horarias de mañana o tarde. Optimiza los costos logísticos de tu negocio.</p>
-          </div>
-          <div class="service-card-stats">
+        <!-- 02: Comercios & E-Commerce -->
+        <div class="double-bezel-outer">
+          <div class="double-bezel-inner">
+            <span class="card-watermark" aria-hidden="true">02</span>
             <div>
-              <div class="stat-mini-val" style="color: var(--color-brand-blue-500);">-30%</div>
-              <div class="stat-mini-lbl">Costo por envío</div>
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"></path></svg>
+              </div>
+              <span class="card-tag">Comercios · E-Commerce</span>
+              <h3 class="card-title">Envíos en el Día y Mercado Envíos Flex</h3>
+              <p class="card-desc">Multiplicá tus ventas online entregando el mismo día con cadetes propios de confianza. Cobro contra reembolso integrado y rendición en 24 hs.</p>
+              <div class="card-benefit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                <span>Retiro bonificado en tu local</span>
+              </div>
             </div>
             <div>
-              <div class="stat-mini-val" style="color: var(--color-brand-blue-500);">Franjas fijas</div>
-              <div class="stat-mini-lbl">Ventanas de entrega</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 4: 3PL Fulfillment -->
-        <div class="service-card card-theme-3pl">
-          <div>
-            <span class="service-card-tag tag-dark">INTEGRAL</span>
-            <h3 class="service-card-title" style="margin-top: 1rem;">DEPÓSITO & FULFILLMENT</h3>
-            <p class="service-card-desc">Almacenamos tu mercadería en nuestra base de Friuli 1972, armamos los paquetes y los distribuimos directo a tus clientes sin que muevas un dedo.</p>
-          </div>
-          <div class="service-card-stats">
-            <div>
-              <div class="stat-mini-val" style="color: var(--color-brand-yellow-500);">Friuli 1972</div>
-              <div class="stat-mini-lbl">Base física y depósito</div>
-            </div>
-            <div>
-              <div class="stat-mini-val" style="color: var(--color-brand-yellow-500);">Pick & Pack</div>
-              <div class="stat-mini-lbl">Preparación de pedidos</div>
+              <a href="#emprendedores-home" class="cta-nested-pill pill-elevated">
+                <span>Ver Plan Emprendedores</span>
+                <span class="cta-nested-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+              </a>
             </div>
           </div>
         </div>
 
+        <!-- 03: Empresas B2B -->
+        <div class="double-bezel-outer">
+          <div class="double-bezel-inner">
+            <span class="card-watermark" aria-hidden="true">03</span>
+            <div>
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
+              </div>
+              <span class="card-tag">Empresas · Cuenta Corriente</span>
+              <h3 class="card-title">Cadetería Corporativa & Ruteo B2B</h3>
+              <p class="card-desc">Solución logística integral para distribuidoras, repuesteras y estudios profesionales. Facturación quincenal o mensual A/B con remitos conformados.</p>
+              <div class="card-benefit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                <span>Atención y soporte dedicado</span>
+              </div>
+            </div>
+            <div>
+              <a href="#contacto" class="cta-nested-pill pill-elevated">
+                <span>Solicitar Apertura B2B</span>
+                <span class="cta-nested-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ========================================================================
-     * SECCIÓN SEGMENTOS (PARA QUIÉN)
+     * 4. SECCIÓN: EMPRENDEDORES (EMPRENDEDORES-HOME)
      * ======================================================================== -->
-    <section class="section-standard section-white" id="segmentos">
-      <div class="section-head">
-        <div class="section-pill-badge badge-blue-on-white">
-          <span>🎯</span> Cobertura Especializada
-        </div>
-        <h2 class="section-title-large" style="color: var(--color-brand-blue-500);">
-          SOLUCIONES PARA CADA SECTOR
+    <section class="emprendedores-section" id="emprendedores-home" aria-labelledby="emprendedores-title">
+      <div class="glow-blue" aria-hidden="true"></div>
+      <div class="glow-yellow" aria-hidden="true"></div>
+
+      <div class="header-box">
+        <span class="header-badge">Socio Estratégico Local</span>
+        <h2 id="emprendedores-title" class="header-title">
+          Potenciamos tu <span class="mdq-pill">MDQ</span> Marca en Mar del Plata
         </h2>
-        <p class="section-subtitle-text" style="color: var(--color-ink);">
-          Adaptamos nuestros tiempos y protocolos a las exigencias operativas de tu rubro.
+        <p class="header-desc">
+          Si vendés online, necesitás un socio logístico que responda al toque. Creamos planes a tu medida con tarifas dinámicas transparentes y recolección programada a domicilio.
         </p>
       </div>
 
-      <div class="segmentos-grid">
-        
-        <div class="segmento-box">
-          <div class="segmento-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-            </svg>
+      <div class="bento-grid">
+        <!-- Bento Card 1: PyMEs -->
+        <div class="bento-card-base bento-card-pymes">
+          <div class="inner-bento-card">
+            <div>
+              <span class="bento-tag">Comercios en Crecimiento</span>
+              <h3 class="bento-title">E-Commerce & Showrooms en Mar del Plata</h3>
+              <p class="bento-desc">Diseñado para marcas de ropa, repuestos, cosmética y accesorios que precisan agilidad y una imagen impecable ante el comprador final.</p>
+              <div class="bento-perks-list">
+                <div class="bento-perk-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Retiro bonificado a partir de tu volumen semanal de paquetes</span>
+                </div>
+                <div class="bento-perk-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Cobro contra reembolso con rendición formal en tu cuenta bancaria</span>
+                </div>
+                <div class="bento-perk-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Notificación automática al comprador cuando el cadete está en viaje</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <a href="#contacto" class="cta-nested-pill pill-primary">
+                <span>Consultar Plan Emprendedor</span>
+                <span class="cta-nested-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+              </a>
+            </div>
           </div>
-          <h3 class="segmento-title">E-COMMERCE & TIENDAS</h3>
-          <p style="font-size: 0.92rem; color: #4B5563;">Vendes más cuando tus clientes reciben su compra en pocas horas. Retiro diario y confirmación de entrega.</p>
-          <ul class="segmento-list">
-            <li><span class="check-icon">✓</span> Integración con Tienda Nube y WooCommerce</li>
-            <li><span class="check-icon">✓</span> Cobro en efectivo contra entrega (COD)</li>
-            <li><span class="check-icon">✓</span> Rendición de dinero puntual cada semana</li>
-          </ul>
         </div>
 
-        <div class="segmento-box">
-          <div class="segmento-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-            </svg>
+        <!-- Bento Card 2: Flex -->
+        <div class="bento-card-base bento-card-flex">
+          <div class="inner-bento-card">
+            <div>
+              <span class="bento-tag">MercadoLibre Oficial</span>
+              <h3 class="bento-title">Mercado Envíos Flex Homologado</h3>
+              <p class="bento-desc">Despachá en el día todas las ventas que ingresen antes del horario de corte de las 14:00 hs. Entregamos hasta las 21:00 hs con firma digital.</p>
+              <div class="bento-perks-list">
+                <div class="bento-perk-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Calificación Verde protegida</span>
+                </div>
+                <div class="bento-perk-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Escaner QR integrado directo a MeLi</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <a href="#servicios" class="cta-nested-pill pill-elevated">
+                <span>Configurar Flex</span>
+                <span class="cta-nested-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+              </a>
+            </div>
           </div>
-          <h3 class="segmento-title">FARMACIAS & REPUESTOS</h3>
-          <p style="font-size: 0.92rem; color: #4B5563;">Mercaderías delicadas y urgentes que requieren manipulación segura y tiempos de entrega garantizados.</p>
-          <ul class="segmento-list">
-            <li><span class="check-icon">✓</span> Cajas térmicas y sujeción protegida</li>
-            <li><span class="check-icon">✓</span> Entrega con firma y comprobante</li>
-            <li><span class="check-icon">✓</span> Envíos en moto o utilitario según peso</li>
-          </ul>
         </div>
 
-        <div class="segmento-box">
-          <div class="segmento-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-            </svg>
+        <!-- Bento Card 3: DropOFF & Ahorro -->
+        <div class="bento-card-base bento-card-ahorro">
+          <div class="inner-bento-card">
+            <div>
+              <span class="bento-tag">Punto DropOFF Friuli 1972</span>
+              <h3 class="bento-title">Ahorrá hasta un 25% con DropOFF</h3>
+              <p class="bento-desc">Traé tus paquetes empaquetados y etiquetados a nuestra base de Friuli 1972 y accedé a una tarifa reducida inmediata.</p>
+              <div class="bento-perks-list">
+                <div class="bento-perk-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Recepción continua de 9:00 a 19:00 hs</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <a href="#logistica" class="cta-nested-pill pill-elevated">
+                <span>Cómo llegar a Base Friuli</span>
+                <span class="cta-nested-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+              </a>
+            </div>
           </div>
-          <h3 class="segmento-title">EMPRESAS & ESTUDIOS</h3>
-          <p style="font-size: 0.92rem; color: #4B5563;">Trámites bancarios, gestiones notariales, intercambio de contratos y paquetería corporativa con cuenta corriente.</p>
-          <ul class="segmento-list">
-            <li><span class="check-icon">✓</span> Factura A y liquidación mensual clara</li>
-            <li><span class="check-icon">✓</span> Cadetes de confianza con seguro al día</li>
-            <li><span class="check-icon">✓</span> Hoja de ruta coordinada por WhatsApp</li>
-          </ul>
         </div>
 
+        <!-- Bento Card 4: Marcas que Confían -->
+        <div class="bento-card-base bento-card-marcas">
+          <div class="inner-bento-card">
+            <div>
+              <span class="bento-tag">Comunidad Comercial MDQ</span>
+              <h3 class="bento-title">+150 Emprendimientos confían su logística diaria</h3>
+              <p class="bento-desc">Marcas marplatenses de primera línea resuelven sus entregas con nuestro equipo de cadetería propia cada jornada.</p>
+
+              <!-- Marquee Interactivo -->
+              <div class="marquee-wrapper">
+                <div class="marquee-track" id="marquee-track">
+                  <span class="partner-pill">EL CÓNDOR</span>
+                  <span class="partner-pill">STARCEL</span>
+                  <span class="partner-pill">URBANCOW</span>
+                  <span class="partner-pill">WANCA</span>
+                  <span class="partner-pill">CATALINA INDUMENTARIA</span>
+                  <span class="partner-pill">ENVASES 3G</span>
+                  <span class="partner-pill">LA PERI</span>
+                  <!-- Duplicado para loop sin cortes -->
+                  <span class="partner-pill">EL CÓNDOR</span>
+                  <span class="partner-pill">STARCEL</span>
+                  <span class="partner-pill">URBANCOW</span>
+                  <span class="partner-pill">WANCA</span>
+                  <span class="partner-pill">CATALINA INDUMENTARIA</span>
+                  <span class="partner-pill">ENVASES 3G</span>
+                  <span class="partner-pill">LA PERI</span>
+                </div>
+              </div>
+
+              <div class="marquee-controls-bar">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: rgba(9, 80, 246, 0.7);">Desplazamiento dinámico</span>
+                <button type="button" class="btn-toggle-marquee" id="btn-toggle-marquee" aria-pressed="false" aria-label="Pausar o reanudar carrusel de marcas">
+                  <span id="label-pause">Pausar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ========================================================================
-     * SECCIÓN LOGÍSTICA & FLOTA PROPIA (FRIULI 1972)
+     * 5. SECCIÓN: SERVICIOS (SERVICES-OVERVIEW)
      * ======================================================================== -->
-    <section class="section-standard section-gray" id="logistica">
-      <div class="logistica-card-highlight">
+    <section class="services-section" id="servicios" aria-labelledby="services-title">
+      <canvas id="network-canvas" aria-hidden="true"></canvas>
+
+      <div class="services-header">
         <div>
-          <div class="section-pill-badge badge-yellow-on-blue">
-            <span>🛡️</span> Cero Tercerización
-          </div>
-          <h2 style="font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); line-height: 0.92; text-transform: uppercase; margin-bottom: 1.25rem;">
-            FLOTA PROPIA Y BASE FÍSICA EN MAR DEL PLATA
+          <span class="services-badge">NUESTROS SERVICIOS</span>
+          <h2 id="services-title" class="services-title">
+            SOLUCIONES LOGÍSTICAS <br />
+            <span>A TU MEDIDA</span>
           </h2>
-          <p style="font-size: 1.1rem; line-height: 1.6; color: var(--color-brand-blue-50); font-weight: 300;">
-            A diferencia de las aplicaciones genéricas, en Envíos DosRuedas conocemos a cada repartidor. Tenemos base operativa y depósito en <strong>Friuli 1972</strong>, lo que garantiza total respaldo para tus envíos de valor.
-          </p>
+        </div>
+        <div class="carousel-controls">
+          <button type="button" id="toggle-rotate" class="btn-toggle-rotate active" aria-pressed="true">ROTACIÓN AUTOMÁTICA</button>
+          <button type="button" id="prev-service" class="btn-nav-round" aria-label="Anterior Servicio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"></path></svg>
+          </button>
+          <button type="button" id="next-service" class="btn-nav-round" aria-label="Siguiente Servicio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m9 18 6-6-6-6"></path></svg>
+          </button>
+        </div>
+      </div>
 
-          <div class="flota-pills-row">
-            <span class="flota-pill">🏍️ Motos ágiles para paquetería urbana</span>
-            <span class="flota-pill">🚐 Utilitarios para bultos pesados</span>
-            <span class="flota-pill">📍 Base propia en Friuli 1972</span>
-            <span class="flota-pill">📋 Repartidores identificados con seguro</span>
+      <!-- Escenario 3D de Tarjetas de Servicios -->
+      <div id="carousel-stage" class="carousel-stage" role="region" aria-roledescription="carousel" aria-label="Carrusel interactivo de servicios">
+        
+        <!-- Servicio 0: Express -->
+        <button type="button" class="service-card-wrapper" data-index="0" aria-label="Ver ficha técnica de Envíos Express">
+          <div class="service-card-inner">
+            <svg class="card-watermark-icon" viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <div class="card-icon-pill">
+              <div class="icon-square"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+              <span class="card-badge">URGENTE</span>
+            </div>
+            <div>
+              <h3 class="service-card-title">Envíos Express</h3>
+              <p class="service-card-desc">Mensajería en moto con franja horaria de 3 hs a elección.</p>
+            </div>
+            <div class="card-stats-grid">
+              <div><div class="stat-val">3 horas</div><div class="stat-lbl">ENTREGA</div></div>
+              <div><div class="stat-val">$3.500 Base</div><div class="stat-lbl">TARIFA</div></div>
+              <div><div class="stat-val">Hasta 5 kg</div><div class="stat-lbl">PESO</div></div>
+            </div>
+            <span class="card-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+              Mirá la Ficha Técnica
+            </span>
+          </div>
+        </button>
+
+        <!-- Servicio 1: LowCost -->
+        <button type="button" class="service-card-wrapper" data-index="1" aria-label="Ver ficha técnica de Envíos LowCost">
+          <div class="service-card-inner">
+            <svg class="card-watermark-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path></svg>
+            <div class="card-icon-pill">
+              <div class="icon-square"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path></svg></div>
+              <span class="card-badge">ECONÓMICO</span>
+            </div>
+            <div>
+              <h3 class="service-card-title">Envíos LowCost</h3>
+              <p class="service-card-desc">Reparto económico programado en el día sin elección de horario estricto.</p>
+            </div>
+            <div class="card-stats-grid">
+              <div><div class="stat-val">En el día</div><div class="stat-lbl">ENTREGA</div></div>
+              <div><div class="stat-val">$2.800 Base</div><div class="stat-lbl">TARIFA</div></div>
+              <div><div class="stat-val">Hasta 5 kg</div><div class="stat-lbl">PESO</div></div>
+            </div>
+            <span class="card-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+              Mirá la Ficha Técnica
+            </span>
+          </div>
+        </button>
+
+        <!-- Servicio 2: Flex -->
+        <button type="button" class="service-card-wrapper" data-index="2" aria-label="Ver ficha técnica de Envíos Flex">
+          <div class="service-card-inner">
+            <svg class="card-watermark-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
+            <div class="card-icon-pill">
+              <div class="icon-square"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path></svg></div>
+              <span class="card-badge">MERCADOLIBRE</span>
+            </div>
+            <div>
+              <h3 class="service-card-title">Envíos Flex</h3>
+              <p class="service-card-desc">Logística homologada para vendedores con entregas Same-Day en Mar del Plata.</p>
+            </div>
+            <div class="card-stats-grid">
+              <div><div class="stat-val">Same Day</div><div class="stat-lbl">ENTREGA</div></div>
+              <div><div class="stat-val">Zonificada</div><div class="stat-lbl">TARIFA</div></div>
+              <div><div class="stat-val">Moto/Auto</div><div class="stat-lbl">FLOTA</div></div>
+            </div>
+            <span class="card-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+              Mirá la Ficha Técnica
+            </span>
+          </div>
+        </button>
+
+        <!-- Servicio 3: Depósito & Fulfillment -->
+        <button type="button" class="service-card-wrapper" data-index="3" aria-label="Ver ficha técnica de E-Commerce Fulfillment">
+          <div class="service-card-inner">
+            <svg class="card-watermark-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path></svg>
+            <div class="card-icon-pill">
+              <div class="icon-square"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path></svg></div>
+              <span class="card-badge">DEPÓSITO</span>
+            </div>
+            <div>
+              <h3 class="service-card-title">Depósito & Fulfillment</h3>
+              <p class="service-card-desc">Stock guardado en Friuli 1972, picking, empaque y despacho instantáneo.</p>
+            </div>
+            <div class="card-stats-grid">
+              <div><div class="stat-val">Inmediato</div><div class="stat-lbl">DESPACHO</div></div>
+              <div><div class="stat-val">$2.900 Fijo</div><div class="stat-lbl">TARIFA BASE</div></div>
+              <div><div class="stat-val">Friuli 1972</div><div class="stat-lbl">BASE</div></div>
+            </div>
+            <span class="card-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+              Mirá la Ficha Técnica
+            </span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Modal de Ficha Técnica Detallada -->
+      <div id="service-modal" class="service-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="service-modal-dialog">
+          <button type="button" id="modal-close" class="modal-close-btn" aria-label="Cerrar ficha técnica">✕</button>
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+            <div id="modal-icon" class="icon-square" style="width: 3.5rem; height: 3.5rem;"></div>
+            <div>
+              <span id="modal-meta" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--yellow); text-transform: uppercase;"></span>
+              <h3 id="modal-title" style="font-family: var(--font-subheading); font-size: 2.2rem; text-transform: uppercase; line-height: 1;"></h3>
+            </div>
+          </div>
+          <p id="modal-summary" style="font-size: 1rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem;"></p>
+          <div style="margin-bottom: 1.75rem;">
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--yellow); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.75rem;">Beneficios Clave:</span>
+            <div id="modal-features" style="display: flex; flex-direction: column; gap: 0.65rem;"></div>
+          </div>
+          <div class="card-stats-grid" style="margin-bottom: 2rem;">
+            <div><div class="stat-val" id="stat-time"></div><div class="stat-lbl">TIEMPO ESTIMADO</div></div>
+            <div><div class="stat-val" id="stat-price"></div><div class="stat-lbl">TARIFA ESTIMADA</div></div>
+            <div><div class="stat-val" id="stat-weight"></div><div class="stat-lbl">CAPACIDAD</div></div>
+          </div>
+          <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+            <button type="button" id="modal-back" style="padding: 0.85rem 1.5rem; border-radius: 9999px; background: rgba(255, 255, 255, 0.15); font-family: var(--font-subheading); font-size: 1.15rem; text-transform: uppercase;">Cerrar</button>
+            <a href="#contacto" id="modal-cta" class="hero-btn-primary" style="min-height: 46px; font-size: 1.15rem;">
+              <span id="modal-cta-text">Cotizar Ahora</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+     * 6. SECCIÓN: LOGÍSTICA DOSRUEDAS (LOGISTICA-HOME-SECTION)
+     * ======================================================================== -->
+    <section class="logistica-section" id="logistica" aria-labelledby="logistica-title">
+      <div class="section-header">
+        <div class="section-kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>Infraestructura & Operación Local</span>
+        </div>
+        <h2 id="logistica-title" class="section-title">
+          Logística con base real en <br /><span class="highlight-yellow">Friuli 1972</span>
+        </h2>
+        <p class="section-desc">
+          No somos una app fantasma. Conocé la estructura humana y edilicia que respalda cada paquete que entregamos en Mar del Plata.
+        </p>
+      </div>
+
+      <div class="logistica-cards-grid">
+        <!-- Tarjeta 1: Base Friuli -->
+        <div class="outer-card">
+          <div class="inner-card">
+            <div>
+              <span class="badge-pill">Base Operativa</span>
+              <h3 class="card-heading">Friuli 1972 · Mar del Plata</h3>
+              <p class="card-paragraph">Instalaciones propias para recepción de mercadería, consolidación de paquetes y atención directa al comerciante.</p>
+              <ul class="features-list">
+                <li class="feature-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Depósito vigilado y seguro</span>
+                </li>
+                <li class="feature-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Atención presencial de 9 a 19 hs</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div style="background: rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.15); text-align: center;">
-          <div style="font-family: var(--font-subhead); font-size: 3rem; color: var(--color-brand-yellow-500); line-height: 1;">
-            FRIULI 1972
+        <!-- Tarjeta 2: Flota Propia -->
+        <div class="outer-card">
+          <div class="inner-card">
+            <div>
+              <span class="badge-pill">Cero Tercerización</span>
+              <h3 class="card-heading">Flota 100% en Calle</h3>
+              <p class="card-paragraph">Repartidores registrados y equipados con indumentaria oficial y baúles de alta capacidad térmica y de impacto.</p>
+              <ul class="features-list">
+                <li class="feature-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Conductores de confianza</span>
+                </li>
+                <li class="feature-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Rastreo activo en tiempo real</span>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-brand-blue-100); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
-            Base de Operaciones · Mar del Plata
+        </div>
+
+        <!-- Tarjeta 3: Cobro Contra Reembolso -->
+        <div class="outer-card">
+          <div class="inner-card">
+            <div>
+              <span class="badge-pill">Finanzas Claras</span>
+              <h3 class="card-heading">Cobro y Rendición en 24h</h3>
+              <p class="card-paragraph">Cobramos en efectivo o transferencia en el punto de entrega y te transferimos el dinero rendido al cierre del turno.</p>
+              <ul class="features-list">
+                <li class="feature-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Rendición formal con comprobante</span>
+                </li>
+                <li class="feature-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Cero riesgo de incobrables</span>
+                </li>
+              </ul>
+            </div>
           </div>
-          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-white); opacity: 0.85;">
-            Lunes a Viernes de 8:00 a 18:00 hs<br />Sábados de 8:00 a 13:00 hs
-          </p>
-          <a href="https://maps.google.com/?q=Friuli+1972+Mar+del+Plata" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.25rem; background: var(--color-white); color: var(--color-brand-blue-500); padding: 0.6rem 1.25rem; border-radius: 10px; font-weight: 700; font-size: 0.85rem;">
-            <span>Ver Ubicación en Google Maps</span> ↗
+        </div>
+
+        <!-- Tarjeta 4: DropOFF Bonificado -->
+        <div class="outer-card">
+          <div class="inner-card">
+            <div>
+              <span class="badge-pill">DropOFF Directo</span>
+              <h3 class="card-heading">Ahorro en Despacho</h3>
+              <p class="card-paragraph">Entregá tus bultos consolidados en nuestra base y optimizá tus costos operativos con tarifa especial mayorista.</p>
+              <ul class="features-list">
+                <li class="feature-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Despacho al instante sin demoras</span>
+                </li>
+                <li class="feature-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  <span>Tarifario plano bonificado</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner de Soporte Operativo -->
+      <div class="cta-banner-outer">
+        <div class="cta-banner-inner">
+          <div>
+            <h3 class="banner-title">¿Precisás una visita o apertura de cuenta corriente?</h3>
+            <p class="banner-desc">Coordiná con nuestro equipo comercial para evaluar tus zonas de reparto y frecuencias semanales.</p>
+          </div>
+          <a class="btn-banner-cta" href="https://api.whatsapp.com/send/?phone=5492236025348&text=Hola!%20Quiero%20conocer%20m%C3%A1s%20sobre%20la%20log%C3%ADstica%20en%20Friuli%201972" target="_blank" rel="noopener noreferrer">
+            <span>Hablar con Operaciones</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
           </a>
         </div>
       </div>
     </section>
 
     <!-- ========================================================================
-     * SECCIÓN MARDELIVERY (GASTRONOMÍA)
+     * 7. SECCIÓN: MARDELIVERY (VERTICAL GASTRONÓMICA NOCTURNA)
      * ======================================================================== -->
-    <section class="section-standard" style="background: #020F0B;" id="mardelivery">
-      <div class="mardelivery-wrap">
-        <div>
-          <div class="section-pill-badge badge-green-on-dark">
-            <span>🍔</span> Vertical Gastronómica
+    <section class="md-section" id="mardelivery" aria-labelledby="mardelivery-title">
+      <div class="md-ambient-glow" aria-hidden="true"></div>
+
+      <div class="md-header">
+        <span class="md-badge">Plataforma Gastronómica Exclusiva</span>
+        <h2 id="mardelivery-title" class="md-title">
+          Tu Delivery Gastronómico <br />
+          con <span class="title-pill-green">Margen Real</span>
+        </h2>
+        <p class="md-desc">
+          Basta de entregar el 35% de cada pedido a las multinacionales. Con MarDelivery gestionás tus pedidos con cadetes propios en turno noche y cobrás el 100% de tu menú.
+        </p>
+      </div>
+
+      <div class="md-cards-grid">
+        <!-- MD 1: Sin comisiones -->
+        <div class="md-card-outer">
+          <div class="md-card-inner">
+            <div>
+              <span class="md-card-tag">Rentabilidad</span>
+              <h3 class="md-card-title">0% Comisión por Pedido</h3>
+              <p class="md-card-desc">No cobramos porcentajes abusivos de tus ventas. Tarifa plana por envío acordada con tu local.</p>
+              <div class="md-benefit-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                <span>Ganancia íntegra para tu cocina</span>
+              </div>
+            </div>
           </div>
-          <h2 class="md-title">
-            MARDELIVERY: TU ALIADO GASTRONÓMICO
-          </h2>
-          <p style="font-size: 1.05rem; line-height: 1.6; color: #C2DDD3; font-weight: 300; margin-bottom: 2rem;">
-            Servicio nocturno especializado para hamburgueserías, pizzerías, sushi y restaurantes marplatenses. Cajas térmicas higienizadas, reparto veloz y cuidado extremo para que tu comida llegue caliente y perfecta.
-          </p>
-          <a href="https://wa.me/5492236025348?text=Hola,%20tengo%20un%20comercio%20gastronomico%20y%20quiero%20conocer%20MarDelivery" target="_blank" rel="noopener" class="md-btn">
-            <span>Sumar mi local a MarDelivery</span> →
+        </div>
+
+        <!-- MD 2: Turno Noche -->
+        <div class="md-card-outer">
+          <div class="md-card-inner">
+            <div>
+              <span class="md-card-tag">Horario Extendido</span>
+              <h3 class="md-card-title">Turno Noche Activo</h3>
+              <p class="md-card-desc">Guardia operativa permanente hasta las 01:00 hs los días de semana y hasta las 02:30 hs viernes y sábados.</p>
+              <div class="md-benefit-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                <span>Cadetes asignados en tu puerta</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MD 3: Mochilas Térmicas -->
+        <div class="md-card-outer">
+          <div class="md-card-inner">
+            <div>
+              <span class="md-card-tag">Cuidado del Producto</span>
+              <h3 class="md-card-title">Equipamiento Térmico</h3>
+              <p class="md-card-desc">Mochilas con separador térmico reforzado para pizzas, hamburguesas y sushi. La comida llega caliente e intacta.</p>
+              <div class="md-benefit-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                <span>Cero volcados o desbordes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MD 4: App y WhatsApp -->
+        <div class="md-card-outer">
+          <div class="md-card-inner">
+            <div>
+              <span class="md-card-tag">Coordinación Rápida</span>
+              <h3 class="md-card-title">Despacho por WhatsApp</h3>
+              <p class="md-card-desc">Despachá cada pedido con un mensaje simple o mediante panel de comandas sin complicaciones técnicas.</p>
+              <div class="md-benefit-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                <span>Atención de operador humano</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner MarDelivery CTA -->
+      <div class="md-banner-outer">
+        <div class="md-banner-inner">
+          <div>
+            <h3 style="font-family: var(--font-subheading); font-size: 2rem; text-transform: uppercase; color: var(--color-md-white); margin-bottom: 0.35rem;">
+              ¿Tenés una pizzería, hamburguesería o resto en Mar del Plata?
+            </h3>
+            <p style="font-size: 0.95rem; color: rgba(250, 252, 251, 0.8);">
+              Sumá cadetes fijos a tu turno noche hoy mismo y dejá de regalarle tu margen a las apps.
+            </p>
+          </div>
+          <a class="md-btn-primary" href="https://api.whatsapp.com/send/?phone=5492236025348&text=Hola!%20Tengo%20un%20local%20gastron%C3%B3mico%20y%20quiero%20conocer%20MarDelivery" target="_blank" rel="noopener noreferrer">
+            <span>Afiliar mi Restaurante</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
           </a>
         </div>
+      </div>
+    </section>
 
-        <div style="background: rgba(46, 204, 133, 0.06); border: 1px solid rgba(46, 204, 133, 0.2); border-radius: 20px; padding: 2rem;">
-          <h4 style="font-family: var(--font-subhead); font-size: 1.6rem; color: #2ECC85; margin-bottom: 1rem;">VENTAJAS PARA TU RESTÓ</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.95rem; color: #FAFCFB;">
-            <li>🟢 <strong>Cero comisión por plato:</strong> Pagas solo el viaje de reparto.</li>
-            <li>🟢 <strong>Repartidores dedicados:</strong> En tu puerta en los picos de demanda.</li>
-            <li>🟢 <strong>Cobro POS y Efectivo:</strong> Cobran en la puerta de tu cliente y te rinden en el acto.</li>
-          </ul>
+    <!-- ========================================================================
+     * 8. SECCIÓN: COTIZADOR WHATSAPP (CTA-SECTION)
+     * ======================================================================== -->
+    <section class="cta-section" id="contacto" aria-labelledby="cta-title">
+      <div class="cta-outer-bezel">
+        <div class="cta-inner-card">
+          <!-- Columna Copy -->
+          <div>
+            <span class="badge-inmediata">Cotización Inmediata</span>
+            <h2 id="cta-title" class="cta-title">
+              ¿Listo para escalar la logística de tu negocio?
+            </h2>
+            <p class="cta-desc">
+              Olvidate del dolor de cabeza de coordinar repartos en Mar del Plata. Completá tus datos y te respondemos por WhatsApp con tu presupuesto a medida en pocos minutos.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--color-brand-blue-500);">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>Atención humana y asesoramiento comercial directo</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>Horario de guardia: Lunes a Sábados 9:00 a 20:00 hs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Formulario Inline a WhatsApp -->
+          <div>
+            <form id="cta-whatsapp-form" class="cta-form" novalidate>
+              <div class="field-group">
+                <label for="cta-name" class="field-label">Tu Nombre o Contacto</label>
+                <input type="text" id="cta-name" class="field-input" placeholder="Ej: Mariano López" required />
+              </div>
+
+              <div class="field-group">
+                <label for="cta-business" class="field-label">Nombre de tu Comercio o Proyecto</label>
+                <input type="text" id="cta-business" class="field-input" placeholder="Ej: Tienda MDQ / Indumentaria" required />
+              </div>
+
+              <div class="field-group">
+                <label for="cta-volume" class="field-label">Volumen Estimado de Envíos</label>
+                <select id="cta-volume" class="field-input" required>
+                  <option value="" disabled selected>Seleccioná tu volumen mensual</option>
+                  <option value="1 a 20 envíos mensuales">1 a 20 envíos (Envíos puntuales)</option>
+                  <option value="20 a 100 envíos mensuales">20 a 100 envíos (Comercio / Tienda)</option>
+                  <option value="+100 envíos mensuales">+100 envíos (E-Commerce / Distribuidora)</option>
+                  <option value="Gastronomía Turno Noche">Gastronomía (Turno Noche / Viandas)</option>
+                </select>
+              </div>
+
+              <button type="submit" id="cta-section-whatsapp" class="cta-submit-btn">
+                <span id="btn-submit-label">Cotizar por WhatsApp</span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ========================================================================
-     * SECCIÓN MÉTRICAS Y PRUEBA SOCIAL
+     * 9. SECCIÓN: REDES SOCIALES (CARRUSEL-REDES)
      * ======================================================================== -->
-    <section class="section-standard section-white" id="metricas">
-      <div class="section-head">
-        <div class="section-pill-badge badge-blue-on-white">
-          <span>📈</span> Trayectoria Comprobada
-        </div>
-        <h2 class="section-title-large" style="color: var(--color-brand-blue-500);">
-          NÚMEROS QUE GENERAN CONFIANZA
+    <section class="carrusel-section" id="redes" aria-labelledby="redes-title">
+      <div class="section-header">
+        <span class="header-badge">Nuestra Comunidad Digital</span>
+        <h2 id="redes-title" class="section-title">
+          SEGUÍ NUESTRO <span class="highlight-yellow">MOVIMIENTO</span>
         </h2>
-        <p class="section-subtitle-text" style="color: var(--color-ink);">
-          Más de una década moviendo la economía y el comercio local de Mar del Plata.
+        <p class="section-desc">
+          Sumate a nuestros canales digitales y enterate al toque de todas las novedades operativas en Mar del Plata.
         </p>
       </div>
 
-      <div class="metrics-row">
-        <div class="metric-card">
-          <div class="metric-big">+500.000</div>
-          <div class="metric-tag">Envíos Completados</div>
+      <div class="networks-grid">
+        <!-- 1. Facebook -->
+        <div class="social-card-outer">
+          <div class="social-card-inner">
+            <div>
+              <span class="card-tag">Facebook Oficial</span>
+              <h3 class="card-title">Envíos DosRuedas MDP</h3>
+              <p class="card-desc">Publicamos avisos de corte, novedades del clima en la ciudad y testimonios de comerciantes locales.</p>
+            </div>
+            <div>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="cta-nested-pill pill-elevated">
+                <span>Seguir en Facebook</span>
+                <span class="cta-nested-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="metric-card">
-          <div class="metric-big">99.4%</div>
-          <div class="metric-tag">Efectividad Horaria</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-big">+350</div>
-          <div class="metric-tag">Comercios Activos</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-big">15+</div>
-          <div class="metric-tag">Años en Mar del Plata</div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ========================================================================
-     * SECCIÓN CTA WHATSAPP DIRECTO
-     * ======================================================================== -->
-    <section class="section-standard section-gray" id="contacto">
-      <div class="cta-banner-box">
-        <div class="section-pill-badge badge-yellow-on-blue">
-          <span>⚡</span> Respuesta Inmediata
+        <!-- 2. Instagram -->
+        <div class="social-card-outer">
+          <div class="social-card-inner">
+            <div>
+              <span class="card-tag">Instagram Community</span>
+              <h3 class="card-title">@enviosdosruedas</h3>
+              <p class="card-desc">Mirá las historias de nuestros repartidores en las calles de Mar del Plata y tips para empacar tus ventas seguras.</p>
+            </div>
+            <div>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="cta-nested-pill pill-primary">
+                <span>Ver Instagram</span>
+                <span class="cta-nested-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+              </a>
+            </div>
+          </div>
         </div>
-        <h2 style="font-family: var(--font-display); font-size: clamp(2.4rem, 5.5vw, 4.2rem); line-height: 0.95; text-transform: uppercase; margin-bottom: 1.25rem;">
-          ¿LISTO PARA RESOLVER TUS ENVÍOS HOY?
-        </h2>
-        <p style="font-size: 1.2rem; color: var(--color-brand-blue-50); max-width: 650px; margin: 0 auto; font-weight: 300;">
-          Escribinos por WhatsApp y coordinamos tu retiro en minutos. Cotizaciones transparentes sin sorpresas.
-        </p>
-        <a href="https://wa.me/5492236025348?text=Hola%20Envios%20DosRuedas,%20quiero%20coordinar%20un%20envio%20ahora" target="_blank" rel="noopener" class="cta-big-btn">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span>Escribir al WhatsApp (223 602-5348)</span>
-        </a>
+
+        <!-- 3. WhatsApp Business -->
+        <div class="social-card-outer">
+          <div class="social-card-inner">
+            <div>
+              <span class="card-tag">Canal Directo</span>
+              <h3 class="card-title">Línea Operativa</h3>
+              <p class="card-desc">Comunicate de forma directa con nuestro centro de despacho para coordinar pedidos inmediatos.</p>
+            </div>
+            <div>
+              <a href="https://api.whatsapp.com/send/?phone=5492236025348" target="_blank" rel="noopener noreferrer" class="cta-nested-pill pill-elevated">
+                <span>Abrir WhatsApp</span>
+                <span class="cta-nested-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
   </main>
 
   <!-- ========================================================================
-   * FOOTER OPTIMIZADO (CON FIRMA AMARILLA DE 6PX)
+   * 10. FOOTER MODULAR (OPTIMIZED-FOOTER)
    * ======================================================================== -->
-  <footer id="optimized-footer">
-    <div class="footer-yellow-top-bar"></div>
+  <footer class="site-footer" id="optimized-footer">
+    <div class="footer-top-accent" aria-hidden="true"></div>
 
     <div class="footer-container">
-      
-      <!-- Col 1: Marca y Base -->
-      <div>
-        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-          <img src="../../public/logo.webp" alt="Envíos DosRuedas" style="height: 38px;" />
-          <span style="font-family: var(--font-display); font-size: 1.4rem;">ENVÍOS DOSRUEDAS</span>
+      <div class="footer-grid">
+        <!-- Columna 1: Marca y Base Friuli -->
+        <div>
+          <a class="footer-brand-logo" href="#inicio">
+            <img src="../../public/logo.webp" alt="Envíos DosRuedas" width="48" height="48" />
+            <span class="footer-brand-title">
+              ENVÍOS DOSRUEDAS
+              <small>LOGÍSTICA URBANA MDP</small>
+            </span>
+          </a>
+          <p class="footer-brand-desc">
+            Mensajería urbana y logística e-commerce de última milla en Mar del Plata. Flota propia, cadetes registrados y depósito físico en Friuli 1972.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--yellow);">
+            <span>Friuli 1972 · Mar del Plata, Argentina</span>
+          </div>
         </div>
-        <p style="font-size: 0.92rem; color: var(--color-brand-blue-100); line-height: 1.6; margin-bottom: 1.25rem;">
-          Líderes en mensajería urbana y logística e-commerce en Mar del Plata. Flota propia y trazabilidad en cada paquete.
-        </p>
-        <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-brand-yellow-500);">
-          📍 Friuli 1972 · Mar del Plata, Argentina
+
+        <!-- Columna 2: Enlaces Rápidos -->
+        <div>
+          <h4 class="footer-col-title">Navegación</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#inicio">Inicio</a></li>
+            <li class="footer-link-item"><a href="#servicios">Servicios Logísticos</a></li>
+            <li class="footer-link-item"><a href="#segmentos">Segmentos de Clientes</a></li>
+            <li class="footer-link-item"><a href="#emprendedores-home">Plan Emprendedores</a></li>
+            <li class="footer-link-item"><a href="#contacto">Cotizar Envío</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Servicios Especiales -->
+        <div>
+          <h4 class="footer-col-title">Soluciones</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#servicios">Mercado Envíos Flex</a></li>
+            <li class="footer-link-item"><a href="#servicios">Envíos Express (3 hs)</a></li>
+            <li class="footer-link-item"><a href="#servicios">Envíos LowCost Programados</a></li>
+            <li class="footer-link-item"><a href="#mardelivery">MarDelivery Gastronomía</a></li>
+            <li class="footer-link-item"><a href="#logistica">Base Friuli & DropOFF</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 4: Contacto & Guardia Operativa -->
+        <div>
+          <h4 class="footer-col-title">Contacto Directo</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <div>
+              <strong style="display: block; color: var(--white);">223 602-5348</strong>
+              <span style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.7);">Línea y WhatsApp Operativo</span>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <div>
+              <strong style="display: block; color: var(--white);">Lunes a Sábados</strong>
+              <span style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.7);">9:00 a 20:00 hs (Nocturno MarDelivery)</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Col 2: Enlaces Rápidos -->
-      <div>
-        <h4 class="footer-col-title">SERVICIOS</h4>
-        <ul class="footer-links-list">
-          <li><a href="#servicios">Mensajería Express</a></li>
-          <li><a href="#servicios">Logística E-Commerce</a></li>
-          <li><a href="#servicios">Envíos Programados</a></li>
-          <li><a href="#servicios">Depósito & Fulfillment</a></li>
-          <li><a href="#mardelivery">MarDelivery (Gastronomía)</a></li>
-        </ul>
+      <!-- Copyright y Scroll to Top -->
+      <div class="footer-bottom">
+        <div>
+          © 2026 Envíos DosRuedas · Todos los derechos reservados · Mar del Plata, Argentina.
+        </div>
+        <button type="button" class="scroll-top-btn" id="scroll-to-top" aria-label="Volver arriba">
+          <span>Subir al inicio</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m18 15-6-6-6 6"></path></svg>
+        </button>
       </div>
-
-      <!-- Col 3: Secciones -->
-      <div>
-        <h4 class="footer-col-title">EMPRESA</h4>
-        <ul class="footer-links-list">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#segmentos">Para Comercios</a></li>
-          <li><a href="#logistica">Flota Propia</a></li>
-          <li><a href="#metricas">Métricas y Confianza</a></li>
-          <li><a href="#contacto">Cotizar por WhatsApp</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 4: Atención y Horarios -->
-      <div>
-        <h4 class="footer-col-title">ATENCIÓN AL CLIENTE</h4>
-        <p style="font-size: 0.9rem; color: var(--color-brand-blue-50); line-height: 1.6; margin-bottom: 1rem;">
-          <strong>Lunes a Viernes:</strong> 08:00 a 18:00 hs<br />
-          <strong>Sábados:</strong> 08:00 a 13:00 hs<br />
-          <strong>Guardia MarDelivery:</strong> Jueves a Domingos (Noche)
-        </p>
-        <a href="tel:2236025348" style="font-family: var(--font-mono); font-weight: 700; color: var(--color-brand-yellow-500); font-size: 1.1rem; display: block;">
-          📞 223 602-5348
-        </a>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom-bar">
-      © 2026 Envíos DosRuedas. Todos los derechos reservados · Mar del Plata, Buenos Aires, Argentina.
     </div>
   </footer>
 
   <!-- ========================================================================
-   * SCRIPTS OPTIMIZADOS (HEADER SCROLL + MOBILE DRAWER + CANVAS GRID + GSAP)
+   * JAVASCRIPT UNIFICADO: SCROLL, DRAWER, CANVAS, MODAL Y COTIZADOR
    * ======================================================================== -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script>
     (function () {
       "use strict";
 
-      // 1. Header scroll blur trigger
-      const header = document.getElementById("optimized-header");
+      // 1. Header scroll y Drawer móvil
+      const header = document.getElementById("site-header");
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileOverlay = document.getElementById("mobile-overlay");
+      const drawerCloseBtn = document.getElementById("drawer-close-btn");
+
       window.addEventListener("scroll", () => {
-        if (window.scrollY > 40) {
+        if (window.scrollY > 25) {
           header.classList.add("scrolled");
         } else {
           header.classList.remove("scrolled");
         }
       }, { passive: true });
 
-      // 2. Mobile Drawer
-      const mobileToggle = document.getElementById("btn-mobile-toggle");
-      const mobileDrawer = document.getElementById("mobile-drawer");
-      const drawerClose = document.getElementById("drawer-close");
-
-      function toggleDrawer(open) {
-        if (open) {
-          mobileDrawer.classList.add("active");
-          document.body.style.overflow = "hidden";
-        } else {
-          mobileDrawer.classList.remove("active");
-          document.body.style.overflow = "";
-        }
+      function toggleMobileDrawer(isOpen) {
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        mobileOverlay.classList.toggle("is-active", isOpen);
+        document.body.style.overflow = isOpen ? "hidden" : "";
       }
 
-      mobileToggle?.addEventListener("click", () => toggleDrawer(true));
-      drawerClose?.addEventListener("click", () => toggleDrawer(false));
-      mobileDrawer?.addEventListener("click", (e) => {
-        if (e.target === mobileDrawer) toggleDrawer(false);
+      menuToggle?.addEventListener("click", () => toggleMobileDrawer(true));
+      drawerCloseBtn?.addEventListener("click", () => toggleMobileDrawer(false));
+      mobileOverlay?.addEventListener("click", (e) => {
+        if (e.target === mobileOverlay) toggleMobileDrawer(false);
       });
-      mobileDrawer?.querySelectorAll("a").forEach(a => {
-        a.addEventListener("click", () => toggleDrawer(false));
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobileOverlay.classList.contains("is-active")) {
+          toggleMobileDrawer(false);
+        }
+      });
+      mobileOverlay?.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", () => toggleMobileDrawer(false));
       });
 
-      // 3. Canvas procedural background en Hero
-      const canvas = document.getElementById("hero-canvas");
+      // 2. Marquee de Marcas Pausa/Play
+      const btnMarquee = document.getElementById('btn-toggle-marquee');
+      const trackMarquee = document.getElementById('marquee-track');
+      const labelPause = document.getElementById('label-pause');
+      let isPaused = false;
+
+      btnMarquee?.addEventListener('click', () => {
+        isPaused = !isPaused;
+        if (isPaused) {
+          trackMarquee?.classList.add('paused');
+          btnMarquee.setAttribute('aria-pressed', 'true');
+          if (labelPause) labelPause.innerText = 'Reanudar';
+        } else {
+          trackMarquee?.classList.remove('paused');
+          btnMarquee.setAttribute('aria-pressed', 'false');
+          if (labelPause) labelPause.innerText = 'Pausar';
+        }
+      });
+
+      // 3. Canvas Interactivo de Red y Nodos de Mar del Plata
+      const canvas = document.getElementById('network-canvas');
       if (canvas) {
-        const ctx = canvas.getContext("2d");
-        let width, height;
+        const ctx = canvas.getContext('2d');
+        const parentSection = document.getElementById('servicios');
+        let width = 0, height = 0, mousePos = { x: -1000, y: -1000 };
+
+        const nodeDefs = [
+          { id: 'cd', label: 'Base Central (Friuli 1972)', size: 6, xRatio: 0.45, yRatio: 0.60 },
+          { id: 'centro', label: 'Centro', size: 4, xRatio: 0.68, yRatio: 0.42 },
+          { id: 'la_perla', label: 'La Perla', size: 4, xRatio: 0.65, yRatio: 0.30 },
+          { id: 'constitucion', label: 'Constitución', size: 4, xRatio: 0.52, yRatio: 0.18 },
+          { id: 'guemes', label: 'Zona Güemes', size: 4, xRatio: 0.73, yRatio: 0.52 },
+          { id: 'playa_grande', label: 'Playa Grande', size: 4, xRatio: 0.77, yRatio: 0.63 },
+          { id: 'puerto', label: 'Puerto', size: 4, xRatio: 0.72, yRatio: 0.76 },
+          { id: 'bosque', label: 'Bosque Peralta Ramos', size: 4, xRatio: 0.64, yRatio: 0.88 },
+          { id: 'martillo', label: 'El Martillo', size: 5, xRatio: 0.22, yRatio: 0.72 }
+        ];
+
+        const connections = [
+          { from: 'cd', to: 'martillo' }, { from: 'cd', to: 'centro' }, { from: 'cd', to: 'guemes' },
+          { from: 'cd', to: 'puerto' }, { from: 'cd', to: 'constitucion' }, { from: 'constitucion', to: 'la_perla' },
+          { from: 'constitucion', to: 'centro' }, { from: 'la_perla', to: 'centro' }, { from: 'centro', to: 'guemes' },
+          { from: 'guemes', to: 'playa_grande' }, { from: 'playa_grande', to: 'puerto' }, { from: 'puerto', to: 'bosque' }
+        ];
+
+        const particles = [
+          { connIndex: 0, speed: 0.0035, size: 2.8, color: '#FFEC01', progress: 0.1 },
+          { connIndex: 1, speed: 0.0028, size: 3.2, color: '#FFFFFF', progress: 0.3 },
+          { connIndex: 2, speed: 0.0042, size: 2.5, color: '#FFFFFF', progress: 0.5 },
+          { connIndex: 3, speed: 0.0031, size: 3.0, color: '#FFEC01', progress: 0.7 },
+          { connIndex: 4, speed: 0.0038, size: 2.7, color: '#FFFFFF', progress: 0.2 }
+        ];
+
+        let nodeMap = new Map();
 
         function resizeCanvas() {
-          width = canvas.width = canvas.offsetWidth;
-          height = canvas.height = canvas.offsetHeight;
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          width = canvas.offsetWidth;
+          height = canvas.offsetHeight;
+          canvas.width = Math.max(1, Math.round(width * dpr));
+          canvas.height = Math.max(1, Math.round(height * dpr));
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          nodeMap.clear();
+          nodeDefs.forEach(def => {
+            nodeMap.set(def.id, { id: def.id, x: width * def.xRatio, y: height * def.yRatio, label: def.label, size: def.size });
+          });
         }
-        window.addEventListener("resize", resizeCanvas, { passive: true });
+
+        window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        let t = 0;
-        function renderCanvas() {
-          t += 0.015;
+        parentSection?.addEventListener('mousemove', (e) => {
+          const rect = canvas.getBoundingClientRect();
+          mousePos = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+        });
+        parentSection?.addEventListener('mouseleave', () => {
+          mousePos = { x: -1000, y: -1000 };
+        });
+
+        let lastTime = 0;
+        function animateNetwork(timestamp) {
+          if (!lastTime) lastTime = timestamp;
+          const dt = Math.min((timestamp - lastTime) / 1000, 0.1);
+          lastTime = timestamp;
+
           ctx.clearRect(0, 0, width, height);
 
-          // Grid sutil
-          ctx.strokeStyle = "rgba(255, 255, 255, 0.04)";
-          ctx.lineWidth = 1;
-          const gridSize = 45;
-          for (let x = 0; x < width; x += gridSize) {
+          // Líneas
+          connections.forEach(conn => {
+            const from = nodeMap.get(conn.from);
+            const to = nodeMap.get(conn.to);
+            if (!from || !to) return;
+            const midX = (from.x + to.x) / 2;
+            const midY = (from.y + to.y) / 2;
+            const dx = midX - mousePos.x;
+            const dy = midY - mousePos.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            ctx.strokeStyle = dist < 180 ? `rgba(255, 236, 1, ${0.15 + (1 - dist / 180) * 0.3})` : 'rgba(255, 255, 255, 0.14)';
+            ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, height);
+            ctx.moveTo(from.x, from.y);
+            ctx.lineTo(to.x, to.y);
             ctx.stroke();
-          }
-          for (let y = 0; y < height; y += gridSize) {
+          });
+
+          // Partículas
+          particles.forEach(p => {
+            p.progress += p.speed * 60 * dt;
+            if (p.progress >= 1) p.progress %= 1;
+            const conn = connections[p.connIndex % connections.length];
+            const from = nodeMap.get(conn.from);
+            const to = nodeMap.get(conn.to);
+            if (!from || !to) return;
+            const px = from.x + (to.x - from.x) * p.progress;
+            const py = from.y + (to.y - from.y) * p.progress;
+            ctx.fillStyle = p.color;
             ctx.beginPath();
-            ctx.moveTo(0, y);
-            ctx.lineTo(width, y);
-            ctx.stroke();
-          }
+            ctx.arc(px, py, p.size, 0, Math.PI * 2);
+            ctx.fill();
+          });
 
-          // Línea de pulso dinámica
-          ctx.strokeStyle = "rgba(255, 236, 1, 0.25)";
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          for (let x = 0; x < width; x += 15) {
-            const y = height * 0.5 + Math.sin(x * 0.008 + t) * 28 + Math.cos(x * 0.003 - t * 0.5) * 15;
-            if (x === 0) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
-          }
-          ctx.stroke();
+          // Nodos
+          nodeMap.forEach(node => {
+            const dx = node.x - mousePos.x;
+            const dy = node.y - mousePos.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const isNear = dist < 140;
+            ctx.fillStyle = isNear ? '#FFEC01' : '#FFFFFF';
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
+            ctx.fill();
+            if (isNear || node.id === 'cd') {
+              ctx.font = '600 10px Outfit, sans-serif';
+              ctx.fillText(node.label.toUpperCase(), node.x + 10, node.y + 3);
+            }
+          });
 
-          requestAnimationFrame(renderCanvas);
+          requestAnimationFrame(animateNetwork);
         }
-        renderCanvas();
+        requestAnimationFrame(animateNetwork);
       }
 
-      // 4. GSAP Entrada Hero
-      if (window.gsap) {
-        gsap.from(".hero-heading", {
-          opacity: 0,
-          y: 35,
-          duration: 0.9,
-          ease: "power3.out"
-        });
-        gsap.from(".hero-lead", {
-          opacity: 0,
-          y: 20,
-          duration: 0.8,
-          delay: 0.2,
-          ease: "power2.out"
-        });
-        gsap.from(".hero-visual-stage", {
-          opacity: 0,
-          scale: 0.92,
-          duration: 1,
-          delay: 0.35,
-          ease: "power2.out"
+      // 4. Carrusel 3D de Servicios y Modal
+      const SERVICES_DATA = [
+        {
+          id: 'express',
+          title: 'Envíos Express',
+          meta: '+7 Años de Trayectoria · Todo Mar del Plata',
+          summary: 'Servicio de mensajería urbana urgente con horario a elección. Coordinás la franja horaria de 3 hs que te conviene y se asigna un repartidor exclusivo para tu envío.',
+          features: ['Tarifa base de $3.500 hasta 5 km.', 'Entrega en franja de 3 hs a elección.', 'Notificación automática por WhatsApp.'],
+          stats: { time: '3 horas', price: '$3.500 Base', weight: 'Hasta 5 kg' },
+          ctaText: 'COTIZÁ TU EXPRESS',
+          iconSvg: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none" stroke="currentColor" stroke-width="2.5"></polygon>'
+        },
+        {
+          id: 'lowcost',
+          title: 'Envíos LowCost',
+          meta: 'Tarifa Fija Especial · Todo Gral. Pueyrredón',
+          summary: 'La alternativa ideal para comercios que buscan optimizar costos. Reparto económico programado para el día: pedilo antes de las 13:00 hs y se entrega en la jornada.',
+          features: ['Tarifa base de $2.800 hasta 5 km.', 'Entregas a lo largo de la tarde hasta las 20:00 hs.', 'La tarifa más accesible de la ciudad.'],
+          stats: { time: 'En el día', price: '$2.800 Base', weight: 'Hasta 5 kg' },
+          ctaText: 'PROBÁ EL LOWCOST',
+          iconSvg: '<path d="m7.5 4.27 9 5.15" fill="none" stroke="currentColor" stroke-width="2.5"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" fill="none" stroke="currentColor" stroke-width="2.5"></path>'
+        },
+        {
+          id: 'flex',
+          title: 'Envíos Flex (MeLi)',
+          meta: 'Corte extendido 14:00 · Mar del Plata',
+          summary: 'Habilitá Envíos Flex en tu cuenta de MercadoLibre y despachá todas tus ventas en el día. Protegemos tu reputación verde con recolección directa en tu local.',
+          features: ['Visitas bonificadas según tu volumen diario.', 'Reparto coordinado antes de las 21:00 hs.', 'Escaner QR integrado al ecosistema de MeLi.'],
+          stats: { time: 'Same Day', price: 'Zonificada', weight: 'Moto / Auto' },
+          ctaText: 'CONFIGURAR FLEX',
+          iconSvg: '<path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" fill="none" stroke="currentColor" stroke-width="2.5"></path><circle cx="17" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="2.5"></circle><circle cx="7" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="2.5"></circle>'
+        },
+        {
+          id: '3pl',
+          title: 'Depósito & Fulfillment',
+          meta: 'Stock guardado · Base Friuli 1972',
+          summary: 'Almacená tus productos en nuestra base central de Friuli 1972 y olvidate de armar paquetes. Cuando entra una venta, empaquetamos y despachamos de inmediato.',
+          features: ['Tarifa plana Same-Day a toda la ciudad.', 'Descuento especial DropOFF si traés los envíos listos.', 'Control de stock físico y soporte comercial.'],
+          stats: { time: 'Inmediato', price: '$2.900 Fijo', weight: 'Sin límite' },
+          ctaText: 'CONSULTAR PLANES',
+          iconSvg: '<path d="M3 21h18" fill="none" stroke="currentColor" stroke-width="2.5"></path><path d="M5 21V7l8-4v18" fill="none" stroke="currentColor" stroke-width="2.5"></path>'
+        }
+      ];
+
+      let activeIndex = 0;
+      let isAutoRotate = true;
+      let autoRotateTimer = null;
+      const totalServices = 4;
+      const cardElements = document.querySelectorAll('.service-card-wrapper');
+      const toggleRotateBtn = document.getElementById('toggle-rotate');
+      const prevBtn = document.getElementById('prev-service');
+      const nextBtn = document.getElementById('next-service');
+
+      function updateCarousel() {
+        const isMobile = window.innerWidth < 640;
+        cardElements.forEach((card, index) => {
+          const offset = ((((index - activeIndex + totalServices / 2) % totalServices) + totalServices) % totalServices) - Math.floor(totalServices / 2);
+          const absOffset = Math.abs(offset);
+          const isCenter = offset === 0;
+          const rotateY = isMobile ? 0 : offset * -28;
+          const translateZ = isMobile ? 0 : isCenter ? 120 : -absOffset * 180;
+          const translateX = offset * (isMobile ? 140 : 260);
+          const scale = isCenter ? 1.05 : Math.max(0.65, 1 - absOffset * 0.18);
+          const opacity = isCenter ? 1 : Math.max(0.35, 1 - absOffset * 0.35);
+
+          card.style.transform = `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
+          card.style.opacity = opacity;
+          card.style.zIndex = totalServices - absOffset;
+          card.style.pointerEvents = isCenter ? 'auto' : 'auto';
         });
       }
+
+      function goToService(index) {
+        activeIndex = (index + totalServices) % totalServices;
+        updateCarousel();
+      }
+
+      function startAutoRotate() {
+        if (autoRotateTimer) clearInterval(autoRotateTimer);
+        autoRotateTimer = setInterval(() => {
+          if (isAutoRotate) goToService(activeIndex + 1);
+        }, 4500);
+      }
+
+      toggleRotateBtn?.addEventListener('click', () => {
+        isAutoRotate = !isAutoRotate;
+        toggleRotateBtn.classList.toggle('active', isAutoRotate);
+        toggleRotateBtn.innerText = isAutoRotate ? 'ROTACIÓN AUTOMÁTICA' : 'ROTACIÓN PAUSADA';
+      });
+
+      prevBtn?.addEventListener('click', () => {
+        isAutoRotate = false;
+        toggleRotateBtn?.classList.remove('active');
+        if (toggleRotateBtn) toggleRotateBtn.innerText = 'ROTACIÓN PAUSADA';
+        goToService(activeIndex - 1);
+      });
+
+      nextBtn?.addEventListener('click', () => {
+        isAutoRotate = false;
+        toggleRotateBtn?.classList.remove('active');
+        if (toggleRotateBtn) toggleRotateBtn.innerText = 'ROTACIÓN PAUSADA';
+        goToService(activeIndex + 1);
+      });
+
+      cardElements.forEach(card => {
+        card.addEventListener('click', () => {
+          const idx = parseInt(card.getAttribute('data-index'), 10);
+          if (idx === activeIndex) {
+            openModal(idx);
+          } else {
+            isAutoRotate = false;
+            toggleRotateBtn?.classList.remove('active');
+            if (toggleRotateBtn) toggleRotateBtn.innerText = 'ROTACIÓN PAUSADA';
+            goToService(idx);
+          }
+        });
+      });
+
+      updateCarousel();
+      startAutoRotate();
+
+      // Modal de Servicio
+      const modal = document.getElementById('service-modal');
+      const modalClose = document.getElementById('modal-close');
+      const modalBack = document.getElementById('modal-back');
+      const modalTitle = document.getElementById('modal-title');
+      const modalMeta = document.getElementById('modal-meta');
+      const modalSummary = document.getElementById('modal-summary');
+      const modalFeatures = document.getElementById('modal-features');
+      const modalIcon = document.getElementById('modal-icon');
+      const statTime = document.getElementById('stat-time');
+      const statPrice = document.getElementById('stat-price');
+      const statWeight = document.getElementById('stat-weight');
+      const modalCtaText = document.getElementById('modal-cta-text');
+
+      function openModal(index) {
+        const item = SERVICES_DATA[index];
+        if (!item || !modal) return;
+        if (modalTitle) modalTitle.innerText = item.title;
+        if (modalMeta) modalMeta.innerText = item.meta;
+        if (modalSummary) modalSummary.innerText = item.summary;
+        if (statTime) statTime.innerText = item.stats.time;
+        if (statPrice) statPrice.innerText = item.stats.price;
+        if (statWeight) statWeight.innerText = item.stats.weight;
+        if (modalCtaText) modalCtaText.innerText = item.ctaText;
+        if (modalIcon) modalIcon.innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">${item.iconSvg}</svg>`;
+        if (modalFeatures) {
+          modalFeatures.innerHTML = item.features.map(f => `
+            <div style="display: flex; align-items: center; gap: 0.65rem; font-size: 0.92rem; color: #FFFFFF;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFEC01" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+              <span>${f}</span>
+            </div>
+          `).join('');
+        }
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      modalClose?.addEventListener('click', closeModal);
+      modalBack?.addEventListener('click', closeModal);
+      modal?.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal?.classList.contains('open')) closeModal();
+      });
+
+      // 5. Formulario Cotizador a WhatsApp
+      const form = document.getElementById('cta-whatsapp-form');
+      const nameInput = document.getElementById('cta-name');
+      const businessInput = document.getElementById('cta-business');
+      const volumeInput = document.getElementById('cta-volume');
+      const WHATSAPP_PHONE = '5492236025348';
+
+      form?.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const nameVal = nameInput ? nameInput.value.trim() : '';
+        const businessVal = businessInput ? businessInput.value.trim() : '';
+        const volumeVal = volumeInput ? volumeInput.value : '';
+
+        if (!nameVal || !businessVal || !volumeVal) {
+          alert('Por favor, completá tu nombre, comercio y volumen estimado.');
+          return;
+        }
+
+        const msg = `Hola Envíos DosRuedas! Soy ${nameVal} de "${businessVal}". Me gustaría cotizar logística para un volumen estimado de ${volumeVal}.`;
+        const waUrl = `https://api.whatsapp.com/send/?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(msg)}`;
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
+      });
+
+      // 6. Scroll to Top
+      const btnScrollTop = document.getElementById('scroll-to-top');
+      btnScrollTop?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
     })();
   </script>
-</body>
 
+</body>
 </html>
